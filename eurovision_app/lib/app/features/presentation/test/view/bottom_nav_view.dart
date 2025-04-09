@@ -1,4 +1,5 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
+import 'package:eurovision_app/app/common/constants/app_icons.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/bottom_nav_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/cat_view.dart';
@@ -28,16 +29,16 @@ class BottomNavigationScreen extends StatelessWidget {
         backgroundColor: AppColors.crimson,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Image.asset(AppIcons.euHeart, width: 24, height: 24,),
             label: AppStrings.homePage,
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.music_note),
             label: AppStrings.contests,
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: AppStrings.profilePage,
           ),

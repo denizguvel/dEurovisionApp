@@ -22,6 +22,8 @@ final class AppColors {
   static const Color coralRed = Color(0xffFF453A);
   static const Color azure = Color(0xff007AFF);
   static const Color spanishGray = Color(0xff9E9E9E);
+  static const Color grayNewLight = Color(0xCEDDD4D4);
+  static const Color grayNew = Color(0xFFDDD4D4);
 
   //Eurovision Logo Colors
   static const Color airBlue = Color(0xFF6C97A4);
@@ -29,6 +31,10 @@ final class AppColors {
   static const Color raspberryRose = Color(0xFFAF3269);
   static const Color jet = Color(0xFF3D3B4C);
   static const Color davysGray = Color(0xFF5F5D6B);
+  static const Color cloudBlue = Color(0xFF46C6C8);
+  static const Color rainyBlue = Color(0xFF215A5A);
+  static const Color pinkyPink = Color(0xFFD04B9C);
+  static const Color whiteray = Color(0xFFCBD6DC);
 
   //Eurovision Red Colors
   static const Color crimson = Color(0xFF840B14);

@@ -26,4 +26,9 @@ class AppStrings {
   //Text Label
   static const String name = "Name";
   static const String surname = "Surname";
+  static const String winning = "Winning Countries";
+  static const String winningNumber = "Which country has won how many times?";
+
+  //Titles
+  static const String titleTopTen = "Top 10 Contestants";
 }

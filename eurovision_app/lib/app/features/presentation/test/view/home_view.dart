@@ -1,7 +1,10 @@
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/common/widgets/appbar/custom_logo_appbar.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/constestant_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/view/contest_view.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_list_widget.dart';
+import 'package:eurovision_app/app/features/presentation/test/widgets/score_card_widget.dart';
 import 'package:eurovision_app/app/features/utils/year_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -59,16 +62,23 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     );
                   }
-                
                   if (contestantProvider.state == ContestantState.loaded) {
                     return ContestantsList(contestants: contestantProvider.contestants);
                   }
-                
                   return const SizedBox();
                 },
               ),
-              SizedBox(height: 30,), 
-              //Card()
+              SizedBox(height: 20,), 
+              ScoreCardWidget(
+                title: AppStrings.winning,
+                subtitle: AppStrings.winningNumber,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ContestView()),
+                  );
+                },
+              ),
             ],
           ),
       )
