@@ -1,18 +1,17 @@
-import 'package:eurovision_app/app/features/data/datasources/local/test_local_datasource.dart';
 import 'package:eurovision_app/app/features/data/datasources/remote/contestant_ten_remote_datasource.dart';
-import 'package:eurovision_app/app/features/data/datasources/remote/test_remote_datasource.dart';
+import 'package:eurovision_app/app/features/data/datasources/remote/eurovision_remote_datasource.dart';
 import 'package:eurovision_app/app/features/data/repositories/test_repository.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/appbar_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/bottom_nav_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/cat_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/constestant_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/contest_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/country_name_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/gradient_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/network_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/test_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/theme_provider.dart';
 import 'package:eurovision_app/core/network_control/network_control.dart';
-import 'package:eurovision_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,6 +37,12 @@ class ServiceLocator {
         // ),
         // Provider/State Management Provider
         ChangeNotifierProvider(create: (_) => GradientProvider()),
+        Provider<EurovisionRemoteDatasource>(
+          create: (_) => EurovisionRemoteDatasourceImpl(),
+        ),
+        ChangeNotifierProvider<CountryScoreProvider>(
+          create: (context) => CountryScoreProvider(context.read<EurovisionRemoteDatasource>()),
+        ),
         ChangeNotifierProvider<TestProvider>(
           create: (context) => TestProvider(testRepository: context.read<TestRepository>()),
         ),

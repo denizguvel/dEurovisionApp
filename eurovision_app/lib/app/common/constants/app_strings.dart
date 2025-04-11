@@ -2,18 +2,11 @@ class AppStrings {
   static const String appName = "My App";
   static const String welcomeMessage = "Welcome to the App!";
 
-  //Login & Sign Up
-  static const String loginButton = "Login";
-  static const String signupButton = "Sign Up";
-  static const String password = "Password";
-  static const String rePassword = "Re-password";
-  static const String email = "E-mail";
-  static const String newAccount = "Create new account!";
-
   //Error Messages
   static const String errorMessage = "Something went wrong. Please try again!";
   static const String errorPassword = "Passwords do not match!";
   static const String errorHive = "Hive error";
+  static const String errorRoute = "Route not found";
 
   //Page Names
   static const String mainPage = "Main Page";
@@ -28,6 +21,8 @@ class AppStrings {
   static const String surname = "Surname";
   static const String winning = "Winning Countries";
   static const String winningNumber = "Which country has won how many times?";
+  static const String dataRowCountry = "Country";
+  static const String dataRowWins = "Wins";
 
   //Titles
   static const String titleTopTen = "Top 10 Contestants";

@@ -1,8 +1,10 @@
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/bottom_nav_view.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/cat_view.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/contest_view.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/home_view.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/test_view.dart';
+import 'package:eurovision_app/app/features/presentation/test/view/winner_view.dart';
 import 'package:flutter/material.dart';
 import 'route_names.dart';
 
@@ -13,6 +15,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => CatView());
       case RouteNames.test:
         return MaterialPageRoute(builder: (_) => const TestView());
+      case RouteNames.winner:
+        return MaterialPageRoute(builder: (_) => WinnerView());
       case RouteNames.contest:
         return MaterialPageRoute(builder: (_) => const ContestView());
       case RouteNames.home:
@@ -22,7 +26,7 @@ class AppRouter {
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
-            body: Center(child: Text('Route not found')),
+            body: Center(child: Text(AppStrings.errorRoute)),
           ),
         );
     }

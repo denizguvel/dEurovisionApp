@@ -127,7 +127,6 @@
 // }
 
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
-import 'package:eurovision_app/app/common/constants/app_icons.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/constestant_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/country_icon_provider.dart';
@@ -149,7 +148,8 @@ class ContestantsList extends StatelessWidget {
 
     return Card(
       shadowColor: AppColors.cloudBlue,
-      color: AppColors.grayNew,
+      //color: AppColors.grayNew,
+      color: AppColors.palePink,
       elevation: 12,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       margin: EdgeInsets.all(screenWidth * 0.04),

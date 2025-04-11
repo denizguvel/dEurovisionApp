@@ -18,7 +18,7 @@ class ContestProvider extends ChangeNotifier {
     _errorMessage = null;
     notifyListeners();
 
-    final response = await _eurovisionRemoteDatasource.fetchContest(year: year);
+    final response = await _eurovisionRemoteDatasource.fetchContestYear(year: year);
 
     if (response.isSuccess) {
       _contests = response.data ?? [];

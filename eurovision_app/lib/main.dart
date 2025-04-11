@@ -3,12 +3,11 @@ import 'package:eurovision_app/app/common/functions/app_functions.dart';
 import 'package:eurovision_app/app/common/get_it/get_it.dart';
 import 'package:eurovision_app/app/common/widgets/network/network_wrapper.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/theme_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/view/bottom_nav_view.dart';
 import 'package:eurovision_app/core/helpers/navigation_helper/navigation_helper.dart';
 import 'package:eurovision_app/core/keys/keys.dart';
 import 'package:eurovision_app/core/routes/app_router.dart';
-import 'package:eurovision_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
@@ -30,8 +29,7 @@ class MainApp extends StatelessWidget {
         theme: AppThemeData.lightTheme,
         darkTheme: AppThemeData.darkTheme,
         themeMode: context.watch<ThemeProvider>().themeMode,
-        //home: CatView(),
-        initialRoute: RouteNames.bottomnav,
+        home: const BottomNavigationScreen(),
         onGenerateRoute: AppRouter.generateRoute,
         debugShowCheckedModeBanner: false,
         builder: (context, child) {
