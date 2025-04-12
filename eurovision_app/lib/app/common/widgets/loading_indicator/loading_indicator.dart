@@ -1,4 +1,6 @@
+import 'package:eurovision_app/app/common/constants/app_animations.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class LoadingIndicator extends StatelessWidget {
   const LoadingIndicator({Key? key}) : super(key: key);
@@ -6,7 +8,12 @@ class LoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator(),
+      child: Lottie.asset(
+        AppAnimations.euheart_ani,
+        width: 100,
+        height: 100,
+        fit: BoxFit.contain,
+      ),
     );
   }
 }

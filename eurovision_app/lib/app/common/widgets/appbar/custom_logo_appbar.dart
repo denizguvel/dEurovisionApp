@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 
 class CustomLogoAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -19,8 +20,7 @@ class CustomLogoAppBar extends StatelessWidget implements PreferredSizeWidget {
           gradient: backgroundGradient,
         ),
         //alignment: Alignment.center,
-        child: Image.asset(
-          'assets/images/logo/eu_logo2.png',
+        child: Image.asset(AppIcons.euBanner,
           width: double.infinity,
           height: kToolbarHeight,
           fit: BoxFit.cover,

@@ -169,7 +169,7 @@ class ContestantsList extends StatelessWidget {
             provider.state == ContestantState.loading
                 ? Center(child: CircularProgressIndicator())
                 : provider.state == ContestantState.error
-                    ? Center(child: Text("Error: ${provider.errorMessage}"))
+                    ? Center(child: Text('${AppStrings.error} ${provider.errorMessage}'))
                     : SizedBox(
                         height: 300,
                         child: ListView.builder(

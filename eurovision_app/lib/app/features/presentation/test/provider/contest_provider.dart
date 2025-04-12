@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/data/datasources/remote/eurovision_remote_datasource.dart';
 import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/features/data/models/contest_model.dart';
@@ -23,7 +24,7 @@ class ContestProvider extends ChangeNotifier {
     if (response.isSuccess) {
       _contests = response.data ?? [];
     } else {
-      _errorMessage = response.error?.message ?? "Bilinmeyen bir hata oluştu.";
+      _errorMessage = response.error?.message ?? AppStrings.unknownError;
     }
 
     _isLoading = false;

@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/widgets/loading_indicator/loading_indicator.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/contest_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,7 @@ class _ContestViewState extends State<ContestView> {
           Container(
             height: 600,
             child: contestProvider.isLoading
-            ? const Center(child: CircularProgressIndicator())
+            ? const Center(child: LoadingIndicator())
             : contestProvider.errorMessage != null
             ? Center(child: Text(contestProvider.errorMessage!))
             : ListView.builder(

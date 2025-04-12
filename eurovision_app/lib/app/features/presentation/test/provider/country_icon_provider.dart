@@ -59,6 +59,6 @@ class CountryIconProvider {
   };
 
   String getIconPath(String countryCode) {
-    return countryIcons[countryCode] ?? 'assets/icons/flags/tr.svg';
+    return countryIcons[countryCode] ?? AppIcons.euHeart;
   }
 }
