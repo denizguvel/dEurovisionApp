@@ -2,7 +2,7 @@ import 'package:eurovision_app/app/common/constants/app_animations.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/bottom_nav_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/constestant_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/contestant/constestant_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/gradient_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_list_widget.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/score_card_widget.dart';
