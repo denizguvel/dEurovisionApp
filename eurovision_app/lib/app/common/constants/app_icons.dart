@@ -3,8 +3,9 @@ class AppIcons {
   static const String mark = 'assets/images/icons/mark.png';
   static const String ranking = 'assets/images/icons/ranking.png';
   static const String euHeartBlack = 'assets/images/icons/eurovision_heart_icon.png';
-  static const String euHeart = 'assets/images/icons/eu_heart.png';
-
+  static const String euHeart = 'assets/images/icons/eurovision_heart_icon.svg';
+  static const String worldIcon = 'assets/images/icons/world_icon.svg';
+  static const String euBanner = 'assets/images/logo/eu_logo2.png';
 
   //Flags
   static const String alFlag = 'assets/images/icons/flags/al.svg';

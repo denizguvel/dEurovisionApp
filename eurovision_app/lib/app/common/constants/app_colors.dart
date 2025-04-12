@@ -24,6 +24,11 @@ final class AppColors {
   static const Color spanishGray = Color(0xff9E9E9E);
   static const Color grayNewLight = Color(0xCEDDD4D4);
   static const Color grayNew = Color(0xFFDDD4D4);
+  static const Color gray = Color(0xFF9E9E9E);
+  static const Color gray300 = Color(0xFFE0E0E0);
+  static const Color white70 =Colors.white70; 
+  static const Color transparent =Colors.transparent; 
+
 
   //Eurovision Logo Colors
   static const Color airBlue = Color(0xFF6C97A4);
@@ -42,4 +47,6 @@ final class AppColors {
   static const Color crimson1 = Color(0xFF7E0110);
   static const Color crimson2 = Color(0xFF4D0000);
   static const Color crimson3 = Color(0xFF410000);
+  static const Color crimson4 = Color(0xFF8B0000);
+  static const Color crimson5 = Color(0xFFDC143C);
 }
