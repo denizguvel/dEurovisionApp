@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_animations.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/bottom_nav_provider.dart';
@@ -6,7 +7,9 @@ import 'package:eurovision_app/app/features/presentation/test/provider/gradient_
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_list_widget.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/score_card_widget.dart';
 import 'package:eurovision_app/app/features/utils/year_util.dart';
+import 'package:eurovision_app/core/constants/page_type_enum.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
@@ -34,6 +37,8 @@ class _HomeViewState extends State<HomeView> {
     final gradient = gradientProvider.gradient;
 
     return Container(
+        // width: double.infinity,
+        // height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: gradient.begin,
@@ -45,7 +50,9 @@ class _HomeViewState extends State<HomeView> {
               Consumer<ContestantProvider>(
                 builder: (context, contestantProvider, child) {
                   if (contestantProvider.state == ContestantState.loading) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: Lottie.asset(AppAnimations.euheart_ani, width: 100, height: 100,),
+                    );
                   }
                   if (contestantProvider.state == ContestantState.error) {
                     return Center(
@@ -70,12 +77,15 @@ class _HomeViewState extends State<HomeView> {
                   //   context,
                   //   MaterialPageRoute(builder: (context) => WinnerView()),
                   // );
-                  Provider.of<BottomNavProvider>(context, listen: false).showDetailView();
+                  // Provider.of<BottomNavProvider>(context, listen: false).showDetailView();
+                  Provider.of<BottomNavProvider>(context, listen: false)
+                    .goToDetail(PageType.winner);
                 },
               ),
+              ElevatedButton(onPressed:() { Provider.of<BottomNavProvider>(context, listen: false)
+                    .goToDetail(PageType.deneme); }, child: Text("Denemeye git"))
             ],
-          ),
-      
+          ),     
     );
   }
 }
