@@ -1,11 +1,9 @@
-import 'package:eurovision_app/app/common/constants/app_animations.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/common/widgets/loading_indicator/loading_indicator.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/country_icon_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/country_name_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/country/country_icon_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class WinnerView extends StatefulWidget {
@@ -35,6 +33,8 @@ class _WinnerViewState extends State<WinnerView> {
     final countryScores = countryScoreProvider.countryWins;
 
     return Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height,
       color: Theme.of(context).scaffoldBackgroundColor,
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
