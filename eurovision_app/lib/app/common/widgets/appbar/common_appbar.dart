@@ -16,6 +16,8 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
         return AppStrings.winner;
       case PageType.deneme:
         return 'Deneme';
+      case PageType.contestantDetail:
+        return 'Contestant Detail';
       default:
         return AppStrings.mainPage;
     }
