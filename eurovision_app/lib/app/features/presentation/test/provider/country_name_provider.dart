@@ -5,9 +5,10 @@ import 'package:eurovision_app/app/features/data/models/country_score_model.dart
 class CountryScoreProvider extends ChangeNotifier {
   final EurovisionRemoteDatasource _remoteDatasource;
   List<CountryScoreModel> _countryWins = [];
+  bool _isLoading = true;
 
   List<CountryScoreModel> get countryWins => _countryWins;
-
+  bool get isLoading => _isLoading;
   CountryScoreProvider(this._remoteDatasource);
 
   final Map<String, String> _countryCodeNameMap = {
@@ -60,34 +61,75 @@ class CountryScoreProvider extends ChangeNotifier {
     "TR": "Turkey",
     "UA": "Ukraine",
     "GB": "United Kingdom",
+    "YU": "Yugoslavia"
   };
 
   Future<void> getCountryWins() async {
-    final allContests = await _remoteDatasource.fetchAllContests();
-    Map<String, int> winCountMap = {};
+    if (_countryWins.isNotEmpty) return;
 
-    for (var contest in allContests) {
-      final winner = await _remoteDatasource.fetchWinnerByYear(contest.year);
-      if (winner != null) {
-        final code = winner.country;
-        winCountMap[code] = (winCountMap[code] ?? 0) + 1;
-      }
-    }
-
-    _countryWins = winCountMap.entries
-        .map((entry) {
-          final code = entry.key;
-          final name = _countryCodeNameMap[code] ?? code;
-          final wins = entry.value;
-          return CountryScoreModel(
-            countryCode: code,
-            countryName: name,
-            wins: wins,
-          );
-        })
-        .toList()
-      ..sort((a, b) => b.wins.compareTo(a.wins)); // büyükten küçüğe sırala
-
+    _isLoading = true;
     notifyListeners();
+
+    try {
+      final allContests = await _remoteDatasource.fetchAllContests();
+      Map<String, int> winCountMap = {};
+
+      for (var contest in allContests) {
+        final winner = await _remoteDatasource.fetchWinnerByYear(contest.year);
+        if (winner != null) {
+          final code = winner.country;
+          winCountMap[code] = (winCountMap[code] ?? 0) + 1;
+        }
+      }
+
+      _countryWins = winCountMap.entries
+          .map((entry) {
+            final code = entry.key;
+            final name = _countryCodeNameMap[code] ?? code;
+            final wins = entry.value;
+            return CountryScoreModel(
+              countryCode: code,
+              countryName: name,
+              wins: wins,
+            );
+          })
+          .toList()
+        ..sort((a, b) => b.wins.compareTo(a.wins));
+
+      _isLoading = false;
+      notifyListeners();
+    } catch (e) {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
+
+  // Future<void> getCountryWins() async {
+  //   final allContests = await _remoteDatasource.fetchAllContests();
+  //   Map<String, int> winCountMap = {};
+
+  //   for (var contest in allContests) {
+  //     final winner = await _remoteDatasource.fetchWinnerByYear(contest.year);
+  //     if (winner != null) {
+  //       final code = winner.country;
+  //       winCountMap[code] = (winCountMap[code] ?? 0) + 1;
+  //     }
+  //   }
+
+  //   _countryWins = winCountMap.entries
+  //       .map((entry) {
+  //         final code = entry.key;
+  //         final name = _countryCodeNameMap[code] ?? code;
+  //         final wins = entry.value;
+  //         return CountryScoreModel(
+  //           countryCode: code,
+  //           countryName: name,
+  //           wins: wins,
+  //         );
+  //       })
+  //       .toList()
+  //     ..sort((a, b) => b.wins.compareTo(a.wins));
+
+  //   notifyListeners();
+  // }
 }
