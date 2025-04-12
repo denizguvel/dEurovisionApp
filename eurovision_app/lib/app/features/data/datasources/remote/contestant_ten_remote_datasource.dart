@@ -20,7 +20,7 @@ final class ContestantTenRemoteDatasourceImpl implements ContestantTenRemoteData
           if (data is Map<String, dynamic> && data.containsKey('contestants')) {
             final contestantsData = data['contestants'] as List;
             final contestants = contestantsData
-                .map((e) => ContestantModel.fromJson(e as Map<String, dynamic>))
+                .map((e) => ContestantModel.fromJson(e as Map<String, dynamic>, year))
                 .toList();
             return contestants;
           }

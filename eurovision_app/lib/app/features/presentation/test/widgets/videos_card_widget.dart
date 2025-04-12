@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
+import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_video_widget.dart';
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
+
+class VideosCardWidget extends StatelessWidget {
+  final ContestantDetailModel data;
+
+  const VideosCardWidget({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    if (data.videoUrls.isEmpty || data.videoUrls[0].isEmpty) {
+      return const SizedBox(); // video yoksa hiçbir şey gösterme
+    }
+
+    final videoUrl = data.videoUrls[0]; // sadece ilk video
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "🎬 Official Video",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppColors.crimson,
+            ),
+          ),
+          const Divider(),
+          AspectRatio(
+            aspectRatio: 16 / 9,
+            child: ContestantVideoPlayer(videoUrl: videoUrl),
+          ),
+        ],
+      ),
+    );
+  }
+}
