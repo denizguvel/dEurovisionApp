@@ -3,23 +3,26 @@ class ContestantModel {
   final String song;
   final String country;
   //final String flagUrl;
-  final int rank;
+  final int id;
+  final int year;
 
   ContestantModel({
     required this.artist,
     required this.song,
     required this.country,
     //required this.flagUrl,
-    required this.rank,
+    required this.id,
+    required this.year,
   });
 
-  factory ContestantModel.fromJson(Map<String, dynamic> json) {
+  factory ContestantModel.fromJson(Map<String, dynamic> json, int year) {
     return ContestantModel(
       artist: json['artist'] ?? 'Unknown Singer',
       song: json['song'] ?? 'Unknown Song',
       country: json['country'] ?? 'Unknown Country',
       //flagUrl: json['flagUrl'] ?? '',
-      rank: json['rank'] ?? 0,
+      id: json['id'] ?? 0,
+      year: year
     );
   }
 
@@ -29,7 +32,8 @@ class ContestantModel {
       'song': song,
       'country': country,
       //'flagUrl': flagUrl,
-      'rank': rank,
+      'id': id,
+      'year': year
     };
   }
 }

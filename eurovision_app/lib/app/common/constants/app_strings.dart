@@ -9,6 +9,8 @@ class AppStrings {
   static const String errorRoute = "Route not found";
   static const String unknownError = "Unknown error";
   static const String error = "Error";
+  static const String serverError = "Server Error";
+  static const String invalidData = "Invalid data format";
 
   //Page Names
   static const String mainPage = "Main Page";
