@@ -1,12 +1,11 @@
 import 'package:eurovision_app/app/common/constants/app_theme_data.dart';
 import 'package:eurovision_app/app/common/functions/app_functions.dart';
-import 'package:eurovision_app/app/common/get_it/get_it.dart';
+import 'package:eurovision_app/app/common/service_locator/service_locator.dart';
 import 'package:eurovision_app/app/common/widgets/network/network_wrapper.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/theme_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/bottom_nav_view.dart';
+import 'package:eurovision_app/app/features/presentation/test/view/main_scaffold.dart';
 import 'package:eurovision_app/core/helpers/navigation_helper/navigation_helper.dart';
 import 'package:eurovision_app/core/keys/keys.dart';
-import 'package:eurovision_app/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +28,9 @@ class MainApp extends StatelessWidget {
         theme: AppThemeData.lightTheme,
         darkTheme: AppThemeData.darkTheme,
         themeMode: context.watch<ThemeProvider>().themeMode,
-        home: const BottomNavigationScreen(),
-        onGenerateRoute: AppRouter.generateRoute,
+        home: const MainScaffold(),
+       // onGenerateRoute: AppRouter.generateRoute,
+        //initialRoute: '/',
         debugShowCheckedModeBanner: false,
         builder: (context, child) {
         return NetworkWrapper(child: child ?? SizedBox.shrink());
