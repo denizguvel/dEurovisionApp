@@ -25,7 +25,6 @@ class ContestantProvider extends ChangeNotifier {
     final result = await _remoteDatasource.fetchTopContestants(year: year);
 
     if (result is SuccessDataResult<List<ContestantModel>>) {
-      //_contestants = result.data ?? [];
       _contestants = result.data?.take(10).toList() ?? [];
       _state = ContestantState.loaded;
     } else if (result is ErrorDataResult<List<ContestantModel>>) {

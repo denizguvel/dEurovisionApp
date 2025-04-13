@@ -15,7 +15,7 @@ class ShinyBottomNavBar extends StatelessWidget {
 
     final items = [
       (icon: AppIcons.euHeart, label: AppStrings.homePage),
-      (icon: '', label: AppStrings.contests),
+      (icon: AppIcons.rank1, label: AppStrings.mytop10),
       (icon: AppIcons.worldIcon, label: AppStrings.moreBottomItem),
     ];
 
@@ -32,7 +32,6 @@ class ShinyBottomNavBar extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Sahne ışığı efekti
           // AnimatedAlign(
           //   alignment: Alignment(
           //     (bottomProvider.currentIndex - 1) * 0.7, 0,
@@ -72,19 +71,12 @@ class ShinyBottomNavBar extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (index != 1)
-                        SvgPicture.asset(
-                          items[index].icon,
-                          width: selected ? 30 : 24,
-                          height: selected ? 30 : 24,
-                          color: selected ? AppColors.white : AppColors.gray300,
-                        )
-                      else
-                        Icon(
-                          Icons.music_note,
-                          size: selected ? 30 : 24,
-                          color: selected ? AppColors.white : AppColors.gray300,
-                        ),
+                      SvgPicture.asset(
+                        items[index].icon,
+                        width: selected ? 30 : 24,
+                        height: selected ? 30 : 24,
+                        color: selected ? AppColors.white : AppColors.gray300,
+                      ),
                       const SizedBox(height: 4),
                       Text(
                         items[index].label,

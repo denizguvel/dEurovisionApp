@@ -21,6 +21,7 @@ class AppStrings {
   static const String about = "About";
   static const String winner = "Winners";
   static const String noConnection = "No Connection";
+  static const String mytop10 = "My Top 10";
 
   //Text Label
   static const String name = "Name";

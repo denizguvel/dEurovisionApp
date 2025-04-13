@@ -17,7 +17,6 @@ class LyricsCardWidget extends StatelessWidget {
     if (englishLyrics.trim().isEmpty) {
       return const SizedBox();
     }
-
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

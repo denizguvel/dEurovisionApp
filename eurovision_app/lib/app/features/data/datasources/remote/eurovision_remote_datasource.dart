@@ -5,31 +5,32 @@ import 'package:eurovision_app/core/dio_manager/api_response_model.dart';
 import 'package:eurovision_app/core/dio_manager/dio_manager.dart';
 
 abstract class EurovisionRemoteDatasource {
-  Future<ApiResponseModel<List<ContestModel>>> fetchContestYear({int year});
+  //Future<ApiResponseModel<List<ContestModel>>> fetchContestYear({int year});
   Future<List<ContestModel>> fetchAllContests();
   Future<ContestantModel?> fetchWinnerByYear(int year);
+  Future<ContestModel?> fetchContestDetail(int year);
 }
 
 final class EurovisionRemoteDatasourceImpl implements EurovisionRemoteDatasource {
   final DioApiManager _dioApiManager =
       DioApiManager(baseUrl: EnvConfig.eurovisionBaseUrl);
 
-  @override
-  Future<ApiResponseModel<List<ContestModel>>> fetchContestYear({int year = 2024}) async {
-    var apiResponseModel = await _dioApiManager.get<List<ContestModel>>(
-      '/contests',
-      queryParams: {'year': year},
-      converter: (data) {
-        if (data is List) {
-          return data.map((e) => ContestModel.fromJson(e)).toList();
-        } else {
-          return <ContestModel>[];
-        }
-      },
-    );
+  // @override
+  // Future<ApiResponseModel<List<ContestModel>>> fetchContestYear({int year = 2024}) async {
+  //   var apiResponseModel = await _dioApiManager.get<List<ContestModel>>(
+  //     '/contests',
+  //     queryParams: {'year': year},
+  //     converter: (data) {
+  //       if (data is List) {
+  //         return data.map((e) => ContestModel.fromJson(e)).toList();
+  //       } else {
+  //         return <ContestModel>[];
+  //       }
+  //     },
+  //   );
 
-    return apiResponseModel;
-  }
+  //   return apiResponseModel;
+  // }
 
   @override
   Future<List<ContestModel>> fetchAllContests() async {
@@ -46,6 +47,7 @@ final class EurovisionRemoteDatasourceImpl implements EurovisionRemoteDatasource
     return response.data ?? [];
   }
 
+  @override
   Future<ContestantModel?> fetchWinnerByYear(int year) async {
     final response = await _dioApiManager.get<Map<String, dynamic>>(
       '/contests/$year',
@@ -58,5 +60,22 @@ final class EurovisionRemoteDatasourceImpl implements EurovisionRemoteDatasource
     }
 
     return null;
+  }
+
+  @override
+  Future<ContestModel?> fetchContestDetail(int year) async {
+    try {
+      final response = await _dioApiManager.get<Map<String, dynamic>>(
+        '/contests/$year',
+        converter: (data) => data,
+      );
+
+      if (response.isSuccess && response.data != null) {
+        return ContestModel.fromJson(response.data!);
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
   }
 }

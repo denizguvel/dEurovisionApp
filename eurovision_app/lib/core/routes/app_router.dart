@@ -1,11 +1,9 @@
-import 'package:eurovision_app/app/features/presentation/test/view/contestant_detail_view.dart';
 import 'package:eurovision_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/main_scaffold.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/cat_view.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/contest_view.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/home_view.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/winner_view.dart';
+import 'package:eurovision_app/app/features/presentation/test/view/tabs/my_top_ten_view.dart.dart';
+import 'package:eurovision_app/app/features/presentation/test/view/tabs/home_view.dart';
+import 'package:eurovision_app/app/features/presentation/test/view/details/winner_view.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,10 +11,6 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(
             builder: (_) => const MainScaffold()
-        );
-      case RouteNames.cat:
-        return MaterialPageRoute(
-            builder: (_) => CatView()
         );
       case RouteNames.winner:
         return MaterialPageRoute(
@@ -28,7 +22,7 @@ class AppRouter {
       //   );
       case RouteNames.contest:
         return MaterialPageRoute(
-            builder: (_) => const ContestView()
+            builder: (_) => MyTop10View()
         );
       case RouteNames.home:
         return MaterialPageRoute(

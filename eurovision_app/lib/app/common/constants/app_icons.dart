@@ -6,6 +6,9 @@ class AppIcons {
   static const String euHeart = 'assets/images/icons/eurovision_heart_icon.svg';
   static const String worldIcon = 'assets/images/icons/world_icon.svg';
   static const String euBanner = 'assets/images/logo/eu_logo2.png';
+  static const String rank1 = 'assets/images/icons/rank_icon1.svg';
+  static const String rank2 = 'assets/images/icons/rank_icon2.svg';
+
 
   //Flags
   static const String alFlag = 'assets/images/icons/flags/al.svg';
