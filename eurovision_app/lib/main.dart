@@ -2,6 +2,7 @@ import 'package:eurovision_app/app/common/constants/app_theme_data.dart';
 import 'package:eurovision_app/app/common/functions/app_functions.dart';
 import 'package:eurovision_app/app/common/service_locator/service_locator.dart';
 import 'package:eurovision_app/app/common/widgets/network/network_wrapper.dart';
+import 'package:eurovision_app/app/features/presentation/splash/view/splash_view.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/theme_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/main_scaffold.dart';
 import 'package:eurovision_app/core/helpers/navigation_helper/navigation_helper.dart';
@@ -28,7 +29,8 @@ class MainApp extends StatelessWidget {
         theme: AppThemeData.lightTheme,
         darkTheme: AppThemeData.darkTheme,
         themeMode: context.watch<ThemeProvider>().themeMode,
-        home: const MainScaffold(),
+        home: const SplashView(),
+        //home: const MainScaffold(),
        // onGenerateRoute: AppRouter.generateRoute,
         //initialRoute: '/',
         debugShowCheckedModeBanner: false,

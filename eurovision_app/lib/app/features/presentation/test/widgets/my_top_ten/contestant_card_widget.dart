@@ -26,7 +26,7 @@ class ContestantCard extends StatelessWidget {
       onLongPressEnd: (_) => onLongPressEnd(),
       child: Card(
         elevation: 2,
-        color: isSelected ? AppColors.crimson : Colors.white,
+        color: isSelected ? AppColors.lightCrimson : AppColors.gray300,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Row(
@@ -40,7 +40,7 @@ class ContestantCard extends StatelessWidget {
                       contestant.artist,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: isSelected ? Colors.white : Colors.black,
+                        color: isSelected ? AppColors.white : AppColors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -48,14 +48,14 @@ class ContestantCard extends StatelessWidget {
                       contestant.song,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: isSelected ? Colors.white70 : Colors.grey[700],
+                        color: isSelected ? AppColors.white70 : AppColors.gray700,
                       ),
                     ),
                   ],
                 ),
               ),
               if (isSelected)
-                const Icon(Icons.check_circle, color: Colors.white),
+                const Icon(Icons.check_circle, color: AppColors.white),
             ],
           ),
         ),

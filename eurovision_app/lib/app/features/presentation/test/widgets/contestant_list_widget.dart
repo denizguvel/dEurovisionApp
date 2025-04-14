@@ -1,5 +1,7 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
+import 'package:eurovision_app/app/common/widgets/loading_indicator/loading_indicator.dart';
+import 'package:eurovision_app/core/providers/base_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/contestant/constestant_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_list_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,7 @@ class ContestantsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ContestantProvider>(context);
+    final provider = context.watch<ContestantProvider>();
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Card(
@@ -36,16 +38,16 @@ class ContestantsList extends StatelessWidget {
             ),
             SizedBox(height: 10),
             provider.state == ContestantState.loading
-                ? Center(child: CircularProgressIndicator())
+                ? Center(child: LoadingIndicator())
                 : provider.state == ContestantState.error
                     ? Center(child: Text('${AppStrings.error} ${provider.errorMessage}'))
                     : SizedBox(
                         height: 300,
                         child: ListView.builder(
-                          itemCount: provider.contestants.length,
+                          itemCount: provider.items.length,
                           itemBuilder: (context, index) {
                             return ContestantListItem(
-                              contestant: provider.contestants[index],
+                              contestant: provider.items[index],
                               index: index,
                             );
                           },

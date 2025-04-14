@@ -1,9 +1,10 @@
-import 'package:eurovision_app/app/features/presentation/test/provider/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/feature/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/my_top_ten_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/details/contestant_detail_view.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/deneme.dart';
 import 'package:eurovision_app/app/common/widgets/appbar/bottom_nav.dart';
 import 'package:flutter/material.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/feature/bottom_nav_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/core/constants/page_type_enum.dart';
 import 'package:eurovision_app/app/features/presentation/test/view/tabs/home_view.dart';
@@ -21,10 +22,12 @@ class MainScaffold extends StatelessWidget {
     final bottomProvider = Provider.of<BottomNavProvider>(context);
     final gradientProvider = Provider.of<GradientProvider>(context);
     final gradient = gradientProvider.gradient;
+    //final myTop10Utils = Provider.of<MyTop10Utils>(context);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: switch (bottomProvider.pageType) {
+        //PageType.main when myTop10Utils.showSecondPage => null,
         PageType.main => CustomLogoAppBar(
           backgroundGradient: LinearGradient(
               begin: gradient.begin,
@@ -34,22 +37,36 @@ class MainScaffold extends StatelessWidget {
         ),
         _ => CommonAppBar(pageType: bottomProvider.pageType),
       },
-      body: switch (bottomProvider.pageType) {
-        PageType.main => IndexedStack(
-          index: bottomProvider.currentIndex,
-          children: [
-            const HomeView(),
-            MyTop10View(),
-            const AboutView(),
-          ],
-        ),
-        PageType.winner => const WinnerView(),
-        PageType.contestantDetail => ContestantDetailView(
-          id: bottomProvider.selectedContestantId!,
-          year: bottomProvider.selectedYear!,
-        ), 
-        PageType.deneme => const Deneme()
-      },
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: gradient.begin,
+                end: gradient.end,
+                colors: gradient.colors,
+              ),
+            ),
+          ),
+      
+        switch (bottomProvider.pageType) {
+          PageType.main => IndexedStack(
+            index: bottomProvider.currentIndex,
+            children: [
+              const HomeView(),
+              MyTop10View(),
+              const AboutView(),
+            ],
+          ),
+          PageType.winner => const WinnerView(),
+          PageType.contestantDetail => ContestantDetailView(
+            id: bottomProvider.selectedContestantId!,
+            year: bottomProvider.selectedYear!,
+          ), 
+          PageType.deneme => const Deneme()
+        },
+        ],
+      ),
       bottomNavigationBar: const ShinyBottomNavBar(),
     );
   }

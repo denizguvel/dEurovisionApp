@@ -28,6 +28,7 @@ final class AppColors {
   static const Color gray300 = Color(0xFFE0E0E0);
   static const Color white70 =Colors.white70; 
   static const Color transparent =Colors.transparent; 
+  static const Color gray700 =Color(0xFF616161); 
 
 
   //Eurovision Logo Colors

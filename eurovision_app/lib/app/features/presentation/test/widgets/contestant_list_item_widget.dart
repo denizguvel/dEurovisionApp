@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/feature/bottom_nav_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/country/country_icon_provider.dart';
 
 class ContestantListItem extends StatelessWidget {

@@ -29,15 +29,24 @@ class _ContestantVideoPlayerState extends State<ContestantVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayer(
-      controller: _controller,
-      showVideoProgressIndicator: true,
+    return YoutubePlayerBuilder(
+      player: YoutubePlayer(
+        controller: _controller,
+        showVideoProgressIndicator: true,
+      ),
+      builder: (context, player) {
+        return Column(
+          children: [
+            player,
+          ],
+        );
+      },
     );
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
 }

@@ -1,7 +1,7 @@
 import 'package:eurovision_app/app/common/widgets/loading_indicator/gradient_loading_screen.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/feature/bottom_nav_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/contestant/contestant_detail_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/feature/gradient_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/contestant_info_card_widget.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/lyrics_card_widget.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/videos_card_widget.dart';
@@ -32,6 +32,7 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ContestantDetailProvider>(context);
@@ -48,7 +49,7 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
   Widget _buildContent(ContestantDetailProvider provider) {
     final gradientProvider = Provider.of<GradientProvider>(context);
     final gradient = gradientProvider.gradient;
-    final data = provider.detail;
+    final data = provider.item;
     if (data == null) return const SizedBox();
 
     return Container(
@@ -66,7 +67,11 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            VideosCardWidget(data: data),
+            SafeArea(
+              child: VideosCardWidget(
+                data: data,
+              ),
+            ),
             const SizedBox(height: 16),
             ContestantInfoCardWidget(
               artist: data.artist,

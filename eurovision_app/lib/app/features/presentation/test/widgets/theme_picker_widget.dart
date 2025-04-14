@@ -1,3 +1,5 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/frame_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,27 +12,42 @@ class ThemePickerBottomSheet extends StatelessWidget {
     final themeProvider = context.read<FrameThemeProvider>();
 
     return SizedBox(
-      height: 200,
+      height: 250,
       child: Column(
         children: [
           ListTile(
-            title: const Text("Light Theme"),
+            title: const Text(AppStrings.lightTheme),
             onTap: () {
-              themeProvider.setTheme(Colors.white, const TextStyle(fontSize: 18, color: Colors.black));
+              themeProvider.setTheme(
+                AppColors.white,
+                const TextStyle(fontSize: 18, color: AppColors.lightCrimson, fontWeight: FontWeight.bold), // title
+                const TextStyle(fontSize: 16, color: AppColors.black), // subtitle
+                const TextStyle(fontSize: 16, color: AppColors.gray, fontWeight: FontWeight.w300), // trailing
+              );
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: const Text("Dark Theme"),
+            title: const Text(AppStrings.darkTheme),
             onTap: () {
-              themeProvider.setTheme(Colors.black, const TextStyle(fontSize: 18, color: Colors.white));
+              themeProvider.setTheme(
+                AppColors.black,
+                const TextStyle(fontSize: 18, color: AppColors.white, fontWeight: FontWeight.bold),
+                const TextStyle(fontSize: 16, color: AppColors.lightCrimson),
+                const TextStyle(fontSize: 16, color: AppColors.white70, fontWeight: FontWeight.w300),
+              );
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: const Text("Colorful Theme"),
+            title: const Text(AppStrings.colorfulTheme),
             onTap: () {
-              themeProvider.setTheme(Colors.deepPurple.shade100, const TextStyle(fontSize: 18, color: Colors.indigo));
+              themeProvider.setTheme(
+                AppColors.cloudBlue,
+                const TextStyle(fontSize: 18, color: AppColors.rainyBlue, fontWeight: FontWeight.bold),
+                const TextStyle(fontSize: 16, color: AppColors.pinkyPink),
+                const TextStyle(fontSize: 16, color: AppColors.gray700, fontWeight: FontWeight.w300),
+              );
               Navigator.pop(context);
             },
           ),

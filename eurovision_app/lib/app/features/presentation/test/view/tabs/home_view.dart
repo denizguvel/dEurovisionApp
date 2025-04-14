@@ -1,9 +1,10 @@
 import 'package:eurovision_app/app/common/constants/app_animations.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/core/providers/base_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/feature/bottom_nav_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/contestant/constestant_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/feature/gradient_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_list_widget.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/score_card_widget.dart';
 import 'package:eurovision_app/app/features/utils/year_util.dart';
@@ -63,7 +64,7 @@ class _HomeViewState extends State<HomeView> {
                     );
                   }
                   if (contestantProvider.state == ContestantState.loaded) {
-                    return ContestantsList(contestants: contestantProvider.contestants);
+                    return ContestantsList(contestants: contestantProvider.items);
                   }
                   return const SizedBox();
                 },
@@ -82,8 +83,8 @@ class _HomeViewState extends State<HomeView> {
                     .goToDetail(PageType.winner);
                 },
               ),
-              ElevatedButton(onPressed:() { Provider.of<BottomNavProvider>(context, listen: false)
-                    .goToDetail(PageType.deneme); }, child: Text("Denemeye git"))
+              // ElevatedButton(onPressed:() { Provider.of<BottomNavProvider>(context, listen: false)
+              //       .goToDetail(PageType.deneme); }, child: Text("Denemeye git"))
             ],
           ),     
     );

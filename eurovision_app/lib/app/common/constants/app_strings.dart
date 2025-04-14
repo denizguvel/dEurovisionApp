@@ -1,6 +1,6 @@
 class AppStrings {
-  static const String appName = "My App";
-  static const String welcomeMessage = "Welcome to the App!";
+  static const String appName = "Eurovision App";
+  static const String welcomeMessage = "Welcome to the Eurovision App!";
 
   //Error Messages
   static const String errorMessage = "Something went wrong. Please try again!";
@@ -33,9 +33,22 @@ class AppStrings {
   static const String moreBottomItem = "More";
   static const String tryAgain = "Try Again";
   static const String contactUs = "Contact Us";
+  static const String artist = "🎤 Artist";
+  static const String song = "🎵 Song";
+  static const String country = "🌍 Country";
+  static const String year = "📅 Year";
+  static const String writers = "✍️ Writers";
+  static const String lyrics = "🎶 English Lyrics";
+  static const String officialVideo = "🎬 Official Video";
+  static const String lightTheme = "Light Theme";
+  static const String darkTheme = "Dark Theme";
+  static const String colorfulTheme = "Colorful Theme";
+  static const String refreshMyTop10 = "Selections and theme have been reset.";
+  static const String share = "Share";
 
   //Titles
   static const String titleTopTen = "Top 10 Contestants";
+  static const String artistCardTitle = "Artist Information";
 
   //About Page
   static const String aboutTitle1 = "The Origins of Eurovision";

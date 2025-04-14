@@ -1,10 +1,8 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/common/widgets/loading_indicator/gradient_loading_screen.dart';
-import 'package:eurovision_app/app/common/widgets/loading_indicator/loading_indicator.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/country/country_icon_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/gradient_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +31,7 @@ class _WinnerViewState extends State<WinnerView> {
       return const GradientLoadingScreen();
     }
 
-    final countryScores = countryScoreProvider.countryWins;
+    final countryScores = countryScoreProvider.items;
 
     return Container(
       color: AppColors.white,

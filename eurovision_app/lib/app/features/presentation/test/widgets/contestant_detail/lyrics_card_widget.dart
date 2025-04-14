@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
@@ -26,7 +27,7 @@ class LyricsCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "🎶 English Lyrics",
+              AppStrings.lyrics,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

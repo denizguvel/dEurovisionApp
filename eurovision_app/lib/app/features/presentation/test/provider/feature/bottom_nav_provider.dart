@@ -29,7 +29,6 @@ class BottomNavProvider extends ChangeNotifier {
   void changePageType(PageType type) {
     if (_pageType != type) {
       _pageType = type;
-      // Store the page type for the current tab
       _lastViewedPages[_currentIndex] = type;
       notifyListeners();
     }

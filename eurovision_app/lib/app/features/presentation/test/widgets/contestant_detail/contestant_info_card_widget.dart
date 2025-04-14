@@ -1,6 +1,9 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
+import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/info_row_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ContestantInfoCardWidget extends StatelessWidget {
   final String artist;
@@ -16,8 +19,9 @@ class ContestantInfoCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final countryNameMap = context.read<CountryScoreProvider>().countryCodeNameMap;
     return Card(
-      color: Colors.white.withOpacity(0.9),
+      color: AppColors.white.withOpacity(0.9),
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
@@ -26,7 +30,7 @@ class ContestantInfoCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Artist Information",
+              AppStrings.artistCardTitle,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -34,11 +38,11 @@ class ContestantInfoCardWidget extends StatelessWidget {
               ),
             ),
             const Divider(),
-            InfoRow(label: "🎤 Artist", value: artist),
-            InfoRow(label: "🎵 Song", value: song),
-            InfoRow(label: "🌍 Country", value: country),
-            InfoRow(label: "📅 Year", value: year.toString()),
-            InfoRow(label: "✍️ Writers", value: writers.join(", ")),
+            InfoRow(label: AppStrings.artist, value: artist),
+            InfoRow(label: AppStrings.song, value: song),
+            InfoRow(label: AppStrings.country, value:  countryNameMap[country] ?? country,),
+            InfoRow(label: AppStrings.year, value: year.toString()),
+            InfoRow(label: AppStrings.writers, value: writers.join(", ")),
           ],
         ),
       ),

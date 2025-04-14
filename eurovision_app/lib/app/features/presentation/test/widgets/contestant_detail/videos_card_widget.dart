@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/contestant_video_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
@@ -22,7 +23,7 @@ class VideosCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            "🎬 Official Video",
+            AppStrings.officialVideo,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -30,9 +31,12 @@ class VideosCardWidget extends StatelessWidget {
             ),
           ),
           const Divider(),
-          AspectRatio(
-            aspectRatio: 16 / 9,
-            child: ContestantVideoPlayer(videoUrl: videoUrl),
+          ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: ContestantVideoPlayer(videoUrl: videoUrl),
+            ),
           ),
         ],
       ),

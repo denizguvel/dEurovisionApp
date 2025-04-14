@@ -7,6 +7,10 @@ final class AppFunctions {
   static final AppFunctions instance = AppFunctions._();
   Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
     try {
       await dotenv.load(fileName: ".env");
     } catch (e) {

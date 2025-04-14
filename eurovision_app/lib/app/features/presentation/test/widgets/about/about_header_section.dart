@@ -38,21 +38,33 @@ class AboutHeaderSection extends StatelessWidget {
               bottom: 40,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    AppStrings.aboutTitle1,
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                children:  [
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width - 48),
+                    child: Text(
+                      AppStrings.aboutTitle1,
+                      style: TextStyle(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
                     ),
                   ),
                   SizedBox(height: 8),
-                  Text(
-                    AppStrings.aboutTitle2,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.white70,
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width - 48),
+                    child: Text(
+                      AppStrings.aboutTitle2,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.white70,
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
                     ),
                   ),
                 ],

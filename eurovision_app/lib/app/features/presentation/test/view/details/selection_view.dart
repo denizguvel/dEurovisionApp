@@ -5,7 +5,6 @@ import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten
 import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/year_selector_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/contestant/allcontestant_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/selected_top_ten_provider.dart';
@@ -28,7 +27,7 @@ class SelectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final allContestants = context.watch<AllContestantsProvider>().allContestants;
+    final allContestants = context.watch<AllContestantsProvider>().items;
     final selectedTop10 = context.watch<SelectedTop10Provider>().selected;
     final years = context.watch<ContestProvider>().availableYears;
 
@@ -45,6 +44,7 @@ class SelectionView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 6),
                 YearSelector(
                   selectedYear: selectedYear,
                   onChanged: onYearChanged,
@@ -77,7 +77,7 @@ class SelectionView extends StatelessWidget {
                   return ContestantCard(
                     contestant: contestant,
                     isSelected: isSelected,
-                    onTap: () => context.read<SelectedTop10Provider>().toggleSelection(contestant),
+                    onTap: () => context.read<SelectedTop10Provider>().toggle(contestant),
                     onLongPressStart: (details) => onLongPressStart(context, contestant, details),
                     onLongPressEnd: onLongPressEnd,
                   );
