@@ -1,13 +1,12 @@
-import 'package:eurovision_app/app/features/presentation/test/provider/contest/contest_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/contest_location_widget.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/contestant_card_widget.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/top_ten_counter.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/year_selector_widget.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/contest_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_card_widget.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/widget/top_ten_counter.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/widget/year_selector_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contestant/allcontestant_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/allcontestant_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
 
 class SelectionView extends StatelessWidget {
   final int selectedYear;
@@ -51,7 +50,6 @@ class SelectionView extends StatelessWidget {
                   yearList: years,
                 ),
                 const SizedBox(height: 6),
-                const ContestLocationText(),
               ],
             ),
           ),

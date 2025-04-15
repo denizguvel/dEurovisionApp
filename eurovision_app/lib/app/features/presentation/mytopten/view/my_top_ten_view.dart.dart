@@ -1,11 +1,11 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/common/widgets/loading_indicator/loading_indicator.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/my_top_ten_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/details/selection_view.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/final_ranking_widget.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/share_preview_modal_widget.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/theme_picker_widget.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/my_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/view/selection_view.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/widget/final_ranking_widget.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/widget/share_preview_modal_widget.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/widget/theme_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,14 +21,14 @@ class _MyTop10ViewState extends State<MyTop10View> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final viewModel = context.read<MyTop10Utils>();
+      final viewModel = context.read<MyTopTenProvider>();
       viewModel.init(context);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<MyTop10Utils>();
+    final viewModel = context.watch<MyTopTenProvider>();
   
     return Stack(
       children: [
@@ -85,7 +85,7 @@ class _MyTop10ViewState extends State<MyTop10View> {
                       child: Padding(
                         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 40),
                         child: SharePreviewModal(
-                          repaintKey: context.read<MyTop10Utils>().repaintKey,
+                          repaintKey: context.read<MyTopTenProvider>().repaintKey,
                         ),
                       ),
                     ),

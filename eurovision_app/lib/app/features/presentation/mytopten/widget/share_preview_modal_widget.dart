@@ -1,9 +1,9 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/frame_theme_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/my_top_ten_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/my_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -51,7 +51,7 @@ class SharePreviewModal extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           ElevatedButton.icon(
-            onPressed: () => context.read<MyTop10Utils>().captureAndShare(),
+            onPressed: () => context.read<MyTopTenProvider>().captureAndShare(),
             icon: const Icon(Icons.share, color: AppColors.white,),
             label: const Text(AppStrings.share),
             style:ElevatedButton.styleFrom(

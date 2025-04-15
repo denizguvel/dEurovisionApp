@@ -1,5 +1,5 @@
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/contestant_video_widget.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/widget/contestant_video_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';

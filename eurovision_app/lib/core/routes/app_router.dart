@@ -1,9 +1,9 @@
 import 'package:eurovision_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/main_scaffold.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/tabs/my_top_ten_view.dart.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/tabs/home_view.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/details/winner_view.dart';
+import 'package:eurovision_app/app/features/presentation/feature/view/main_scaffold.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/view/my_top_ten_view.dart.dart';
+import 'package:eurovision_app/app/features/presentation/home/view/home_view.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/view/winner_view.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {

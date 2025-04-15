@@ -1,10 +1,10 @@
-import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 
-import 'package:eurovision_app/app/features/presentation/test/provider/frame_theme_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
 
 class FinalRankingView extends StatelessWidget {
   final ScreenshotController screenshotController;

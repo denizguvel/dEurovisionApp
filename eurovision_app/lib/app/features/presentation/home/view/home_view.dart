@@ -2,11 +2,11 @@ import 'package:eurovision_app/app/common/constants/app_animations.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/core/providers/base_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/feature/bottom_nav_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contestant/constestant_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/feature/gradient_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_list_widget.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/score_card_widget.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/app/features/presentation/home/provider/constestant_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/home/widget/contestant_list_widget.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/widget/score_card_widget.dart';
 import 'package:eurovision_app/app/features/utils/year_util.dart';
 import 'package:eurovision_app/core/constants/page_type_enum.dart';
 import 'package:flutter/material.dart';
@@ -74,17 +74,10 @@ class _HomeViewState extends State<HomeView> {
                 title: AppStrings.winning,
                 subtitle: AppStrings.winningNumber,
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => WinnerView()),
-                  // );
-                  // Provider.of<BottomNavProvider>(context, listen: false).showDetailView();
                   Provider.of<BottomNavProvider>(context, listen: false)
                     .goToDetail(PageType.winner);
                 },
               ),
-              // ElevatedButton(onPressed:() { Provider.of<BottomNavProvider>(context, listen: false)
-              //       .goToDetail(PageType.deneme); }, child: Text("Denemeye git"))
             ],
           ),     
     );

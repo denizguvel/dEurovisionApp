@@ -1,20 +1,20 @@
 import 'package:eurovision_app/app/features/data/datasources/remote/contestant_remote_datasource.dart';
 import 'package:eurovision_app/app/features/data/datasources/remote/contestant_ten_remote_datasource.dart';
 import 'package:eurovision_app/app/features/data/datasources/remote/eurovision_remote_datasource.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contestant/allcontestant_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contestant/constestant_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contest/contest_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contestant/contestant_detail_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contestant/contestant_top_ten_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/feature/appbar_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/feature/bottom_nav_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/feature/gradient_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/frame_theme_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/my_top_ten_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/network_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/selected_top_ten_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/theme_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/allcontestant_provider.dart';
+import 'package:eurovision_app/app/features/presentation/home/provider/constestant_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/contest_provider.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/provider/contestant_detail_provider.dart';
+//import 'package:eurovision_app/app/features/presentation/test/provider/contestant/contestant_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/appbar_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/my_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/network_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/theme_provider.dart';
 import 'package:eurovision_app/core/network_control/network_control.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -50,11 +50,11 @@ class ServiceLocator {
             ContestantTenRemoteDatasourceImpl(),
           ),
         ),
-        ChangeNotifierProvider(create: (_) => MyTop10Provider()),
+        // ChangeNotifierProvider(create: (_) => ContestantTopTenProvider()),
         ChangeNotifierProvider(create: (_) => FrameThemeProvider()),
         ChangeNotifierProvider(create: (_) => SelectedTop10Provider()),
         ChangeNotifierProvider(create: (_) => AllContestantsProvider(ContestantTenRemoteDatasourceImpl(),EurovisionRemoteDatasourceImpl())),
-        ChangeNotifierProvider(create: (_) => MyTop10Utils()),
+        ChangeNotifierProvider(create: (_) => MyTopTenProvider()),
       ],
       child: child,
     );

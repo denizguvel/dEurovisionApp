@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/feature/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/gradient_provider.dart';
 import 'package:eurovision_app/app/common/widgets/loading_indicator/loading_indicator.dart';
 
 class GradientLoadingScreen extends StatelessWidget {

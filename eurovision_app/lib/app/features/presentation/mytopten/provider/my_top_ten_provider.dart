@@ -2,9 +2,9 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contest/contest_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/frame_theme_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/contest_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
 import 'package:eurovision_app/core/providers/base_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -13,10 +13,10 @@ import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contestant/allcontestant_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/allcontestant_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
 
-class MyTop10Utils extends BaseListProvider<ContestantModel> {
+class MyTopTenProvider extends BaseListProvider<ContestantModel> {
   int _selectedYear = 2024;
   bool _showSecondPage = false;
   final ScreenshotController screenshotController = ScreenshotController();
@@ -63,6 +63,7 @@ class MyTop10Utils extends BaseListProvider<ContestantModel> {
   }
 
   void onLongPressStart(BuildContext context, ContestantModel contestant, LongPressStartDetails details) {
+    if (_overlayEntry != null) return;
     final overlay = Overlay.of(context);
     final countryMap = context.read<CountryScoreProvider>().countryCodeNameMap;
     final countryName = countryMap[contestant.country] ?? contestant.country;

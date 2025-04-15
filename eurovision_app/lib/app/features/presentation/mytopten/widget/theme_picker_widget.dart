@@ -1,6 +1,6 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/frame_theme_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

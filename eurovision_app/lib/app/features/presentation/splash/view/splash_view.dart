@@ -1,7 +1,7 @@
 import 'package:eurovision_app/app/common/constants/app_animations.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/main_scaffold.dart';
+import 'package:eurovision_app/app/features/presentation/feature/view/main_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

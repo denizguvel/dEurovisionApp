@@ -1,10 +1,10 @@
 import 'package:eurovision_app/app/common/widgets/loading_indicator/gradient_loading_screen.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/feature/bottom_nav_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/contestant/contestant_detail_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/feature/gradient_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/contestant_info_card_widget.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/lyrics_card_widget.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/videos_card_widget.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/provider/contestant_detail_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/widget/contestant_info_card_widget.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/widget/lyrics_card_widget.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/widget/videos_card_widget.dart';
 import 'package:eurovision_app/core/constants/page_type_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

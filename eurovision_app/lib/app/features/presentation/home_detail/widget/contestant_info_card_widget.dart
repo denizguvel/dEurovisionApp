@@ -1,7 +1,7 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/contestant_detail/info_row_widget.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/widget/info_row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

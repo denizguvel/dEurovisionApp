@@ -1,5 +1,5 @@
-import 'package:eurovision_app/app/features/presentation/test/provider/network_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/no_internet_view.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/network_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/view/no_internet_view.dart';
 import 'package:eurovision_app/core/network_control/network_control.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
