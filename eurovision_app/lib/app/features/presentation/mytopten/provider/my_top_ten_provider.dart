@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/contest_provider.dart';
 import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
@@ -123,9 +124,9 @@ class MyTopTenProvider extends BaseListProvider<ContestantModel> {
       await imagePath.writeAsBytes(pngBytes);
 
       await Share.shareXFiles([XFile(imagePath.path)],
-          text: 'My Eurovision Top 10 ($_selectedYear)!');
+          text: '${AppStrings.myEUTop10} ($_selectedYear)!');
     } catch (e) {
-      debugPrint("Screenshot error: $e");
+      debugPrint("${AppStrings.screenshotError} $e");
     }
   }
 

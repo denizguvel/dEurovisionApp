@@ -16,11 +16,6 @@ final class AppFunctions {
     } catch (e) {
       throw Exception('Error loading .env file: $e');
     }
-    // FlutterNativeSplash.preserve(
-    //     widgetsBinding: ensureInitialized); //Splash'te silmelisin
-    //await DeviceInfoHelper.instance.init();
-    //Config.currentEnvironment = Environment.development;
-    //ServiceLocator.setup();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);

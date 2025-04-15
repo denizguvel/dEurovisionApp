@@ -21,12 +21,10 @@ class MainScaffold extends StatelessWidget {
     final bottomProvider = Provider.of<BottomNavProvider>(context);
     final gradientProvider = Provider.of<GradientProvider>(context);
     final gradient = gradientProvider.gradient;
-    //final myTop10Utils = Provider.of<MyTop10Utils>(context);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: switch (bottomProvider.pageType) {
-        //PageType.main when myTop10Utils.showSecondPage => null,
         PageType.main => CustomLogoAppBar(
           backgroundGradient: LinearGradient(
               begin: gradient.begin,

@@ -30,9 +30,6 @@ class MainApp extends StatelessWidget {
         darkTheme: AppThemeData.darkTheme,
         themeMode: context.watch<ThemeProvider>().themeMode,
         home: const SplashView(),
-        //home: const MainScaffold(),
-       // onGenerateRoute: AppRouter.generateRoute,
-        //initialRoute: '/',
         debugShowCheckedModeBanner: false,
         builder: (context, child) {
         return NetworkWrapper(child: child ?? SizedBox.shrink());
