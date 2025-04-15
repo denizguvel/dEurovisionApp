@@ -50,11 +50,11 @@ class ServiceLocator {
             ContestantTenRemoteDatasourceImpl(),
           ),
         ),
-        ChangeNotifierProvider(create: (_) => MyTop10Provider()),
+        ChangeNotifierProvider(create: (_) => ContestantTopTenProvider()),
         ChangeNotifierProvider(create: (_) => FrameThemeProvider()),
         ChangeNotifierProvider(create: (_) => SelectedTop10Provider()),
         ChangeNotifierProvider(create: (_) => AllContestantsProvider(ContestantTenRemoteDatasourceImpl(),EurovisionRemoteDatasourceImpl())),
-        ChangeNotifierProvider(create: (_) => MyTop10Utils()),
+        ChangeNotifierProvider(create: (_) => MyTopTenProvider()),
       ],
       child: child,
     );

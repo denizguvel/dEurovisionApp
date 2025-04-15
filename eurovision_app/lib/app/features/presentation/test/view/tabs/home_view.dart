@@ -74,17 +74,10 @@ class _HomeViewState extends State<HomeView> {
                 title: AppStrings.winning,
                 subtitle: AppStrings.winningNumber,
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => WinnerView()),
-                  // );
-                  // Provider.of<BottomNavProvider>(context, listen: false).showDetailView();
                   Provider.of<BottomNavProvider>(context, listen: false)
                     .goToDetail(PageType.winner);
                 },
               ),
-              // ElevatedButton(onPressed:() { Provider.of<BottomNavProvider>(context, listen: false)
-              //       .goToDetail(PageType.deneme); }, child: Text("Denemeye git"))
             ],
           ),     
     );

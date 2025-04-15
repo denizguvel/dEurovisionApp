@@ -32,29 +32,6 @@ class ShinyBottomNavBar extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // AnimatedAlign(
-          //   alignment: Alignment(
-          //     (bottomProvider.currentIndex - 1) * 0.7, 0,
-          //   ),
-          //   duration: const Duration(milliseconds: 300),
-          //   curve: Curves.easeOut,
-          //   child: Container(
-          //     margin: const EdgeInsets.only(bottom: 12),
-          //     width: 60,
-          //     height: 60,
-          //     decoration: BoxDecoration(
-          //       shape: BoxShape.circle,
-          //       color: Colors.white.withOpacity(0.2),
-          //       boxShadow: [
-          //         BoxShadow(
-          //           color: Colors.white.withOpacity(0.5),
-          //           blurRadius: 30,
-          //           spreadRadius: 3,
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(items.length, (index) {

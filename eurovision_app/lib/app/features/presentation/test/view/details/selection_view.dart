@@ -1,5 +1,4 @@
 import 'package:eurovision_app/app/features/presentation/test/provider/contest/contest_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/contest_location_widget.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/contestant_card_widget.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/top_ten_counter.dart';
 import 'package:eurovision_app/app/features/presentation/test/widgets/my_top_ten/year_selector_widget.dart';
@@ -51,7 +50,6 @@ class SelectionView extends StatelessWidget {
                   yearList: years,
                 ),
                 const SizedBox(height: 6),
-                const ContestLocationText(),
               ],
             ),
           ),

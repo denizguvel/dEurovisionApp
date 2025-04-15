@@ -51,7 +51,7 @@ class SharePreviewModal extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           ElevatedButton.icon(
-            onPressed: () => context.read<MyTop10Utils>().captureAndShare(),
+            onPressed: () => context.read<MyTopTenProvider>().captureAndShare(),
             icon: const Icon(Icons.share, color: AppColors.white,),
             label: const Text(AppStrings.share),
             style:ElevatedButton.styleFrom(

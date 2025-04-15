@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/core/providers/base_list_provider.dart';
 import 'package:eurovision_app/app/features/data/models/country_score_model.dart';
 import 'package:eurovision_app/app/features/data/datasources/remote/eurovision_remote_datasource.dart';
@@ -56,7 +57,7 @@ class CountryScoreProvider extends BaseListProvider<CountryScoreModel> {
 
       setLoaded(list);
     } catch (e) {
-      setError("Ülke verileri alınamadı.");
+      setError(AppStrings.countryError);
     }
   }
 }

@@ -4,7 +4,6 @@ import 'package:eurovision_app/app/common/service_locator/service_locator.dart';
 import 'package:eurovision_app/app/common/widgets/network/network_wrapper.dart';
 import 'package:eurovision_app/app/features/presentation/splash/view/splash_view.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/theme_provider.dart';
-import 'package:eurovision_app/app/features/presentation/test/view/main_scaffold.dart';
 import 'package:eurovision_app/core/helpers/navigation_helper/navigation_helper.dart';
 import 'package:eurovision_app/core/keys/keys.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +29,6 @@ class MainApp extends StatelessWidget {
         darkTheme: AppThemeData.darkTheme,
         themeMode: context.watch<ThemeProvider>().themeMode,
         home: const SplashView(),
-        //home: const MainScaffold(),
-       // onGenerateRoute: AppRouter.generateRoute,
-        //initialRoute: '/',
         debugShowCheckedModeBanner: false,
         builder: (context, child) {
         return NetworkWrapper(child: child ?? SizedBox.shrink());

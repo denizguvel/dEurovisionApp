@@ -21,14 +21,14 @@ class _MyTop10ViewState extends State<MyTop10View> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final viewModel = context.read<MyTop10Utils>();
+      final viewModel = context.read<MyTopTenProvider>();
       viewModel.init(context);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<MyTop10Utils>();
+    final viewModel = context.watch<MyTopTenProvider>();
   
     return Stack(
       children: [
@@ -85,7 +85,7 @@ class _MyTop10ViewState extends State<MyTop10View> {
                       child: Padding(
                         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 40),
                         child: SharePreviewModal(
-                          repaintKey: context.read<MyTop10Utils>().repaintKey,
+                          repaintKey: context.read<MyTopTenProvider>().repaintKey,
                         ),
                       ),
                     ),

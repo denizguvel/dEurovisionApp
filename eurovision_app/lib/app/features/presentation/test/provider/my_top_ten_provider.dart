@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/contest/contest_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/country/country_name_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/frame_theme_provider.dart';
@@ -16,7 +17,7 @@ import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/contestant/allcontestant_provider.dart';
 import 'package:eurovision_app/app/features/presentation/test/provider/selected_top_ten_provider.dart';
 
-class MyTop10Utils extends BaseListProvider<ContestantModel> {
+class MyTopTenProvider extends BaseListProvider<ContestantModel> {
   int _selectedYear = 2024;
   bool _showSecondPage = false;
   final ScreenshotController screenshotController = ScreenshotController();
@@ -122,9 +123,9 @@ class MyTop10Utils extends BaseListProvider<ContestantModel> {
       await imagePath.writeAsBytes(pngBytes);
 
       await Share.shareXFiles([XFile(imagePath.path)],
-          text: 'My Eurovision Top 10 ($_selectedYear)!');
+          text: '${AppStrings.myEUTop10} ($_selectedYear)!');
     } catch (e) {
-      debugPrint("Screenshot error: $e");
+      debugPrint("${AppStrings.screenshotError} $e");
     }
   }
 

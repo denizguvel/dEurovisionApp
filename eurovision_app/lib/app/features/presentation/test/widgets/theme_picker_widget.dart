@@ -12,8 +12,9 @@ class ThemePickerBottomSheet extends StatelessWidget {
     final themeProvider = context.read<FrameThemeProvider>();
 
     return SizedBox(
-      height: 250,
+      //height: 250,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
             title: const Text(AppStrings.lightTheme),

@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/core/providers/base_detail_provider.dart';
 import 'package:eurovision_app/app/features/data/datasources/remote/contestant_remote_datasource.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
@@ -17,7 +18,7 @@ class ContestantDetailProvider extends BaseDetailProvider<ContestantDetailModel>
     if (result is SuccessDataResult<ContestantDetailModel>) {
       setLoaded(result.data!);
     } else if (result is ErrorDataResult<ContestantDetailModel>) {
-      setError(result.message ?? "Beklenmeyen hata");
+      setError(result.message ?? AppStrings.unknownError);
     }
   }
 }

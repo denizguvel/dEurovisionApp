@@ -11,6 +11,8 @@ class AppStrings {
   static const String error = "Error";
   static const String serverError = "Server Error";
   static const String invalidData = "Invalid data format";
+  static const String countryError = "Country data not loaded";
+  static const String screenshotError = "Screenshot error:";
 
   //Page Names
   static const String mainPage = "Main Page";
@@ -45,6 +47,7 @@ class AppStrings {
   static const String colorfulTheme = "Colorful Theme";
   static const String refreshMyTop10 = "Selections and theme have been reset.";
   static const String share = "Share";
+  static const String myEUTop10 = "My Eurovision Top 10";
 
   //Titles
   static const String titleTopTen = "Top 10 Contestants";
