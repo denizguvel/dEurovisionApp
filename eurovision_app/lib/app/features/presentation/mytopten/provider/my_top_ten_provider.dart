@@ -6,6 +6,7 @@ import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/contest_provider.dart';
 import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
+import 'package:eurovision_app/app/features/utils/year_util.dart';
 import 'package:eurovision_app/core/providers/base_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -18,7 +19,7 @@ import 'package:eurovision_app/app/features/presentation/mytopten/provider/allco
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
 
 class MyTopTenProvider extends BaseListProvider<ContestantModel> {
-  int _selectedYear = 2024;
+  int _selectedYear = YearUtil.getLatestAvailableYear();
   bool _showSecondPage = false;
   final ScreenshotController screenshotController = ScreenshotController();
   final GlobalKey repaintKey = GlobalKey();
