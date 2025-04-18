@@ -1,13 +1,4 @@
-import 'package:eurovision_app/app/common/widgets/loading_indicator/gradient_loading_screen.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/bottom_nav_provider.dart';
-import 'package:eurovision_app/app/features/presentation/home_detail/provider/contestant_detail_provider.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/gradient_provider.dart';
-import 'package:eurovision_app/app/features/presentation/home_detail/widget/contestant_info_card_widget.dart';
-import 'package:eurovision_app/app/features/presentation/home_detail/widget/lyrics_card_widget.dart';
-import 'package:eurovision_app/app/features/presentation/home_detail/widget/videos_card_widget.dart';
-import 'package:eurovision_app/core/constants/page_type_enum.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/view/home_detail_imports.dart';
 
 class ContestantDetailView extends StatefulWidget {
   final int id;
@@ -65,7 +56,7 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SafeArea(
               child: VideosCardWidget(
@@ -83,6 +74,27 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
             const SizedBox(height: 16),
             LyricsCardWidget(data: data),
             const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                final videoUrl = data.videoUrls.isNotEmpty ? data.videoUrls.first : null;
+                if (videoUrl != null && videoUrl.isNotEmpty) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ContestantVideoFullScreenView(videoUrl: videoUrl),
+                    ),
+                  );
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.redAccent,
+              ),
+              child: Icon(
+                Icons.play_arrow,
+                color: Colors.white,
+              ),
+              //child: const Text("Videoyu Tam Ekranda İzle"),
+            ),
           ],
         ),
       ),

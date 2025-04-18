@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
-import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/contest_provider.dart';
 import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_hover_card_widget.dart';
 import 'package:eurovision_app/app/features/utils/year_util.dart';
 import 'package:eurovision_app/core/providers/base_list_provider.dart';
 import 'package:flutter/material.dart';
@@ -75,29 +75,9 @@ class MyTopTenProvider extends BaseListProvider<ContestantModel> {
         top: details.globalPosition.dy - 60,
         left: 20,
         right: 20,
-        child: Material(
-          elevation: 8,
-          borderRadius: BorderRadius.circular(12),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppColors.rainyBlue,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(contestant.artist,
-                    style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 4),
-                Text(contestant.song,
-                    style: const TextStyle(color: Colors.white70, fontSize: 14)),
-                const SizedBox(height: 4),
-                Text(countryName, style: const TextStyle(color: Colors.white60)),
-              ],
-            ),
-          ),
+        child: ContestantHoverCard(
+          contestant: contestant,
+          countryName: countryName,
         ),
       ),
     );

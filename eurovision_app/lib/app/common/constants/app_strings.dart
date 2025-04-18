@@ -48,6 +48,7 @@ class AppStrings {
   static const String refreshMyTop10 = "Selections and theme have been reset.";
   static const String share = "Share";
   static const String myEUTop10 = "My Eurovision Top 10";
+  static const String selectYear = "Select year:";
 
   //Titles
   static const String titleTopTen = "Top 10 Contestants";

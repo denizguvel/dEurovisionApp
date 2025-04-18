@@ -23,15 +23,11 @@ class NoInternetScreen extends StatelessWidget {
               onPressed: () {
                 context.read<NetworkProvider>().checkConnectionManually();
               },
-              child: const Text(AppStrings.tryAgain),
               style: ElevatedButton.styleFrom(backgroundColor: AppColors.crimson),
+              child: const Text(AppStrings.tryAgain),
             ),
           ],
         ),
-        // child: Text(
-        //   'No Internet Connection',
-        //   style: TextStyle(fontSize: 20, color: Colors.red),
-        // ),
       ),
     );
   }

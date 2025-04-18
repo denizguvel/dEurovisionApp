@@ -1,13 +1,4 @@
-import 'package:eurovision_app/app/common/constants/app_colors.dart';
-import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/common/widgets/loading_indicator/loading_indicator.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/my_top_ten_provider.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/view/selection_view.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/widget/final_ranking_widget.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/widget/share_preview_modal_widget.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/widget/theme_picker_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/view/my_top_ten_imports.dart';
 
 class MyTop10View extends StatefulWidget {
   const MyTop10View({super.key});
@@ -62,38 +53,7 @@ class _MyTop10ViewState extends State<MyTop10View> {
           Positioned(
             bottom: 20,
             right: 20,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                FloatingActionButton(
-                  heroTag: 'themeBtn',
-                  backgroundColor: AppColors.white70,
-                  onPressed: () => showModalBottomSheet(
-                    context: context,
-                    builder: (_) => const ThemePickerBottomSheet(),
-                  ),
-                  child: const Icon(Icons.palette, color: AppColors.crimson1,),
-                ),
-                const SizedBox(height: 12),
-                FloatingActionButton(
-                  heroTag: 'shareBtn',
-                  backgroundColor: AppColors.white70,
-                  onPressed: () => showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (_) => SingleChildScrollView(
-                      child: Padding(
-                        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 40),
-                        child: SharePreviewModal(
-                          repaintKey: context.read<MyTopTenProvider>().repaintKey,
-                        ),
-                      ),
-                    ),
-                  ),
-                  child: const Icon(Icons.share, color: AppColors.crimson1,),
-                ),
-              ],
-            ),
+            child: ShareThemeColumn(),
           ),
           if (!viewModel.showSecondPage)
           Positioned(
@@ -101,7 +61,7 @@ class _MyTop10ViewState extends State<MyTop10View> {
             left: 20,
             child: FloatingActionButton.small(
               heroTag: 'resetFAB',
-              backgroundColor: AppColors.white70,
+              backgroundColor: AppColors.white,
               onPressed: () {
                 viewModel.resetSelection(context);
                 ScaffoldMessenger.of(context).showSnackBar(

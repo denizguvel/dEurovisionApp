@@ -1,11 +1,4 @@
-import 'package:eurovision_app/app/common/constants/app_colors.dart';
-import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/common/widgets/loading_indicator/gradient_loading_screen.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/country_icon_provider.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
+import 'package:eurovision_app/app/features/presentation/home_detail/view/home_detail_imports.dart';
 
 class WinnerView extends StatefulWidget {
   const WinnerView({super.key});

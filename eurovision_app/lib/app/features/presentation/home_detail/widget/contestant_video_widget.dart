@@ -35,18 +35,16 @@ class _ContestantVideoPlayerState extends State<ContestantVideoPlayer> {
         showVideoProgressIndicator: true,
       ),
       builder: (context, player) {
-        return Column(
-          children: [
-            player,
-          ],
+        return Center(
+            child: RotatedBox(
+              quarterTurns: 1,
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: player,
+              ),
+            ),
         );
       },
     );
   }
-
-  // @override
-  // void dispose() {
-  //   _controller.dispose();
-  //   super.dispose();
-  // }
 }

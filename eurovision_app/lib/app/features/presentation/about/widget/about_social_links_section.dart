@@ -1,10 +1,19 @@
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
+import 'package:eurovision_app/app/common/constants/app_url.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutSocialLinksSection extends StatelessWidget {
   const AboutSocialLinksSection({super.key});
 
+
+Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -20,28 +29,29 @@ class AboutSocialLinksSection extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Row(
-              children: const [
-                Icon(FontAwesomeIcons.instagram, color: Colors.purple),
-                SizedBox(width: 12),
-                Text('@eurovisionapp'),
+              children: [
+                IconButton(
+                  icon: const Icon(FontAwesomeIcons.facebook, color: Colors.blue),
+                  onPressed: () => _launchUrl(AppUrl.facebook),
+                ),
+                const SizedBox(height: 12),
+                IconButton(
+                  icon: const Icon(FontAwesomeIcons.instagram, color: Colors.redAccent),
+                  onPressed: () => _launchUrl(AppUrl.instagram),
+                ),
+                const SizedBox(height: 12),
+                IconButton(
+                  icon: const Icon(FontAwesomeIcons.chrome, color: Colors.deepOrange),
+                  onPressed: () => _launchUrl(AppUrl.website),
+                ),
+                const SizedBox(height: 12),
+                IconButton(
+                  icon: const Icon(FontAwesomeIcons.tiktok, color: Colors.greenAccent),
+                  onPressed: () => _launchUrl(AppUrl.tiktok),
+                ),
               ],
             ),
-            const SizedBox(height: 12),
-            Row(
-              children: const [
-                Icon(FontAwesomeIcons.linkedin, color: Colors.blue),
-                SizedBox(width: 12),
-                Text('/in/eurovisionapp'),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: const [
-                Icon(FontAwesomeIcons.envelope, color: Colors.redAccent),
-                SizedBox(width: 12),
-                Text('info@eurovisionapp.com'),
-              ],
-            ),
+            
           ],
         ),
       ),
