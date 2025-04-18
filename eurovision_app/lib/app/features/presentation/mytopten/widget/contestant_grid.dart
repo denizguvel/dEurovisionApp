@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/allcontestant_provider.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_card_widget.dart';
 
 class ContestantGrid extends StatelessWidget {
@@ -17,8 +16,9 @@ class ContestantGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final allContestants = context.watch<AllContestantsProvider>().items;
-    final selectedTop10 = context.watch<SelectedTop10Provider>().selected;
+    final viewModel = context.watch<MyTop10Provider>();
+    final allContestants = viewModel.allContestants;
+    final selectedTop10 = viewModel.selectedTop10;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -38,7 +38,7 @@ class ContestantGrid extends StatelessWidget {
             return ContestantCard(
               contestant: contestant,
               isSelected: isSelected,
-              onTap: () => context.read<SelectedTop10Provider>().toggle(contestant),
+              onTap: () => viewModel.selectContestant(contestant),
               onLongPressStart: (details) => onLongPressStart(context, contestant, details),
               onLongPressEnd: onLongPressEnd,
             );

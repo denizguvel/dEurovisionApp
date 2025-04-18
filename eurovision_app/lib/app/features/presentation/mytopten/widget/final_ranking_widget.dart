@@ -2,8 +2,7 @@ import 'package:eurovision_app/app/features/presentation/feature/provider/countr
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 
 class FinalRankingView extends StatelessWidget {
   final ScreenshotController screenshotController;
@@ -12,28 +11,28 @@ class FinalRankingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedTop10 = context.watch<SelectedTop10Provider>().selected;
-    final theme = context.watch<FrameThemeProvider>();
+    final viewModel = context.watch<MyTop10Provider>();
+    final selectedTop10 = viewModel.selectedTop10;
     final countryMap = context.read<CountryScoreProvider>().countryCodeNameMap;
 
     return Screenshot(
       controller: screenshotController,
       child: Container(
-        color: theme.backgroundColor,
+        color: viewModel.backgroundColor,
         padding: const EdgeInsets.all(16),
         child: ReorderableListView(
           shrinkWrap: true,
-          onReorder: context.read<SelectedTop10Provider>().reorder,
+          onReorder: viewModel.reorder,
           children: [
             for (int i = 0; i < selectedTop10.length; i++)
               ListTile(
                 key: ValueKey(selectedTop10[i].id),
-                leading: Text('${i + 1}', style: theme.titleFontStyle),
-                title: Text(selectedTop10[i].artist, style: theme.titleFontStyle),
-                subtitle: Text(selectedTop10[i].song, style: theme.subTitleFontStyle),
+                leading: Text('${i + 1}', style: viewModel.titleFontStyle),
+                title: Text(selectedTop10[i].artist, style: viewModel.titleFontStyle),
+                subtitle: Text(selectedTop10[i].song, style: viewModel.subTitleFontStyle),
                 trailing: Text(
                   countryMap[selectedTop10[i].country] ?? selectedTop10[i].country,
-                  style: theme.trailingFontStyle, 
+                  style: viewModel.trailingFontStyle,
                 ),
               ),
           ],

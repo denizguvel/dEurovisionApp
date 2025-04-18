@@ -12,14 +12,14 @@ class _MyTop10ViewState extends State<MyTop10View> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final viewModel = context.read<MyTopTenProvider>();
-      viewModel.init(context);
+      final viewModel = context.read<MyTop10Provider>();
+      viewModel.init();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<MyTopTenProvider>();
+    final viewModel = context.watch<MyTop10Provider>();
   
     return Stack(
       children: [
@@ -33,7 +33,7 @@ class _MyTop10ViewState extends State<MyTop10View> {
             : SelectionView(
                 selectedYear: viewModel.selectedYear,
                 onYearChanged: (year) =>
-                    viewModel.onYearChanged(context, year),
+                    viewModel.onYearChanged(year),
                 onLongPressStart: viewModel.onLongPressStart,
                 onLongPressEnd: viewModel.onLongPressEnd,
                 onNext: () => viewModel.setShowSecondPage(true),
@@ -63,7 +63,7 @@ class _MyTop10ViewState extends State<MyTop10View> {
               heroTag: 'resetFAB',
               backgroundColor: AppColors.white,
               onPressed: () {
-                viewModel.resetSelection(context);
+                viewModel.resetSelection();
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text(AppStrings.refreshMyTop10)),
                 );

@@ -1,9 +1,7 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/my_top_ten_provider.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,12 +12,12 @@ class SharePreviewModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedTop10 = context.watch<SelectedTop10Provider>().selected;
-    final theme = context.watch<FrameThemeProvider>();
+    final viewModel = context.watch<MyTop10Provider>();
+    final selectedTop10 = viewModel.selectedTop10;
     final countryMap = context.read<CountryScoreProvider>().countryCodeNameMap;
 
     return Container(
-      color: theme.backgroundColor,
+      color: viewModel.backgroundColor,
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -28,20 +26,20 @@ class SharePreviewModal extends StatelessWidget {
             key: repaintKey,
             child: Container(
               width: double.infinity,
-            color: theme.backgroundColor,
-            padding: const EdgeInsets.all(16),
+              color: viewModel.backgroundColor,
+              padding: const EdgeInsets.all(16),
               child: SingleChildScrollView(
                 child: Column(
                   children: selectedTop10.asMap().entries.map((entry) {
                     final i = entry.key;
                     final contestant = entry.value;
                     return ListTile(
-                      leading: Text('${i + 1}', style: theme.titleFontStyle),
-                      title: Text(contestant.artist, style: theme.titleFontStyle),
-                      subtitle: Text(contestant.song, style: theme.subTitleFontStyle),
+                      leading: Text('${i + 1}', style: viewModel.titleFontStyle),
+                      title: Text(contestant.artist, style: viewModel.titleFontStyle),
+                      subtitle: Text(contestant.song, style: viewModel.subTitleFontStyle),
                       trailing: Text(
                         countryMap[contestant.country] ?? contestant.country,
-                        style: theme.trailingFontStyle,
+                        style: viewModel.trailingFontStyle,
                       ),
                     );
                   }).toList(),
@@ -51,12 +49,12 @@ class SharePreviewModal extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           ElevatedButton.icon(
-            onPressed: () => context.read<MyTopTenProvider>().captureAndShare(),
-            icon: const Icon(Icons.share, color: AppColors.white,),
+            onPressed: viewModel.captureAndShare,
+            icon: const Icon(Icons.share, color: AppColors.white),
             label: const Text(AppStrings.share),
-            style:ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.crimson1,
-                  foregroundColor: AppColors.white,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.crimson1,
+              foregroundColor: AppColors.white,
             ),
           )
         ],

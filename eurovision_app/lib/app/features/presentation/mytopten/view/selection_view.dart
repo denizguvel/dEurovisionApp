@@ -18,8 +18,9 @@ class SelectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedTop10 = context.watch<SelectedTop10Provider>().selected;
-    final years = context.watch<ContestProvider>().availableYears;
+    final viewModel = context.watch<MyTop10Provider>();
+    final selectedTop10 = viewModel.selectedTop10;
+    final years = viewModel.availableYears;
 
     return Stack(
       clipBehavior: Clip.none,

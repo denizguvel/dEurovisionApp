@@ -1,7 +1,6 @@
 export 'package:eurovision_app/app/common/constants/app_colors.dart';
 export 'package:eurovision_app/app/common/constants/app_strings.dart';
 export 'package:eurovision_app/app/common/widgets/loading_indicator/loading_indicator.dart';
-export 'package:eurovision_app/app/features/presentation/mytopten/provider/my_top_ten_provider.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/view/selection_view.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/final_ranking_widget.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/share_preview_modal_widget.dart';
@@ -9,11 +8,10 @@ export 'package:eurovision_app/app/features/presentation/mytopten/widget/theme_p
 export 'package:flutter/material.dart';
 export 'package:provider/provider.dart';
 
+export 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_grid.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/top_ten_counter.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/year_selector_widget.dart';
 export 'package:eurovision_app/app/features/data/models/contestant_model.dart';
-export 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
-export 'package:eurovision_app/app/features/presentation/mytopten/provider/contest_provider.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/floating_column_widget.dart';

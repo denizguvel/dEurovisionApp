@@ -1,25 +1,24 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/frame_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 
 class ThemePickerBottomSheet extends StatelessWidget {
   const ThemePickerBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = context.read<FrameThemeProvider>();
+    final viewModel = context.read<MyTop10Provider>();
 
     return SizedBox(
-      //height: 250,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
             title: const Text(AppStrings.lightTheme),
             onTap: () {
-              themeProvider.setTheme(
+              viewModel.setTheme(
                 AppColors.white,
                 const TextStyle(fontSize: 18, color: AppColors.lightCrimson, fontWeight: FontWeight.bold), // title
                 const TextStyle(fontSize: 16, color: AppColors.black), // subtitle
@@ -31,7 +30,7 @@ class ThemePickerBottomSheet extends StatelessWidget {
           ListTile(
             title: const Text(AppStrings.darkTheme),
             onTap: () {
-              themeProvider.setTheme(
+              viewModel.setTheme(
                 AppColors.black,
                 const TextStyle(fontSize: 18, color: AppColors.white, fontWeight: FontWeight.bold),
                 const TextStyle(fontSize: 16, color: AppColors.lightCrimson),
@@ -43,7 +42,7 @@ class ThemePickerBottomSheet extends StatelessWidget {
           ListTile(
             title: const Text(AppStrings.colorfulTheme),
             onTap: () {
-              themeProvider.setTheme(
+              viewModel.setTheme(
                 AppColors.cloudBlue,
                 const TextStyle(fontSize: 18, color: AppColors.rainyBlue, fontWeight: FontWeight.bold),
                 const TextStyle(fontSize: 16, color: AppColors.pinkyPink),

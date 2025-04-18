@@ -1,16 +1,16 @@
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/share_preview_modal_widget.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/theme_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/my_top_ten_provider.dart';
 
 class ShareThemeColumn extends StatelessWidget {
   const ShareThemeColumn({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final repaintKey = context.read<MyTopTenProvider>().repaintKey;
+    final repaintKey = context.read<MyTop10Provider>().repaintKey;
 
     return Column(
       mainAxisSize: MainAxisSize.min,

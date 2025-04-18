@@ -1,14 +1,14 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/selected_top_ten_provider.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 
 class Top10Counter extends StatelessWidget {
   const Top10Counter({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final selectedCount = context.watch<SelectedTop10Provider>().selected.length;
+    final selectedCount = context.watch<MyTop10Provider>().selectedTop10.length;
 
     return Positioned(
       top: 50,
