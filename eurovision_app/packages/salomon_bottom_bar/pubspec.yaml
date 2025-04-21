@@ -1,0 +1,17 @@
+name: salomon_bottom_bar
+description: Yet another bottom navigation bar, but with a few key promises.
+version: 3.3.2
+homepage: https://github.com/lukepighetti/salomon_bottom_bar
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
