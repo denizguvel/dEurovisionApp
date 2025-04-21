@@ -60,7 +60,7 @@ class AboutHeaderSection extends StatelessWidget {
                       AppStrings.aboutTitle2,
                       style: TextStyle(
                         fontSize: 16,
-                        color: AppColors.white70,
+                        color: AppColors.white,
                       ),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,

@@ -1,4 +1,4 @@
-import 'package:eurovision_app/app/features/presentation/feature/provider/gradient_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/about/widget/about_description_section.dart';
 import 'package:eurovision_app/app/features/presentation/about/widget/about_header_section.dart';
 import 'package:eurovision_app/app/features/presentation/about/widget/about_social_links_section.dart';
