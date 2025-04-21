@@ -21,12 +21,13 @@ class ScoreCardWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
-      child: Card(
-        color: AppColors.coralRed.withOpacity(0.4),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        elevation: 10,
+      child: Card(        
+        color: Colors.transparent,
+        elevation: 12,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(
+        color: Colors.grey,
+        width: 1.0,
+      ),),
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Padding(
           padding: const EdgeInsets.all(20),

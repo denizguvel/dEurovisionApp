@@ -19,9 +19,9 @@ class LyricsCardWidget extends StatelessWidget {
       return const SizedBox();
     }
     return Card(
-      color: AppColors.white.withOpacity(0.9),
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      color: Colors.transparent,
+      elevation: 12,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(color: Colors.grey, width: 1.0,),),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -32,13 +32,13 @@ class LyricsCardWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: AppColors.crimson,
+                color: AppColors.pinkyPink,
               ),
             ),
             const Divider(),
             Text(
               englishLyrics,
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14, color: AppColors.white),
             ),
           ],
         ),

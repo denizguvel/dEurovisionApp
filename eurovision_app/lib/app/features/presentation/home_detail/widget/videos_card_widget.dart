@@ -27,16 +27,16 @@ class VideosCardWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: AppColors.crimson,
+              color: AppColors.pinkyPink,
             ),
           ),
           const Divider(),
           ClipRRect(
               borderRadius: BorderRadius.circular(12),
-            child: AspectRatio(
-              aspectRatio: 16 / 9,
-              child: ContestantVideoPlayer(videoUrl: videoUrl),
-            ),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: ContestantVideoPlayer(videoUrl: videoUrl),
+              ),
           ),
         ],
       ),

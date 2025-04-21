@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home_detail/view/home_detail_imports.dart';
 
 class ContestantDetailView extends StatefulWidget {
@@ -38,8 +39,6 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
   }
 
   Widget _buildContent(ContestantDetailProvider provider) {
-    final gradientProvider = Provider.of<GradientProvider>(context);
-    final gradient = gradientProvider.gradient;
     final data = provider.item;
     if (data == null) return const SizedBox();
 
@@ -47,12 +46,7 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
       width: double.infinity,
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: gradient.begin,
-          end: gradient.end,
-          colors: gradient.colors,
-        ),
-      ),
+            color: AppColors.black),
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(

@@ -1,6 +1,6 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home_detail/widget/info_row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,9 +21,9 @@ class ContestantInfoCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final countryNameMap = context.read<CountryScoreProvider>().countryCodeNameMap;
     return Card(
-      color: AppColors.white.withOpacity(0.9),
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      color: Colors.transparent,
+      elevation: 12,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(color: Colors.grey, width: 1.0,),),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -34,11 +34,11 @@ class ContestantInfoCardWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: AppColors.crimson,
+                color: AppColors.pinkyPink,
               ),
             ),
             const Divider(),
-            InfoRow(label: AppStrings.artist, value: artist),
+            InfoRow(label: AppStrings.artist, value: artist, labelStyle: const TextStyle(color: Colors.white), valueStyle: const TextStyle(color: Colors.white),),
             InfoRow(label: AppStrings.song, value: song),
             InfoRow(label: AppStrings.country, value:  countryNameMap[country] ?? country,),
             InfoRow(label: AppStrings.year, value: year.toString()),
