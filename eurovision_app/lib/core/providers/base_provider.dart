@@ -12,10 +12,10 @@ abstract class BaseContestantProvider<T> extends ChangeNotifier {
   List<T> _items = [];
   List<T> get items => _items;
 
-  void setLoading() {
-    _state = ContestantState.loading;
-    notifyListeners();
-  }
+  // void setLoading() {
+  //   _state = ContestantState.loading;
+  //   notifyListeners();
+  // }
 
   void setLoaded(List<T> newItems) {
     _items = newItems;

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 
@@ -19,8 +20,23 @@ class NetworkControl extends INetworkControl {
   Future<NetworkResult> checkNetworkFirstTime() async {
     final List<ConnectivityResult> connectivityResult =
         await (_connectivity.checkConnectivity());
-    return NetworkResult.checkConnetivityResult(connectivityResult);
+    final connected = NetworkResult.checkConnetivityResult(connectivityResult);
+    if (connected == NetworkResult.on) {
+      final canAccessInternet = await hasInternetAccess();
+      return canAccessInternet ? NetworkResult.on : NetworkResult.off;
+    }
+    return NetworkResult.off;
+    //return NetworkResult.checkConnetivityResult(connectivityResult);
   }
+
+  Future<bool> hasInternetAccess() async {
+  try {
+    final result = await InternetAddress.lookup('eurovision.tv');
+    return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+  } catch (_) {
+    return false;
+  }
+}
 
   @override
   void handleNetworkChange(NetworkCallback onChanged) {

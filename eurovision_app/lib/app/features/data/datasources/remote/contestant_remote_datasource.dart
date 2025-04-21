@@ -1,5 +1,6 @@
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
+import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 import 'package:eurovision_app/core/config/env_config.dart';
 import 'package:eurovision_app/core/dio_manager/dio_manager.dart';
 import 'package:eurovision_app/core/result/result.dart';
@@ -45,4 +46,30 @@ final class ContestantDetailRemoteDatasourceImpl implements ContestantDetailRemo
       );
     }
   }
+
+  Future<DataResult<List<ContestantModel>>> fetchAllContestants({required int year}) async {
+    try {
+      final response = await _dioApiManager.get<List<dynamic>>(
+        '/contests/$year',
+        converter: (data) {
+          if (data is Map<String, dynamic> && data.containsKey('contestants')) {
+            final contestantsData = data['contestants'] as List;
+            return contestantsData
+                .map((e) => ContestantModel.fromJson(e as Map<String, dynamic>, year))
+                .toList();
+          }
+          return <ContestantModel>[];
+        },
+      );
+
+      if (response.isSuccess && response.data != null) {
+        return SuccessDataResult<List<ContestantModel>>(data: response.data!.cast<ContestantModel>());
+      } else {
+        return ErrorDataResult<List<ContestantModel>>(message: response.error?.message ?? "Unknown error");
+      }
+    } catch (e) {
+      return ErrorDataResult<List<ContestantModel>>(message: "Server Error: ${e.toString()}");
+    }
+  }
+
 }
