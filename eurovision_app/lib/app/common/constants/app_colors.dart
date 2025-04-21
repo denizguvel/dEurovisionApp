@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+
 final class AppColors {
+  AppColors._();
+  
   static const Color ghostWhite = Color(0xffFAF9FC);
   static const Color smokyBlack = Color(0xff0D0D0D);
   static const Color nickel = Color(0xff737373);
