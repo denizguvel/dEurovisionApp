@@ -60,8 +60,22 @@ class SalomonBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return ColoredBox(
-      color: Colors.black,
+    return Container(
+      
+      decoration: BoxDecoration(
+      color: backgroundColor ?? Colors.black,
+      border: Border.all(
+        color:  Colors.grey,
+        width: 0.1,          
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey,
+          blurRadius: 16,
+          offset: const Offset(0, 7),
+        ),
+      ],
+    ),
       child: SafeArea(
         minimum: margin,
         child: Row(
@@ -82,11 +96,11 @@ class SalomonBottomBar extends StatelessWidget {
                   final _selectedColor = item.selectedColor ??
                       selectedItemColor ??
                       theme.primaryColor;
-
+            
                   final _unselectedColor = item.unselectedColor ??
                       unselectedItemColor ??
                       theme.iconTheme.color;
-
+            
                   return Material(
                     color: Color.lerp(
                         _selectedColor.withOpacity(0.0),

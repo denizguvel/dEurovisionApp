@@ -1,6 +1,6 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/core/constants/page_type_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +25,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(_getAppBarTitle(pageType), style: TextStyle(color: AppColors.ghostWhite)),
       centerTitle: true,
-      backgroundColor: AppColors.crimson,
+      backgroundColor: const Color.fromARGB(0, 132, 11, 19),
       leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: AppColors.ghostWhite,),
         onPressed: () {

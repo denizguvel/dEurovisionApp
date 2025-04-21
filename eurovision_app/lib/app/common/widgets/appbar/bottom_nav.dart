@@ -1,7 +1,7 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_icons.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/bottom_nav_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +16,7 @@ class ShinyBottomNavBar extends StatelessWidget {
     final items = [
       (icon: AppIcons.euHeart, label: AppStrings.homePage),
       (icon: AppIcons.rank1, label: AppStrings.mytop10),
+      (icon: AppIcons.worldIcon, label: AppStrings.moreBottomItem),
       (icon: AppIcons.worldIcon, label: AppStrings.moreBottomItem),
     ];
 
