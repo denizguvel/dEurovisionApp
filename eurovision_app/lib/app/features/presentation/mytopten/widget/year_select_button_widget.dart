@@ -1,55 +1,60 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class YearSelector extends StatelessWidget {
+class YearSelectButton extends StatelessWidget {
+  final List<int> years;
   final int selectedYear;
-  final ValueChanged<int?> onChanged;
-  final List<int> yearList;
+  final ValueChanged<int?> onYearChanged;
 
-  const YearSelector({
+  const YearSelectButton({
     super.key,
+    required this.years,
     required this.selectedYear,
-    required this.onChanged,
-    required this.yearList,
+    required this.onYearChanged,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return ElevatedButton.icon(
+      icon: const Icon(Icons.expand_more, color: Colors.white, size: 18),
+      label: const Text(
+        'Select Year',
+        style: TextStyle(fontSize: 14, color: Colors.white),
+      ),
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.coralRed,
+        backgroundColor: AppColors.pinkyPink,
         elevation: 6,
         shadowColor: Colors.black.withOpacity(0.3),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
       ),
       onPressed: () {
         showModalBottomSheet(
           context: context,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
-          builder: (BuildContext context) {
+          builder: (_) {
             return ListView(
               padding: const EdgeInsets.symmetric(vertical: 12),
-              children: yearList.map((year) {
+              children: years.map((year) {
                 final isSelected = year == selectedYear;
                 return ListTile(
                   title: Text(
                     '$year',
                     style: TextStyle(
                       fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      color: isSelected ? AppColors.coralRed : Colors.black,
+                      color: isSelected ? AppColors.pinkyPink : Colors.white,
                     ),
                   ),
                   trailing: isSelected
-                      ? const Icon(Icons.check, color: AppColors.coralRed)
+                      ? const Icon(Icons.check, color: AppColors.pinkyPink)
                       : null,
                   onTap: () {
-                    onChanged(year);
+                    onYearChanged(year);
                     Navigator.pop(context);
                   },
                 );
@@ -58,17 +63,6 @@ class YearSelector extends StatelessWidget {
           },
         );
       },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            '$selectedYear',
-            style: const TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          const SizedBox(width: 8),
-          const Icon(Icons.expand_more, color: Colors.white),
-        ],
-      ),
     );
   }
 }

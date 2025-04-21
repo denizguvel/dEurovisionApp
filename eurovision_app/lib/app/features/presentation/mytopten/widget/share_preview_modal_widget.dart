@@ -1,6 +1,6 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +53,7 @@ class SharePreviewModal extends StatelessWidget {
             icon: const Icon(Icons.share, color: AppColors.white),
             label: const Text(AppStrings.share),
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.crimson1,
+              backgroundColor: AppColors.pinkyPink,
               foregroundColor: AppColors.white,
             ),
           )

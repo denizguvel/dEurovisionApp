@@ -12,6 +12,6 @@ export 'package:eurovision_app/app/features/presentation/mytopten/provider/mytop
 
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_grid.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/top_ten_counter.dart';
-export 'package:eurovision_app/app/features/presentation/mytopten/widget/year_selector_widget.dart';
+export 'package:eurovision_app/app/features/presentation/mytopten/widget/year_select_button_widget.dart';
 export 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/floating_column_widget.dart';

@@ -22,7 +22,7 @@ class ShareThemeColumn extends StatelessWidget {
             context: context,
             builder: (_) => const ThemePickerBottomSheet(),
           ),
-          child: const Icon(Icons.palette, color: AppColors.crimson1),
+          child: const Icon(Icons.palette, color: AppColors.pinkyPink),
         ),
         const SizedBox(height: 12),
         FloatingActionButton(
@@ -39,7 +39,7 @@ class ShareThemeColumn extends StatelessWidget {
               ),
             ),
           ),
-          child: const Icon(Icons.share, color: AppColors.crimson1),
+          child: const Icon(Icons.share, color: AppColors.pinkyPink),
         ),
       ],
     );

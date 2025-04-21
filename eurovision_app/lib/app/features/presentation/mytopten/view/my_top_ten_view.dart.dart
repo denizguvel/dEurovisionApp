@@ -30,23 +30,23 @@ class _MyTop10ViewState extends State<MyTop10View> {
                 screenshotController: viewModel.screenshotController,
               ),
           )
-            : SelectionView(
-                selectedYear: viewModel.selectedYear,
-                onYearChanged: (year) =>
-                    viewModel.onYearChanged(year),
-                onLongPressStart: viewModel.onLongPressStart,
-                onLongPressEnd: viewModel.onLongPressEnd,
-                onNext: () => viewModel.setShowSecondPage(true),
-              ),
+        : SelectionView(
+            selectedYear: viewModel.selectedYear,
+            onYearChanged: (year) =>
+                viewModel.onYearChanged(year),
+            onLongPressStart: viewModel.onLongPressStart,
+            onLongPressEnd: viewModel.onLongPressEnd,
+            onNext: () => viewModel.setShowSecondPage(true),
+          ),
         if (viewModel.showSecondPage)
         Positioned(
-          top: 3,
+          top: 25,
           left: 16,
           child: FloatingActionButton.small(
             heroTag: 'backBtn',
-            backgroundColor: AppColors.white70,
+            backgroundColor: AppColors.pinkyPink,
             onPressed: () => viewModel.setShowSecondPage(false),
-            child: const Icon(Icons.arrow_back, color: AppColors.crimson1,),
+            child: const Icon(Icons.arrow_back, color: AppColors.white,),
           ),
         ),
         if (viewModel.showSecondPage)
@@ -54,22 +54,6 @@ class _MyTop10ViewState extends State<MyTop10View> {
             bottom: 20,
             right: 20,
             child: ShareThemeColumn(),
-          ),
-          if (!viewModel.showSecondPage)
-          Positioned(
-            top: 45,
-            left: 20,
-            child: FloatingActionButton.small(
-              heroTag: 'resetFAB',
-              backgroundColor: AppColors.white,
-              onPressed: () {
-                viewModel.resetSelection();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text(AppStrings.refreshMyTop10)),
-                );
-              },
-              child: const Icon(Icons.refresh, color: AppColors.crimson1),
-            ),
           ),
         if (viewModel.isLoading)
         Positioned.fill(

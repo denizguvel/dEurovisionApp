@@ -38,7 +38,7 @@ class ContestantGrid extends StatelessWidget {
             return ContestantCard(
               contestant: contestant,
               isSelected: isSelected,
-              onTap: () => viewModel.selectContestant(contestant),
+              onTap: () => context.read<MyTop10Provider>().toggleContestant(contestant),
               onLongPressStart: (details) => onLongPressStart(context, contestant, details),
               onLongPressEnd: onLongPressEnd,
             );

@@ -26,7 +26,7 @@ class ContestantCard extends StatelessWidget {
       onLongPressEnd: (_) => onLongPressEnd(),
       child: Card(
         elevation: 2,
-        color: isSelected ? AppColors.lightCrimson : AppColors.white,
+        color: isSelected ? AppColors.pinkyPink : AppColors.white,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Row(

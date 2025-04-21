@@ -20,8 +20,16 @@ class ContestantHoverCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColors.rainyBlue,
+          color: AppColors.black,
           borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: AppColors.white.withOpacity(0.2)),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.black.withOpacity(0.5),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

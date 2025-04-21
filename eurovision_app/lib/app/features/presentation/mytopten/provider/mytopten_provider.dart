@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
-import 'package:eurovision_app/app/features/presentation/feature/provider/country_name_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home_detail/view/home_detail_imports.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_hover_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,8 @@ import 'package:eurovision_app/app/features/utils/year_util.dart';
 class MyTop10Provider extends ChangeNotifier {
   // Theme
   Color _backgroundColor = Colors.white;
+  Color _iconColor = Colors.grey;
+  Color get iconColor => _iconColor;
   TextStyle _titleFontStyle = const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold);
   TextStyle _subTitleFontStyle = const TextStyle(fontSize: 16, color: Colors.black87);
   TextStyle _trailingFontStyle = const TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w300);
@@ -118,11 +119,12 @@ class MyTop10Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setTheme(Color color, TextStyle title, TextStyle subtitle, TextStyle trailing) {
+  void setTheme({required Color color, required TextStyle title, required TextStyle subtitle, required TextStyle trailing, Color iconColor = Colors.grey}) {
     _backgroundColor = color;
     _titleFontStyle = title;
     _subTitleFontStyle = subtitle;
     _trailingFontStyle = trailing;
+    _iconColor = iconColor;
     notifyListeners();
   }
 
