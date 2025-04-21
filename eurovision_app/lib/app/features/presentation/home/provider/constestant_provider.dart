@@ -9,7 +9,7 @@ class ContestantProvider extends BaseContestantProvider<ContestantModel> {
   ContestantProvider(this._remoteDatasource);
 
   Future<void> fetchContestants(int year) async {
-    setLoading();
+    // setLoading();
 
     final result = await _remoteDatasource.fetchTopContestants(year: year);
 

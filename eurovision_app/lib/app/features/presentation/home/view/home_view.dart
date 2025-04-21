@@ -1,10 +1,9 @@
 import 'package:eurovision_app/app/common/constants/app_animations.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/core/providers/base_provider.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/bottom_nav_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home/provider/constestant_provider.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/gradient_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home/widget/contestant_list_widget.dart';
 import 'package:eurovision_app/app/features/presentation/home_detail/widget/score_card_widget.dart';
 import 'package:eurovision_app/app/features/utils/year_util.dart';
@@ -34,51 +33,45 @@ class _HomeViewState extends State<HomeView> {
   
   @override
   Widget build(BuildContext context) {
-    final gradientProvider = Provider.of<GradientProvider>(context);
-    final gradient = gradientProvider.gradient;
-
     return Container(
-        // width: double.infinity,
-        // height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: gradient.begin,
-            end: gradient.end,
-            colors: gradient.colors,
-          ),),
-          child: Column(
-            children: [
-              Consumer<ContestantProvider>(
-                builder: (context, contestantProvider, child) {
-                  if (contestantProvider.state == ContestantState.loading) {
-                    return Center(
-                      child: Lottie.asset(AppAnimations.euheart_ani, width: 100, height: 100,),
-                    );
-                  }
-                  if (contestantProvider.state == ContestantState.error) {
-                    return Center(
-                      child: Text(
-                        AppStrings.errorMessage,
-                        style: TextStyle(color: AppColors.coralRed)
-                      ),
-                    );
-                  }
-                  if (contestantProvider.state == ContestantState.loaded) {
-                    return ContestantsList(contestants: contestantProvider.items);
-                  }
-                  return const SizedBox();
-                },
-              ),
-              SizedBox(height: 20,), 
-              ScoreCardWidget(
-                title: AppStrings.winning,
-                subtitle: AppStrings.winningNumber,
-                onTap: () {
-                  Provider.of<BottomNavProvider>(context, listen: false)
-                    .goToDetail(PageType.winner);
-                },
-              ),
-            ],
+         decoration: BoxDecoration(
+            color: AppColors.black),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 24,), 
+                Consumer<ContestantProvider>(
+                  builder: (context, contestantProvider, child) {
+                    if (contestantProvider.state == ContestantState.loading) {
+                      return Center(
+                        child: Lottie.asset(AppAnimations.euheart_ani, width: 100, height: 100,),
+                      );
+                    }
+                    if (contestantProvider.state == ContestantState.error) {
+                      return Center(
+                        child: Text(
+                          AppStrings.errorMessage,
+                          style: TextStyle(color: AppColors.coralRed)
+                        ),
+                      );
+                    }
+                    if (contestantProvider.state == ContestantState.loaded) {
+                      return ContestantsList(contestants: contestantProvider.items);
+                    }
+                    return const SizedBox();
+                  },
+                ),
+                SizedBox(height: 16,), 
+                ScoreCardWidget(
+                  title: AppStrings.winning,
+                  subtitle: AppStrings.winningNumber,
+                  onTap: () {
+                    Provider.of<BottomNavProvider>(context, listen: false)
+                      .goToDetail(PageType.winner);
+                  },
+                ),
+              ],
+            ),
           ),     
     );
   }

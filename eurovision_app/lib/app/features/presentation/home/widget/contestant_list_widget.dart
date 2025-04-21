@@ -19,10 +19,13 @@ class ContestantsList extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Card(
-      shadowColor: AppColors.cloudBlue,
-      color: AppColors.palePink,
+      shadowColor: AppColors.black,
+      color: Colors.transparent,
       elevation: 12,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(
+      color: Colors.grey,
+      width: 1.0,         
+    ),),
       margin: EdgeInsets.all(screenWidth * 0.04),
       child: Padding(
         padding: EdgeInsets.all(screenWidth * 0.04),
@@ -34,6 +37,7 @@ class ContestantsList extends StatelessWidget {
               style: TextStyle(
                 fontSize: screenWidth * 0.05,
                 fontWeight: FontWeight.bold,
+                color: AppColors.white
               ),
             ),
             SizedBox(height: 10),
