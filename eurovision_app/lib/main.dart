@@ -2,19 +2,15 @@ import 'package:eurovision_app/app/common/constants/app_theme_data.dart';
 import 'package:eurovision_app/app/common/functions/app_functions.dart';
 import 'package:eurovision_app/app/common/service_locator/service_locator.dart';
 import 'package:eurovision_app/app/common/widgets/network/network_wrapper.dart';
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/splash/view/splash_view.dart';
-import 'package:eurovision_app/app/features/presentation/feature/provider/theme_provider.dart';
-//import 'package:eurovision_app/app/features/presentation/feature/view/main_scaffold.dart';
 import 'package:eurovision_app/core/helpers/navigation_helper/navigation_helper.dart';
 import 'package:eurovision_app/core/keys/keys.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
-  await AppFunctions.instance.init();
-  await Hive.initFlutter();
-  await Hive.openBox('settings');  
+  await AppFunctions.instance.init(); 
   runApp(ServiceLocator.setup(child: const MainApp()));
 }
 
