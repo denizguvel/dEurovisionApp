@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+/// Base provider class for managing contestant data.
+/// Handles state, error messages, and item list updates.
 //For list classes
 enum ContestantState { initial, loading, loaded, error }
 
@@ -12,11 +15,6 @@ abstract class BaseContestantProvider<T> extends ChangeNotifier {
   List<T> _items = [];
   List<T> get items => _items;
 
-  // void setLoading() {
-  //   _state = ContestantState.loading;
-  //   notifyListeners();
-  // }
-
   void setLoaded(List<T> newItems) {
     _items = newItems;
     _state = ContestantState.loaded;
@@ -28,11 +26,4 @@ abstract class BaseContestantProvider<T> extends ChangeNotifier {
     _state = ContestantState.error;
     notifyListeners();
   }
-
-  // void reset() {
-  //   _state = ContestantState.initial;
-  //   _errorMessage = null;
-  //   _items = [];
-  //   notifyListeners();
-  // }
 }

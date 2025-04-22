@@ -138,7 +138,7 @@ class SalomonBottomBar extends StatelessWidget {
                                 ///
                                 /// The Align property appears to make these full height, would be
                                 /// best to find a way to make it respond only to padding.
-                                height: 30,
+                                height: 35,
                                 child: Align(
                                   alignment: Alignment(-0.2, 0.0),
                                   widthFactor: t,

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:eurovision_app/core/constants/page_type_enum.dart';
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_icons.dart';
-import 'package:eurovision_app/app/common/constants/app_strings.dart';
+import 'package:eurovision_app/core/constants/page_type_enum.dart';
 import 'package:eurovision_app/core/network_control/network_control.dart';
 import 'package:eurovision_app/app/features/data/domain/usecases/get_gradient_use_case.dart';
 import 'package:eurovision_app/app/features/data/domain/entities/gradient_entity.dart';
-import 'package:eurovision_app/app/features/data/datasources/remote/eurovision_remote_datasource.dart';
 import 'package:eurovision_app/app/features/data/models/country_score_model.dart';
-import 'package:eurovision_app/core/providers/base_list_provider.dart';
+import 'package:eurovision_app/app/features/data/datasources/remote/eurovision_remote_datasource.dart';
 
-// AppBar Provider
-class AppBarProvider extends ChangeNotifier {
+/// Comprehensive provider managing overall app state.
+/// Controls AppBar, theme, navigation, network, country data, and background gradients.
+class FeatureProvider extends ChangeNotifier {
+  // ----------------------------- AppBar -----------------------------
   String _title = AppStrings.appName;
   Widget _leadingIcon = const Icon(Icons.menu);
   List<Widget> _actions = [];
@@ -35,31 +36,21 @@ class AppBarProvider extends ChangeNotifier {
     _actions = newActions;
     notifyListeners();
   }
-}
 
-// Bottom Navigation Provider
-class BottomNavProvider extends ChangeNotifier {
+  // ----------------------------- Bottom Navigation -----------------------------
   int _currentIndex = 0;
   PageType _pageType = PageType.main;
   final Map<int, PageType> _lastViewedPages = {};
   int? selectedContestantId;
   int? selectedYear;
+  List<int>? _selectedContestantIds;
 
   int get currentIndex => _currentIndex;
   PageType get pageType => _pageType;
-  List<int>? _selectedContestantIds;
-
   List<int>? get selectedContestantIds => _selectedContestantIds;
 
   set selectedContestantIds(List<int>? ids) {
     _selectedContestantIds = ids;
-    notifyListeners();
-  }
-
-  void goToContestantDetail(PageType type, int id, int year) {
-    selectedContestantId = id;
-    selectedYear = year;
-    _pageType = type;
     notifyListeners();
   }
 
@@ -72,11 +63,9 @@ class BottomNavProvider extends ChangeNotifier {
   }
 
   void changePageType(PageType type) {
-    if (_pageType != type) {
-      _pageType = type;
-      _lastViewedPages[_currentIndex] = type;
-      notifyListeners();
-    }
+    _pageType = type;
+    _lastViewedPages[_currentIndex] = type;
+    notifyListeners();
   }
 
   void goToDetail(PageType type) {
@@ -90,11 +79,16 @@ class BottomNavProvider extends ChangeNotifier {
     _lastViewedPages[_currentIndex] = PageType.main;
     notifyListeners();
   }
-}
 
-// Country Icon Provider
-class CountryIconProvider {
-  static const Map<String, String> countryIcons = {
+  void goToContestantDetail(PageType type, int id, int year) {
+    selectedContestantId = id;
+    selectedYear = year;
+    _pageType = type;
+    notifyListeners();
+  }
+
+ // ----------------------------- Country Icon -----------------------------
+  static const Map<String, String> _countryIcons = {
     "AL": AppIcons.alFlag, "AD": AppIcons.adFlag, "AM": AppIcons.amFlag, "AU": AppIcons.auFlag,
     "AT": AppIcons.atFlag, "AZ": AppIcons.azFlag, "BY": AppIcons.byFlag, "BE": AppIcons.beFlag,
     "BA": AppIcons.baFlag, "BG": AppIcons.bgFlag, "HR": AppIcons.hrFlag, "CY": AppIcons.cyFlag,
@@ -112,76 +106,118 @@ class CountryIconProvider {
   };
 
   String getIconPath(String countryCode) {
-    return countryIcons[countryCode] ?? AppIcons.euHeart;
+    return _countryIcons[countryCode] ?? AppIcons.euHeart;
   }
+
+
+  // ----------------------------- Country Score (BaseListProvider-like) -----------------------------
+final EurovisionRemoteDatasource _remoteDatasource = EurovisionRemoteDatasourceImpl();
+
+List<CountryScoreModel> _items = [];
+bool _isLoading = false;
+String? _error;
+
+List<CountryScoreModel> get items => _items;
+bool get isLoading => _isLoading;
+String? get error => _error;
+
+final Map<String, String> _countryCodeNameMap = {
+  "AL": "Albania", "AD": "Andorra", "AM": "Armenia", "AU": "Australia", "AT": "Austria",
+  "AZ": "Azerbaijan", "BY": "Belarus", "BE": "Belgium", "BA": "Bosnia and Herzegovina",
+  "BG": "Bulgaria", "HR": "Croatia", "CY": "Cyprus", "CZ": "Czech Republic", "DK": "Denmark",
+  "EE": "Estonia", "FI": "Finland", "FR": "France", "GE": "Georgia", "DE": "Germany",
+  "GR": "Greece", "HU": "Hungary", "IS": "Iceland", "IE": "Ireland", "IL": "Israel",
+  "IT": "Italy", "LV": "Latvia", "LT": "Lithuania", "LU": "Luxembourg", "MT": "Malta",
+  "MD": "Moldova", "MC": "Monaco", "ME": "Montenegro", "NL": "Netherlands", "MK": "North Macedonia",
+  "NO": "Norway", "PL": "Poland", "PT": "Portugal", "RO": "Romania", "RU": "Russia",
+  "SM": "San Marino", "RS": "Serbia", "SK": "Slovakia", "SI": "Slovenia", "ES": "Spain",
+  "SE": "Sweden", "CH": "Switzerland", "TR": "Turkey", "UA": "Ukraine", "GB": "United Kingdom",
+  "YU": "Yugoslavia"
+};
+
+Map<String, String> get countryCodeNameMap => _countryCodeNameMap;
+
+void setLoading() {
+  _isLoading = true;
+  _error = null;
+  notifyListeners();
 }
 
-// Country Score Provider
-class CountryScoreProvider extends BaseListProvider<CountryScoreModel> {
-  final EurovisionRemoteDatasource _remoteDatasource;
+void setLoaded(List<CountryScoreModel> list) {
+  _isLoading = false;
+  _items = list;
+  _error = null;
+  notifyListeners();
+}
 
-  Map<String, String> get countryCodeNameMap => _countryCodeNameMap;
+void setError(String message) {
+  _isLoading = false;
+  _error = message;
+  notifyListeners();
+}
 
-  CountryScoreProvider(this._remoteDatasource);
+bool _countryScoreInitialized = false;
 
-  final Map<String, String> _countryCodeNameMap = {
-    "AL": "Albania", "AD": "Andorra", "AM": "Armenia", "AU": "Australia", "AT": "Austria",
-    "AZ": "Azerbaijan", "BY": "Belarus", "BE": "Belgium", "BA": "Bosnia and Herzegovina",
-    "BG": "Bulgaria", "HR": "Croatia", "CY": "Cyprus", "CZ": "Czech Republic", "DK": "Denmark",
-    "EE": "Estonia", "FI": "Finland", "FR": "France", "GE": "Georgia", "DE": "Germany",
-    "GR": "Greece", "HU": "Hungary", "IS": "Iceland", "IE": "Ireland", "IL": "Israel",
-    "IT": "Italy", "LV": "Latvia", "LT": "Lithuania", "LU": "Luxembourg", "MT": "Malta",
-    "MD": "Moldova", "MC": "Monaco", "ME": "Montenegro", "NL": "Netherlands", "MK": "North Macedonia",
-    "NO": "Norway", "PL": "Poland", "PT": "Portugal", "RO": "Romania", "RU": "Russia",
-    "SM": "San Marino", "RS": "Serbia", "SK": "Slovakia", "SI": "Slovenia", "ES": "Spain",
-    "SE": "Sweden", "CH": "Switzerland", "TR": "Turkey", "UA": "Ukraine", "GB": "United Kingdom",
-    "YU": "Yugoslavia"
-  };
+Future<void> getCountryWins() async {
+  if (_countryScoreInitialized) return;
+  _countryScoreInitialized = true;
 
-  Future<void> getCountryWins() async {
-    if (items.isNotEmpty) return;
+  setLoading();
 
-    try {
-      setLoading();
+  try {
+    final allContests = await _remoteDatasource.fetchAllContests();
+    final Map<String, int> winCountMap = {};
 
-      final allContests = await _remoteDatasource.fetchAllContests();
-      Map<String, int> winCountMap = {};
-
-      for (var contest in allContests) {
-        final winner = await _remoteDatasource.fetchWinnerByYear(contest.year);
-        if (winner != null) {
-          final code = winner.country;
-          winCountMap[code] = (winCountMap[code] ?? 0) + 1;
-        }
+    for (var contest in allContests) {
+      final winner = await _remoteDatasource.fetchWinnerByYear(contest.year);
+      if (winner != null) {
+        winCountMap[winner.country] = (winCountMap[winner.country] ?? 0) + 1;
       }
-
-      final list = winCountMap.entries
-          .map((entry) {
-            final code = entry.key;
-            final name = _countryCodeNameMap[code] ?? code;
-            final wins = entry.value;
-            return CountryScoreModel(
-              countryCode: code,
-              countryName: name,
-              wins: wins,
-            );
-          })
-          .toList()
-        ..sort((a, b) => b.wins.compareTo(a.wins));
-
-      setLoaded(list);
-    } catch (e) {
-      setError(AppStrings.countryError);
     }
+
+    final list = winCountMap.entries
+        .map((e) => CountryScoreModel(
+              countryCode: e.key,
+              countryName: _countryCodeNameMap[e.key] ?? e.key,
+              wins: e.value,
+            ))
+        .toList()
+      ..sort((a, b) => b.wins.compareTo(a.wins));
+
+    setLoaded(list);
+  } catch (e) {
+    setError(AppStrings.countryError);
   }
 }
 
-// Gradient Provider
-class GradientProvider extends ChangeNotifier {
-  final GetGradientUseCase _getGradientUseCase = GetGradientUseCase();
+  // ----------------------------- Theme Mode -----------------------------
+  ThemeMode _themeMode = ThemeMode.light;
+  final String _boxName = "themeBox";
 
+  ThemeMode get themeMode => _themeMode;
+
+  void toggleTheme() {
+    _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    _saveTheme(_themeMode);
+    notifyListeners();
+  }
+
+  Future<void> _saveTheme(ThemeMode mode) async {
+    final box = await Hive.openBox(_boxName);
+    await box.put('isDarkMode', mode == ThemeMode.dark);
+  }
+
+  Future<void> loadTheme() async {
+    final box = await Hive.openBox(_boxName);
+    final isDark = box.get('isDarkMode', defaultValue: false);
+    _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
+  }
+
+  // ----------------------------- Gradient -----------------------------
+  final GetGradientUseCase _getGradientUseCase = GetGradientUseCase();
   GradientEntity _gradient = GradientEntity(
-    colors: [AppColors.black, AppColors.black, AppColors.black,   AppColors.crimson2, AppColors.crimson3, AppColors.black],
+    colors: [AppColors.black, AppColors.crimson2, AppColors.black],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
@@ -192,50 +228,18 @@ class GradientProvider extends ChangeNotifier {
     _gradient = _getGradientUseCase();
     notifyListeners();
   }
-}
 
-// Theme Provider
-class ThemeProvider extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.light;
-  final String _boxName = "themeBox";
-
-  ThemeProvider() {
-    _loadTheme();
-  }
-
-  ThemeMode get themeMode => _themeMode;
-
-  void toggleTheme() {
-    _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    _saveTheme(_themeMode);
-    notifyListeners();
-  }
-
-  Future<void> _loadTheme() async {
-    var box = await Hive.openBox(_boxName);
-    bool isDark = box.get('isDarkMode', defaultValue: false);
-    _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
-    notifyListeners();
-  }
-
-  Future<void> _saveTheme(ThemeMode mode) async {
-    var box = await Hive.openBox(_boxName);
-    await box.put('isDarkMode', mode == ThemeMode.dark);
-  }
-}
-
-// Network Provider
-class NetworkProvider extends ChangeNotifier {
+  // ----------------------------- Network -----------------------------
   final INetworkControl networkControl;
+
+  FeatureProvider({required this.networkControl}) : assert(networkControl != null) {
+    _initNetwork();
+  }
 
   NetworkResult _status = NetworkResult.on;
   NetworkResult get status => _status;
 
-  NetworkProvider({required this.networkControl}) {
-    _init();
-  }
-
-  void _init() async {
+  void _initNetwork() async {
     _status = await networkControl.checkNetworkFirstTime();
     notifyListeners();
 

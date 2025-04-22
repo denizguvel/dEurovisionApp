@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+/// BaseDetailProvider is an abstract class that extends ChangeNotifier
+/// and provides a base implementation for detail providers.
 //For detail(object) classes
 abstract class BaseDetailProvider<T> extends ChangeNotifier {
   T? _item;

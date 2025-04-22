@@ -1,10 +1,12 @@
 import 'package:eurovision_app/app/features/presentation/home_detail/view/home_detail_imports.dart';
 
+/// A counter box widget with an icon and text.
+/// Commonly used to display year or selection count.
 class CounterBox extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const CounterBox({required this.icon, required this.text});
+  const CounterBox({super.key, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 
+/// A vertical menu with floating buttons for theme selection and sharing.
+/// Provides actions for customization and sharing in the My Top 10 screen.
 class ShareThemeColumn extends StatelessWidget {
   const ShareThemeColumn({super.key});
 

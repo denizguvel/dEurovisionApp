@@ -4,7 +4,8 @@ import 'package:eurovision_app/app/features/data/datasources/remote/contestant_r
 import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
 import 'package:eurovision_app/core/result/result.dart';
 
-
+/// Provider class for managing contestant detail data.
+/// Fetches data remotely and handles state via BaseDetailProvider.
 class ContestantDetailProvider extends BaseDetailProvider<ContestantDetailModel> {
   final ContestantDetailRemoteDatasource _datasource;
 

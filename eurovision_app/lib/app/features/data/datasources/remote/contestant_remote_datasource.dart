@@ -5,6 +5,9 @@ import 'package:eurovision_app/core/config/env_config.dart';
 import 'package:eurovision_app/core/dio_manager/dio_manager.dart';
 import 'package:eurovision_app/core/result/result.dart';
 
+
+/// Remote data source for fetching contestant details and yearly contestant list.
+/// Handles API requests and data conversion using Dio.
 abstract class ContestantDetailRemoteDatasource {
   Future<DataResult<ContestantDetailModel>> fetchContestantDetail({
     required int year,
@@ -71,5 +74,4 @@ final class ContestantDetailRemoteDatasourceImpl implements ContestantDetailRemo
       return ErrorDataResult<List<ContestantModel>>(message: "Server Error: ${e.toString()}");
     }
   }
-
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// A row widget that displays a label-value pair.
+/// Useful for presenting data in profile or info cards.
 class InfoRow extends StatelessWidget {
   final String label;
   final String value;

@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
         scaffoldMessengerKey: AppKeys.scaffoldMessengerKey,
         theme: AppThemeData.lightTheme,
         darkTheme: AppThemeData.darkTheme,
-        themeMode: context.watch<ThemeProvider>().themeMode,
+        themeMode: context.watch<FeatureProvider>().themeMode,
         home: const SplashView(),
         debugShowCheckedModeBanner: false,
         builder: (context, child) {

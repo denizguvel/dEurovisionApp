@@ -7,6 +7,8 @@ import 'package:eurovision_app/core/providers/base_list_provider.dart';
 import 'package:eurovision_app/core/result/result.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+/// Provider class that manages contestant videos.
+/// Fetches and controls YouTube players along with related data.
 class VideoProvider extends BaseListProvider<ContestantDetailModel> {
   final ContestantDetailRemoteDatasourceImpl _detailDatasource = ContestantDetailRemoteDatasourceImpl();
   final DioApiManager _dio = DioApiManager(baseUrl: EnvConfig.eurovisionBaseUrl);

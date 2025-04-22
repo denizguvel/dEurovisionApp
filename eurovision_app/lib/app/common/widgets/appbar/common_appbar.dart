@@ -32,7 +32,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
           if (Navigator.of(context).canPop()) {
             Navigator.of(context).pop();
           } else {
-            context.read<BottomNavProvider>().goBackToMain();
+            context.read<FeatureProvider>().goBackToMain();
           }        
         },
       ),

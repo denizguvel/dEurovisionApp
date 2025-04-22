@@ -1,6 +1,7 @@
 import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home_detail/view/home_detail_imports.dart';
 
+/// A widget that displays a table of country wins last top ten in the Eurovision contest.
 class ContestantDetailView extends StatefulWidget {
   final int id;
   final int year;
@@ -17,7 +18,7 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
 
     Future.microtask(() {
       final provider = Provider.of<ContestantDetailProvider>(context, listen: false);
-      final bottomProvider = Provider.of<BottomNavProvider>(context, listen: false);
+      final bottomProvider = Provider.of<FeatureProvider>(context, listen: false);
 
       provider.fetchDetail(widget.year, widget.id);
       bottomProvider.goToDetail(PageType.contestantDetail);
@@ -87,7 +88,6 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
                 Icons.play_arrow,
                 color: Colors.white,
               ),
-              //child: const Text("Videoyu Tam Ekranda İzle"),
             ),
           ],
         ),

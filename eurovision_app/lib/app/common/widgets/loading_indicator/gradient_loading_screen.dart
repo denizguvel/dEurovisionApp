@@ -8,7 +8,7 @@ class GradientLoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final gradient = context.watch<GradientProvider>().gradient;
+    final gradient = context.watch<FeatureProvider>().gradient;
 
     return Container(
       width: double.infinity,

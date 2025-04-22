@@ -1,3 +1,4 @@
+/// The class includes properties such as languages, title, and content.
 class LyricModel {
   final List<String> languages;
   final String title;

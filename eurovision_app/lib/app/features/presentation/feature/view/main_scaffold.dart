@@ -1,5 +1,6 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_icons.dart';
+import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home_detail/view/contestant_detail_view.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
@@ -16,6 +17,8 @@ import 'package:eurovision_app/app/common/widgets/appbar/common_appbar.dart';
 import 'package:eurovision_app/app/common/widgets/appbar/custom_logo_appbar.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+/// Main scaffold widget managing app layout and navigation.
+/// Handles AppBar, page routing, and bottom navigation bar.
 class MainScaffold extends StatefulWidget {
   const MainScaffold({super.key});
 
@@ -26,17 +29,16 @@ class MainScaffold extends StatefulWidget {
 class _MainScaffoldState extends State<MainScaffold> {
   @override
   Widget build(BuildContext context) {
-    final bottomProvider = Provider.of<BottomNavProvider>(context);
-    final gradientProvider = Provider.of<GradientProvider>(context);
-    final gradient = gradientProvider.gradient;
+    final featureProvider = Provider.of<FeatureProvider>(context);
+    final gradient = featureProvider.gradient;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar:(bottomProvider.pageType == PageType.main &&
-         bottomProvider.currentIndex == 1 &&
+      appBar:(featureProvider.pageType == PageType.main &&
+         featureProvider.currentIndex == 1 &&
          context.watch<MyTop10Provider>().showSecondPage)
         ? null
-        : switch (bottomProvider.pageType) {
+        : switch (featureProvider.pageType) {
             PageType.main => CustomLogoAppBar(
               backgroundGradient: LinearGradient(
                   begin: gradient.begin,
@@ -44,7 +46,7 @@ class _MainScaffoldState extends State<MainScaffold> {
                   colors: gradient.colors,
                 ),
             ),
-        _ => CommonAppBar(pageType: bottomProvider.pageType),
+        _ => CommonAppBar(pageType: featureProvider.pageType),
       },
       body: Stack(
         children: [
@@ -52,9 +54,9 @@ class _MainScaffoldState extends State<MainScaffold> {
             decoration: BoxDecoration(
             color: AppColors.black),
           ),
-        switch (bottomProvider.pageType) {
+        switch (featureProvider.pageType) {
           PageType.main => IndexedStack(
-            index: bottomProvider.currentIndex,
+            index: featureProvider.currentIndex,
             children: [
               const HomeView(),
               MyTop10View(),
@@ -64,39 +66,39 @@ class _MainScaffoldState extends State<MainScaffold> {
           ),
           PageType.winner => const WinnerView(),
           PageType.contestantDetail => ContestantDetailView(
-            id: bottomProvider.selectedContestantId!,
-            year: bottomProvider.selectedYear!,
+            id: featureProvider.selectedContestantId!,
+            year: featureProvider.selectedYear!,
           ), 
         },
         ],
       ),
       bottomNavigationBar: SalomonBottomBar(
-         currentIndex: bottomProvider.currentIndex,
+         currentIndex: featureProvider.currentIndex,
         onTap: (index) {
-          bottomProvider.changeIndex(index);
+          featureProvider.changeIndex(index);
         },
         selectedItemColor: AppColors.crimson,
         unselectedItemColor: AppColors.white70,
         items: [
           SalomonBottomBarItem(
             icon: SvgPicture.asset(AppIcons.euHeart, height: 20, color: AppColors.white70,),
-            title: Text("Home"),
+            title: Text(AppStrings.homePage),
             selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.star_border),
-            title: Text("My Top 10"),
-            selectedColor: Colors.amber,
+            title: Text(AppStrings.mytop10),
+            selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.home_filled),
-            title: Text("About"),
-            selectedColor: Colors.red,
+            title: Text(AppStrings.about),
+            selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.play_arrow),
-            title: Text("Channel"),
-            selectedColor: Colors.red,
+            title: Text(AppStrings.channel),
+            selectedColor: AppColors.pinkyPink,
           ),
         ],
       ),

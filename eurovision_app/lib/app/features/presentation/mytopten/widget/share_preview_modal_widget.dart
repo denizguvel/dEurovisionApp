@@ -5,6 +5,8 @@ import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytop
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// Modal window displaying a preview of selected contestants for sharing.
+/// Supports saving and sharing as a PNG image.
 class SharePreviewModal extends StatelessWidget {
   final GlobalKey repaintKey;
 
@@ -14,7 +16,7 @@ class SharePreviewModal extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.watch<MyTop10Provider>();
     final selectedTop10 = viewModel.selectedTop10;
-    final countryMap = context.read<CountryScoreProvider>().countryCodeNameMap;
+    final countryMap = context.read<FeatureProvider>().countryCodeNameMap;
 
     return Container(
       color: viewModel.backgroundColor,

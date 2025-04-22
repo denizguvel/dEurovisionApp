@@ -4,6 +4,8 @@ import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/counter_box_widget.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 
+/// Status row displaying the selected year and contestant count.
+/// Includes a button to reset the selection.
 class SelectionStatusRow extends StatelessWidget {
   final int selectedYear;
   final int selectedCount;

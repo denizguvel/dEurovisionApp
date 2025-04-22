@@ -1,5 +1,6 @@
 import 'package:eurovision_app/app/features/presentation/mytopten/view/my_top_ten_imports.dart';
 
+/// A widget that displays the top 10 Eurovision contestants for a selected year.
 class MyTop10View extends StatefulWidget {
   const MyTop10View({super.key});
 

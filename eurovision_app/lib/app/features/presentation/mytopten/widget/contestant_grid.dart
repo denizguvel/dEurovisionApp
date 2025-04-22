@@ -4,6 +4,8 @@ import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_card_widget.dart';
 
+/// Widget that displays contestants in a grid layout.
+/// Supports selection and long-press interactions.
 class ContestantGrid extends StatelessWidget {
   final void Function(BuildContext context, ContestantModel contestant, LongPressStartDetails details) onLongPressStart;
   final VoidCallback onLongPressEnd;

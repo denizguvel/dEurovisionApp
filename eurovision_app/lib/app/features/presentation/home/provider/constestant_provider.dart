@@ -3,14 +3,14 @@ import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 import 'package:eurovision_app/core/providers/base_provider.dart';
 import 'package:eurovision_app/core/result/result.dart';
 
+/// Provider class for fetching top 10 contestants.
+/// Retrieves data from API and manages state via BaseContestantProvider.
 class ContestantProvider extends BaseContestantProvider<ContestantModel> {
   final ContestantTenRemoteDatasourceImpl _remoteDatasource;
 
   ContestantProvider(this._remoteDatasource);
 
   Future<void> fetchContestants(int year) async {
-    // setLoading();
-
     final result = await _remoteDatasource.fetchTopContestants(year: year);
 
     if (result is SuccessDataResult<List<ContestantModel>>) {

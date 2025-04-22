@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
+/// Screen displayed when there is no internet connection.
+/// Shows an animation and a retry button for manual check.
 class NoInternetScreen extends StatelessWidget {
   const NoInternetScreen({super.key});
 
@@ -21,7 +23,7 @@ class NoInternetScreen extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                context.read<NetworkProvider>().checkConnectionManually();
+                context.read<FeatureProvider>().checkConnectionManually();
               },
               style: ElevatedButton.styleFrom(backgroundColor: AppColors.crimson),
               child: const Text(AppStrings.tryAgain),

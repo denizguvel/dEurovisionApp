@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 
+/// Widget that displays the user's Top 10 selection in a reorderable list.
+/// Supports screenshot capture for sharing purposes.
 class FinalRankingView extends StatelessWidget {
   final ScreenshotController screenshotController;
 
@@ -13,7 +15,7 @@ class FinalRankingView extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.watch<MyTop10Provider>();
     final selectedTop10 = viewModel.selectedTop10;
-    final countryMap = context.read<CountryScoreProvider>().countryCodeNameMap;
+    final countryMap = context.read<FeatureProvider>().countryCodeNameMap;
 
     return Screenshot(
       controller: screenshotController,

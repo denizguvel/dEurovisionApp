@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Base provider class for selectable item lists.
+/// Supports max selection limit, toggle, reorder, and clear operations.
 abstract class BaseSelectableListProvider<T> extends ChangeNotifier {
   final List<T> _selected = [];
   int maxItems;

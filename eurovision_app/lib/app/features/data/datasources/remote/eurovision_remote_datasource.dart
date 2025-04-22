@@ -3,6 +3,8 @@ import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 import 'package:eurovision_app/core/config/env_config.dart';
 import 'package:eurovision_app/core/dio_manager/dio_manager.dart';
 
+/// Remote data source for Eurovision contests.
+/// Handles API calls for all contests, yearly winners, and contest details.
 abstract class EurovisionRemoteDatasource {
   Future<List<ContestModel>> fetchAllContests();
   Future<ContestantModel?> fetchWinnerByYear(int year);

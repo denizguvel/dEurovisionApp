@@ -3,6 +3,8 @@ import 'package:eurovision_app/core/config/env_config.dart';
 import 'package:eurovision_app/core/dio_manager/dio_manager.dart';
 import 'package:eurovision_app/core/result/result.dart';
 
+/// Remote data source for fetching top contestants of a given year.
+/// Retrieves data from the API and converts it into a list of `ContestantModel`.
 abstract class ContestantTenRemoteDatasource {
   Future<DataResult<List<ContestantModel>>> fetchTopContestants({required int year});
 }

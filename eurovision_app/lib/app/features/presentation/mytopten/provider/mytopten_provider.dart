@@ -1,21 +1,22 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
+import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home_detail/view/home_detail_imports.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_hover_card_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
-import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 import 'package:eurovision_app/app/features/data/models/contest_model.dart';
 import 'package:eurovision_app/app/features/data/datasources/remote/contestant_ten_remote_datasource.dart';
 import 'package:eurovision_app/app/features/data/datasources/remote/eurovision_remote_datasource.dart';
 import 'package:eurovision_app/app/features/utils/year_util.dart';
 
+/// Provider class managing the state of the "My Top 10" feature.
+/// Handles contestant selection, ranking, theming, year data fetching, and screenshot sharing.
 class MyTop10Provider extends ChangeNotifier {
   // Theme
   Color _backgroundColor = Colors.white;
@@ -33,7 +34,7 @@ class MyTop10Provider extends ChangeNotifier {
   ContestModel? _contestDetails;
 
   // Top 10
-  List<ContestantModel> _selectedTop10 = [];
+  final List<ContestantModel> _selectedTop10 = [];
 
   // Page State
   bool _showSecondPage = false;
@@ -132,7 +133,7 @@ class MyTop10Provider extends ChangeNotifier {
   if (_overlayEntry != null) return;
 
   final overlay = Overlay.of(context);
-  final countryMap = Provider.of<CountryScoreProvider>(context, listen: false).countryCodeNameMap;
+  final countryMap = Provider.of<FeatureProvider>(context, listen: false).countryCodeNameMap;
   final countryName = countryMap[contestant.country] ?? contestant.country;
 
   final entry = OverlayEntry(
@@ -240,6 +241,4 @@ void init() {
     _eurovisionRemoteDatasource = eurovisionRemoteDatasource;
     notifyListeners();
   }
-
-
 }

@@ -1,6 +1,8 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
+/// Button with a bottom sheet for selecting a year.
+/// Allows the user to choose from available contest years.
 class YearSelectButton extends StatelessWidget {
   final List<int> years;
   final int selectedYear;

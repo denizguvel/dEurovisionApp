@@ -1,6 +1,8 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
+/// Bottom sheet widget for year selection by the user.
+/// Highlights the selected year and closes upon selection.
 class YearBottomSheet extends StatelessWidget {
   final int selectedYear;
   final List<int> availableYears;

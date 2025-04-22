@@ -5,6 +5,8 @@ import 'package:eurovision_app/app/features/presentation/home_detail/widget/info
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// Widget that displays contestant info in a styled card.
+/// Lists artist, song, country, year, and writer details.
 class ContestantInfoCardWidget extends StatelessWidget {
   final String artist;
   final String song;
@@ -19,7 +21,7 @@ class ContestantInfoCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final countryNameMap = context.read<CountryScoreProvider>().countryCodeNameMap;
+    final countryNameMap = context.read<FeatureProvider>().countryCodeNameMap;
     return Card(
       color: Colors.transparent,
       elevation: 12,

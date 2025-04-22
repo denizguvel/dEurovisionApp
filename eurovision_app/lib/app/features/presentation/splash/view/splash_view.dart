@@ -5,6 +5,8 @@ import 'package:eurovision_app/app/features/presentation/feature/view/main_scaff
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+/// Animated splash screen shown at app startup.
+/// Navigates automatically to the main page after a delay.
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 

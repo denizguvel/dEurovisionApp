@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 
+/// Card widget that displays the contestant's official video.
+/// Includes a title, embedded video player, and styled layout.
 class VideosCardWidget extends StatelessWidget {
   final ContestantDetailModel data;
 

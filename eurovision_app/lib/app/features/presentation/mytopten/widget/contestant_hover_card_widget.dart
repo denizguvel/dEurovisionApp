@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 
+/// A compact hover card shown on long press.
+/// Displays artist, song, and country name.
 class ContestantHoverCard extends StatelessWidget {
   final ContestantModel contestant;
   final String countryName;

@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 
+/// Widget that displays the contestant list inside a card.
+/// Manages loading, error, and success states for list rendering.
 class ContestantsList extends StatelessWidget {
   final List<ContestantModel> contestants;
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// BaseListManager is an abstract class that extends ChangeNotifier
+/// and provides a base implementation for list managers.
 abstract class BaseListManager<T> extends ChangeNotifier {
   List<T> _items = [];
   List<T> get items => _items;

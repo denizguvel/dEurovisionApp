@@ -2,6 +2,8 @@ import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 
+/// A visual card widget for displaying score or stats info.
+/// Includes icon, title, subtitle, and a forward arrow with tap support.
 class ScoreCardWidget extends StatelessWidget {
   final VoidCallback onTap;
   final String title;
@@ -18,9 +20,8 @@ class ScoreCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
       child: Card(        
         color: Colors.transparent,
         elevation: 12,

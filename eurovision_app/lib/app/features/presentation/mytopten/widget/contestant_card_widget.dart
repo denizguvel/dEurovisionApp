@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 
+/// Card widget that displays contestant information.
+/// Highlights selection state and supports tap and long-press interactions.
 class ContestantCard extends StatelessWidget {
   final ContestantModel contestant;
   final bool isSelected;

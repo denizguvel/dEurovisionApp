@@ -1,5 +1,4 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
-import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 import 'package:eurovision_app/app/features/presentation/search_video/widget/videoplayer_widget.dart';
 import 'package:eurovision_app/app/features/presentation/search_video/widget/yearbottomsheet_widget.dart';
 import 'package:eurovision_app/app/features/utils/year_util.dart';
@@ -7,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/video_provider.dart';
 
+/// A widget that represents the Video view of the app.
+/// It displays a list of videos for a selected year and allows the user to pick a year.
 class VideoView extends StatefulWidget {
   const VideoView({super.key});
 
@@ -67,7 +68,7 @@ class _VideoViewState extends State<VideoView> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: InkWell(
+                child: GestureDetector(
                   onTap: () => _showYearPicker(context),
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -100,7 +101,6 @@ class _VideoViewState extends State<VideoView> {
                             itemBuilder: (context, index) {
                               final contestant = provider.items[index];
                               final controller = provider.controllers[contestant.id];
-
                               return Card(
                                 shadowColor: AppColors.black,
                                 color: Colors.transparent,

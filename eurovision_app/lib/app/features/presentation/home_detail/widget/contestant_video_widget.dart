@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+/// Widget that plays a contestant's video from a YouTube URL.
+/// Displays the player in a rotated fullscreen-like layout.
 class ContestantVideoPlayer extends StatefulWidget {
   final String videoUrl;
 

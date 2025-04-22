@@ -8,6 +8,8 @@ import 'package:eurovision_app/app/features/presentation/mytopten/widget/year_se
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// A widget that represents the selection view of the app.
+/// It displays a grid of contestants and allows the user to select a year.
 class SelectionView extends StatelessWidget {
   final int selectedYear;
   final ValueChanged<int?> onYearChanged;
@@ -73,9 +75,17 @@ class SelectionView extends StatelessWidget {
                         selectedYear: selectedYear,
                         onYearChanged: onYearChanged,
                       ),
-                      SelectionStatusRow(
-                        selectedYear: selectedYear,
-                        selectedCount: selectedTop10.length,
+                     Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: SelectionStatusRow(
+                              selectedYear: selectedYear,
+                              selectedCount: selectedTop10.length,
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),

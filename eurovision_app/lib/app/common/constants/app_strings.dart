@@ -16,7 +16,7 @@ class AppStrings {
 
   //Page Names
   static const String mainPage = "Main Page";
-  static const String homePage = "Home Page";
+  static const String homePage = "Home";
   static const String profilePage = "Profile Page";
   static const String settings = "Settings";
   static const String contests = "Contests";
@@ -27,6 +27,7 @@ class AppStrings {
   static const String videoPageTitle = 'Video Page';
   static const String noVideoAvailable = 'No Video Available';
   static const String defaultVideoTitle = 'Default Video Title';
+  static const String channel = "Channel";
   
 
   //Text Label

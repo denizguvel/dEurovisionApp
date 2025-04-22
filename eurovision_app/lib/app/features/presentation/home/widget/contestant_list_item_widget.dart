@@ -6,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 
+/// Widget for displaying a contestant in a list item format.
+/// Shows rank, flag, artist, and song; navigates to detail page on tap.
 class ContestantListItem extends StatelessWidget {
   final ContestantModel contestant;
   final int index;
@@ -19,11 +21,11 @@ class ContestantListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final iconPath = CountryIconProvider().getIconPath(contestant.country);
+    final iconPath = context.read<FeatureProvider>().getIconPath(contestant.country);
 
     return GestureDetector(
       onTap: () {
-        Provider.of<BottomNavProvider>(context, listen: false).goToContestantDetail(
+        Provider.of<FeatureProvider>(context, listen: false).goToContestantDetail(
           PageType.contestantDetail,
           contestant.id,
           contestant.year,
@@ -40,7 +42,7 @@ class ContestantListItem extends StatelessWidget {
                 '${index + 1}.',
                 style: TextStyle(
                   color: AppColors.white,
-                  fontSize: screenWidth * 0.06,
+                  fontSize: screenWidth * 0.04,
                   fontWeight: FontWeight.bold,
                 ),
               ),

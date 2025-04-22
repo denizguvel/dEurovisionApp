@@ -1,3 +1,4 @@
+/// The class includes properties such as countryCode, countryName, and wins.
 class CountryScoreModel {
   final String countryCode;
   final String countryName;

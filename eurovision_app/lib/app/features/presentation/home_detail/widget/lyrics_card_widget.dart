@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:eurovision_app/app/features/data/models/contestant_detail_model.dart';
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 
+/// A styled info card displaying English song lyrics.
+/// Includes optional title and formatted content.
 class LyricsCardWidget extends StatelessWidget {
   final ContestantDetailModel data;
 

@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 
+/// Manages network connectivity status and state.
+/// Includes initial check, connectivity change listener, and internet access validation.
 typedef NetworkCallback = void Function(NetworkResult result);
 
 abstract class INetworkControl {

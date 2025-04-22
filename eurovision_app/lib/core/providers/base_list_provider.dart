@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Base provider class for managing list data.
+/// Handles loading state, error messages, and data updates.
 abstract class BaseListProvider<T> extends ChangeNotifier {
   List<T> _items = [];
   bool _isLoading = false;

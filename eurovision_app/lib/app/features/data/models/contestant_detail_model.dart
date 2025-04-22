@@ -1,5 +1,5 @@
 import 'package:eurovision_app/app/features/data/models/lyric_model.dart';
-
+/// The class includes properties such as year, song, artist, country, writers, videoUrls, and lyrics.
 class ContestantDetailModel {
   final int id;
   final String country;

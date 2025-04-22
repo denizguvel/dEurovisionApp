@@ -1,3 +1,5 @@
+/// This file contains the ContestModel class, which represents a contest with various attributes.
+/// The class includes properties such as year, arena, logo, city, country, intendedCountry,
 class ContestModel {
   final int year;
   final String arena;

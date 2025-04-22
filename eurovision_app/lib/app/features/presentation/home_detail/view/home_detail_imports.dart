@@ -1,6 +1,6 @@
 export 'package:eurovision_app/app/common/widgets/loading_indicator/gradient_loading_screen.dart';
 export 'package:eurovision_app/app/features/presentation/home_detail/provider/contestant_detail_provider.dart';
-export 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
+export 'package:eurovision_app/app/features/presentation/feature/provider/aaaaafeature_provider.dart';
 export 'package:eurovision_app/app/features/presentation/home_detail/view/contestant_video_fullscreen_view.dart';
 export 'package:eurovision_app/app/features/presentation/home_detail/widget/contestant_info_card_widget.dart';
 export 'package:eurovision_app/app/features/presentation/home_detail/widget/lyrics_card_widget.dart';

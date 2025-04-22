@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
+/// A widget that represents the Home view of the app.
+/// It displays a list of contestants and a score card widget.
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -66,7 +68,7 @@ class _HomeViewState extends State<HomeView> {
                   title: AppStrings.winning,
                   subtitle: AppStrings.winningNumber,
                   onTap: () {
-                    Provider.of<BottomNavProvider>(context, listen: false)
+                    Provider.of<FeatureProvider>(context, listen: false)
                       .goToDetail(PageType.winner);
                   },
                 ),
