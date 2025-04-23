@@ -1,4 +1,5 @@
 class AppUrl {
+  AppUrl._();
   static const instagram = "https://www.instagram.com/eurovision/";
   static const tiktok = "https://www.tiktok.com/@eurovision";
   static const website = "https://eurovision.tv/";

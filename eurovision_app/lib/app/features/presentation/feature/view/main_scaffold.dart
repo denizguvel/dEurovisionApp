@@ -98,7 +98,7 @@ class _MainScaffoldState extends State<MainScaffold> {
             selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
-            icon: SvgPicture.asset(AppIcons.euHeart, height: 23, color: featureProvider.currentIndex == 3
+            icon: Icon(MyFlutterApp.eurovision_heart_icon, color: featureProvider.currentIndex == 3
                 ? AppColors.pinkyPink
                 : AppColors.white70), 
             title: Text(AppStrings.about),

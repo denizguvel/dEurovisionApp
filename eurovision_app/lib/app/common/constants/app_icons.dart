@@ -1,4 +1,5 @@
 class AppIcons {
+  AppIcons._();
   static const String location = 'assets/images/icons/location.png';
   static const String mark = 'assets/images/icons/mark.png';
   static const String ranking = 'assets/images/icons/ranking.png';
