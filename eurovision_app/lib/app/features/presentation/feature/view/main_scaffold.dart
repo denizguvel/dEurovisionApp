@@ -1,6 +1,7 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_icons.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
+import 'package:eurovision_app/app/common/constants/my_flutter_app_icons.dart';
 import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
 import 'package:eurovision_app/app/features/presentation/home_detail/view/contestant_detail_view.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
@@ -60,8 +61,9 @@ class _MainScaffoldState extends State<MainScaffold> {
             children: [
               const HomeView(),
               MyTop10View(),
-              const AboutView(),
+              
               VideoView(),
+              const AboutView(),
             ],
           ),
           PageType.winner => const WinnerView(),
@@ -81,23 +83,25 @@ class _MainScaffoldState extends State<MainScaffold> {
         unselectedItemColor: AppColors.white70,
         items: [
           SalomonBottomBarItem(
-            icon: SvgPicture.asset(AppIcons.euHeart, height: 20, color: AppColors.white70,),
+            icon: Icon(MyFlutterApp.home_outline),
             title: Text(AppStrings.homePage),
             selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.star_border),
+            icon: Icon(MyFlutterApp.star),
             title: Text(AppStrings.mytop10),
             selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.home_filled),
-            title: Text(AppStrings.about),
+            icon: Icon(MyFlutterApp.video_1),
+            title: Text(AppStrings.channel),
             selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.play_arrow),
-            title: Text(AppStrings.channel),
+            icon: SvgPicture.asset(AppIcons.euHeart, height: 23, color: featureProvider.currentIndex == 3
+                ? AppColors.pinkyPink
+                : AppColors.white70), 
+            title: Text(AppStrings.about),
             selectedColor: AppColors.pinkyPink,
           ),
         ],

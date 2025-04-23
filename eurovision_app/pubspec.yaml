@@ -56,6 +56,11 @@ flutter:
     - assets/images/icons/
     - assets/images/icons/flags/
 
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/fonts/MyFlutterApp.ttf
+
  # ---------------------- App Icon ----------------------
 flutter_icons:
   android: true
