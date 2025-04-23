@@ -5,7 +5,7 @@ import 'package:eurovision_app/app/features/data/domain/entities/gradient_entity
 class GetGradientUseCase {
   GradientEntity call() {
     return GradientEntity(
-      colors: [AppColors.crimson, AppColors.airBlue, AppColors.black, AppColors.raspberryRose, AppColors.jet, AppColors.davysGray],
+      colors: [AppColors.pinkyPink, AppColors.airBlue, AppColors.black, AppColors.raspberryRose, AppColors.jet, AppColors.davysGray],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     );
