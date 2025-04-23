@@ -55,6 +55,11 @@ class AppStrings {
   static const String share = "Share";
   static const String myEUTop10 = "My Eurovision Top 10";
   static const String selectYear = "Select year:";
+  static const String allVideos = "All Videos";
+  static const String noVideos = "No videos available for this artist.";
+  static const String noFavorites = "No favorite videos yet.";
+  static const String favorites = "Favorites";
+  static const String searchArtist = "Search artist...";
 
   //Titles
   static const String titleTopTen = "Top 10 Contestants";

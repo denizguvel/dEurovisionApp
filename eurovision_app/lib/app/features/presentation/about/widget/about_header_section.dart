@@ -3,6 +3,8 @@ import 'package:eurovision_app/app/common/constants/app_images.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 
+/// A custom SliverAppBar widget used in the About page.
+/// Displays a header image with gradient overlay and two styled text titles.
 class AboutHeaderSection extends StatelessWidget {
   const AboutHeaderSection({super.key});
 

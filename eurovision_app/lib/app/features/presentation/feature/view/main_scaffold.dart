@@ -1,5 +1,4 @@
 import 'package:eurovision_app/app/common/constants/app_colors.dart';
-import 'package:eurovision_app/app/common/constants/app_icons.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/common/constants/my_flutter_app_icons.dart';
 import 'package:eurovision_app/app/features/presentation/feature/provider/feature_provider.dart';
@@ -7,7 +6,6 @@ import 'package:eurovision_app/app/features/presentation/home_detail/view/contes
 import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
 import 'package:eurovision_app/app/features/presentation/search_video/view/video_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/core/constants/page_type_enum.dart';
 import 'package:eurovision_app/app/features/presentation/home/view/home_view.dart';

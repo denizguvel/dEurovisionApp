@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// A section of the About page that displays social media icons (Facebook, Instagram, TikTok, etc.)
+/// and opens external links when tapped using the url_launcher package.
 class AboutSocialLinksSection extends StatelessWidget {
   const AboutSocialLinksSection({super.key});
-
 
 Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
