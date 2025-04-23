@@ -35,8 +35,8 @@ class ThemePickerBottomSheet extends StatelessWidget {
             onTap: () {
               viewModel.setTheme(
                 color: AppColors.black,
-                title: const TextStyle(fontSize: 18, color: AppColors.white, fontWeight: FontWeight.bold),
-                subtitle: const TextStyle(fontSize: 16, color: AppColors.pinkyPink),
+                title: const TextStyle(fontSize: 18, color: AppColors.pinkyPink, fontWeight: FontWeight.bold),
+                subtitle: const TextStyle(fontSize: 16, color: AppColors.spanishGray),
                 trailing: const TextStyle(fontSize: 16, color: AppColors.white70, fontWeight: FontWeight.w300),
                 iconColor: AppColors.white70,
               );
