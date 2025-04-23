@@ -50,15 +50,40 @@ final class ContestantDetailRemoteDatasourceImpl implements ContestantDetailRemo
     }
   }
 
-  Future<DataResult<List<ContestantModel>>> fetchAllContestants({required int year}) async {
+  Future<DataResult<List<int>>> fetchAvailableYears() async {
     try {
       final response = await _dioApiManager.get<List<dynamic>>(
-        '/contests/$year',
+        '/contests',
         converter: (data) {
-          if (data is Map<String, dynamic> && data.containsKey('contestants')) {
-            final contestantsData = data['contestants'] as List;
-            return contestantsData
-                .map((e) => ContestantModel.fromJson(e as Map<String, dynamic>, year))
+          if (data is List) {
+            return data
+                .map((e) => (e as Map<String, dynamic>)['year'] as int)
+                .toList();
+          }
+          return <int>[];
+        },
+      );
+
+      if (response.isSuccess && response.data != null) {
+        return SuccessDataResult<List<int>>(data: response.data!.cast<int>());
+      } else {
+        return ErrorDataResult<List<int>>(
+            message: response.error?.message ?? "Unknown error");
+      }
+    } catch (e) {
+      return ErrorDataResult<List<int>>(
+          message: "Server Error: ${e.toString()}");
+    }
+  }
+
+  Future<DataResult<List<ContestantModel>>> fetchAllContestants() async {
+    try {
+      final response = await _dioApiManager.get<List<dynamic>>(
+        '/contestants',
+        converter: (data) {
+          if (data is List) {
+            return data
+                .map((e) => ContestantModel.fromJson(e, e['year'] as int))
                 .toList();
           }
           return <ContestantModel>[];
@@ -68,10 +93,12 @@ final class ContestantDetailRemoteDatasourceImpl implements ContestantDetailRemo
       if (response.isSuccess && response.data != null) {
         return SuccessDataResult<List<ContestantModel>>(data: response.data!.cast<ContestantModel>());
       } else {
-        return ErrorDataResult<List<ContestantModel>>(message: response.error?.message ?? "Unknown error");
+        return ErrorDataResult<List<ContestantModel>>(
+            message: response.error?.message ?? "Unknown error");
       }
     } catch (e) {
-      return ErrorDataResult<List<ContestantModel>>(message: "Server Error: ${e.toString()}");
+      return ErrorDataResult<List<ContestantModel>>(
+          message: "Server Error: ${e.toString()}");
     }
   }
 }
