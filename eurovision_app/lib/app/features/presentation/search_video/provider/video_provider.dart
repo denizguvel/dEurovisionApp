@@ -8,14 +8,18 @@ import 'package:eurovision_app/core/dio_manager/dio_manager.dart';
 import 'package:eurovision_app/core/providers/base_list_provider.dart';
 import 'package:eurovision_app/core/result/result.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+/// Manages state for Eurovision video browsing, search, year selection, 
+/// favorite tracking, and Youtube video playback. Acts as the main provider
+/// for the VideoView screen.
 class VideoProvider extends BaseListProvider<ContestantDetailModel> {
   final ContestantDetailRemoteDatasourceImpl _detailDatasource = ContestantDetailRemoteDatasourceImpl();
   final DioApiManager _dio = DioApiManager(baseUrl: EnvConfig.eurovisionBaseUrl);
 
-  final Map<int, YoutubePlayerController> _controllers = {};
-  Map<int, YoutubePlayerController> get controllers => _controllers;
+  final Map<String, YoutubePlayerController> _controllers = {};
+  Map<String, YoutubePlayerController> get controllers => _controllers;
 
   int _selectedYear = YearUtil.getLatestAvailableYear();
   int get selectedYear => _selectedYear;
@@ -39,10 +43,104 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
   final ScrollController scrollController = ScrollController();
   Timer? debounce;
 
+  List<String> _favoriteKeys = [];
+  final List<ContestantDetailModel> _favoriteItems = [];
+  List<ContestantDetailModel> get favoriteItems => _favoriteItems;
+
+  Future<void> loadFavoriteVideos() async {
+    final box = Hive.box('settings');
+    _favoriteKeys = List<String>.from(box.get('favorites', defaultValue: []));
+    _favoriteItems.clear();
+
+    for (final key in _favoriteKeys) {
+      final parts = key.split('-');
+      if (parts.length != 2) continue;
+
+      final year = int.tryParse(parts[0]);
+      final id = int.tryParse(parts[1]);
+
+      if (year != null && id != null) {
+        final result = await _detailDatasource.fetchContestantDetail(year: year, id: id);
+        if (result is SuccessDataResult<ContestantDetailModel>) {
+          final data = result.data!;
+          if (data.videoUrls.isNotEmpty) {
+            final videoId = YoutubePlayer.convertUrlToId(data.videoUrls.first);
+            if (videoId != null && videoId.isNotEmpty) {
+              final controllerKey = '$year-$id';
+              _controllers[controllerKey] = YoutubePlayerController(
+                initialVideoId: videoId,
+                flags: const YoutubePlayerFlags(
+                  autoPlay: false, mute: false, enableCaption: true),
+              );
+              _favoriteItems.add(data);
+            }
+          }
+        }
+      }
+    }
+
+    notifyListeners();
+  }
+
+  bool isFavorite(int year, int id) {
+    return _favoriteKeys.contains('$year-$id');
+  }
+
+  Future<void> toggleFavorite(int year, int id) async {
+    final box = Hive.box('settings');
+    final key = '$year-$id';
+
+    if (_favoriteKeys.contains(key)) {
+      _favoriteKeys.remove(key);
+      _favoriteItems.removeWhere((e) => e.year == year && e.id == id);
+    } else {
+      _favoriteKeys.add(key);
+      final result = await _detailDatasource.fetchContestantDetail(year: year, id: id);
+      if (result is SuccessDataResult<ContestantDetailModel>) {
+        final data = result.data!;
+        if (data.videoUrls.isNotEmpty) {
+          final videoId = YoutubePlayer.convertUrlToId(data.videoUrls.first);
+          if (videoId != null && videoId.isNotEmpty) {
+            final controllerKey = '$year-$id';
+            _controllers[controllerKey] = YoutubePlayerController(
+              initialVideoId: videoId,
+              flags: const YoutubePlayerFlags(autoPlay: false, mute: false, enableCaption: true),
+            );
+            _favoriteItems.add(data);
+          }
+        }
+      }
+    }
+
+    await box.put('favorites', _favoriteKeys);
+    notifyListeners();
+  }
+
+  Future<bool> fetchContestantDetailAndInitController(int year, int id) async {
+  final result = await _detailDatasource.fetchContestantDetail(year: year, id: id);
+  if (result is SuccessDataResult<ContestantDetailModel>) {
+    final data = result.data!;
+    if (data.videoUrls.isNotEmpty) {
+      final videoId = YoutubePlayer.convertUrlToId(data.videoUrls.first);
+      if (videoId != null && videoId.isNotEmpty) {
+        final key = '$year-$id';
+        _controllers[key] = YoutubePlayerController(
+          initialVideoId: videoId,
+          flags: const YoutubePlayerFlags(autoPlay: false, mute: false, enableCaption: true),
+        );
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+
   Future<void> init() async {
     scrollController.addListener(_scrollListener);
     await loadAvailableYears();
     await loadAllContestantsGlobal(); 
+    await loadFavoriteVideos();
     await updateYear(_availableYears.first);
   }
 
@@ -163,8 +261,9 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
         if (data.videoUrls.isNotEmpty) {
           final videoId = YoutubePlayer.convertUrlToId(data.videoUrls.first);
           if (videoId != null && videoId.isNotEmpty) {
+            final controllerKey = '${data.year}-${data.id}';
             if (isDisposed) return;
-            _controllers[id] = YoutubePlayerController(
+            _controllers[controllerKey] = YoutubePlayerController(
               initialVideoId: videoId,
               flags: const YoutubePlayerFlags(
                   autoPlay: false, mute: false, enableCaption: true),
@@ -207,8 +306,9 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
         if (data.videoUrls.isNotEmpty) {
           final videoId = YoutubePlayer.convertUrlToId(data.videoUrls.first);
           if (videoId != null && videoId.isNotEmpty) {
+            final controllerKey = '${data.year}-${data.id}';
             if (isDisposed) return;
-            _controllers[contestant.id] = YoutubePlayerController(
+            _controllers[controllerKey] = YoutubePlayerController(
               initialVideoId: videoId,
               flags: const YoutubePlayerFlags(
                 autoPlay: false,

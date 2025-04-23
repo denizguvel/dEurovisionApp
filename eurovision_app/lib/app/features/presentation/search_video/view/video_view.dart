@@ -1,13 +1,11 @@
-import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/view/my_top_ten_imports.dart';
-import 'package:eurovision_app/app/features/presentation/search_video/widget/videoplayer_widget.dart';
+import 'package:eurovision_app/app/features/presentation/search_video/provider/video_provider.dart';
+import 'package:eurovision_app/app/features/presentation/search_video/widget/searchbar_widget.dart';
+import 'package:eurovision_app/app/features/presentation/search_video/widget/videolist_widget.dart';
 import 'package:eurovision_app/app/features/presentation/search_video/widget/yearbottomsheet_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../provider/video_provider.dart';
 
-/// A widget that represents the Video view of the app.
-/// It displays a list of videos for a selected year and allows the user to pick a year.
+/// VideoView is the main screen for displaying Eurovision videos.
+/// It contains a search bar, year picker, and a tab-based layout for all videos and favorites.
 class VideoView extends StatelessWidget {
   const VideoView({super.key});
 
@@ -15,122 +13,62 @@ class VideoView extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = context.watch<VideoProvider>();
 
-    return Column(
-      children: [
-        // Search bar
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: TextField(
-            controller: provider.searchController,
-            style: const TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              hintText: 'Search artist...',
-              hintStyle: const TextStyle(color: Colors.grey),
-              prefixIcon: const Icon(Icons.search, color: Colors.grey),
-              suffixIcon: IconButton(
-                icon: const Icon(Icons.clear, color: Colors.grey),
-                onPressed: provider.clearSearch,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Colors.grey),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Colors.grey),
-              ),
-            ),
-            onChanged: provider.onSearchChanged,
-          ),
-        ),
-
-        // Year Picker
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6),
-          child: GestureDetector(
-            onTap: () async {
-              if (provider.availableYears.isEmpty) {
-                await provider.loadAvailableYears();
-              }
-              _showYearPicker(context, provider);
-            },
-            child: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(provider.selectedYear.toString(),
-                      style: const TextStyle(color: Colors.white)),
-                  const Icon(Icons.arrow_drop_down, color: Colors.white),
-                ],
-              ),
-            ),
-          ),
-        ),
-
-        // Video List
-        Expanded(
-          child: provider.items.isEmpty && provider.isLoading
-              ? const Center(child: LoadingIndicator())
-              : provider.items.isEmpty
-                  ? const Center(
-                      child: Text("No videos found for this artist.",
-                          style: TextStyle(color: Colors.white)))
-                  : ListView.builder(
-                      controller: provider.scrollController,
-                      padding: const EdgeInsets.all(16),
-                      itemCount: provider.items.length +
-                          (provider.hasMore ? 1 : 0),
-                      itemBuilder: (context, index) {
-                        if (index == provider.items.length) {
-                          return const Padding(
-                            padding: EdgeInsets.all(12),
-                            child: Center(child: LoadingIndicator()),
-                          );
-                        }
-
-                        final contestant = provider.items[index];
-                        final controller =
-                            provider.controllers[contestant.id];
-
-                        return Card(
-                          shadowColor: AppColors.black,
-                          color: Colors.transparent,
-                          elevation: 12,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            side: const BorderSide(
-                                color: Colors.grey, width: 1.0),
-                          ),
-                          margin: const EdgeInsets.symmetric(vertical: 8),
-                          child: Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("${contestant.artist} - ${contestant.song}",
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.white)),
-                                Text("Country: ${contestant.country}",
-                                    style:
-                                        const TextStyle(color: AppColors.white)),
-                                const SizedBox(height: 12),
-                                if (controller != null)
-                                  YoutubePlayerWidget(controller: controller),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+    return DefaultTabController(
+      length: 2,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                const SearchBarWidget(),
+                const SizedBox(width: 8),
+                GestureDetector(
+                  onTap: () async {
+                    if (provider.availableYears.isEmpty) {
+                      await provider.loadAvailableYears();
+                    }
+                    _showYearPicker(context, provider);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-        ),
-      ],
+                    child: Row(
+                      children: [
+                        Text(
+                          provider.selectedYear.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const Icon(Icons.arrow_drop_down, color: Colors.white),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const TabBar(
+            labelColor: AppColors.pinkyPink,
+            unselectedLabelColor: Colors.white,
+            indicatorColor: AppColors.pinkyPink,
+            tabs: [
+              Tab(text: AppStrings.allVideos),
+              Tab(text: AppStrings.favorites),
+            ],
+          ),
+          const Expanded(
+            child: TabBarView(
+              children: [
+                VideoListWidget(isFavorites: false),
+                VideoListWidget(isFavorites: true),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
