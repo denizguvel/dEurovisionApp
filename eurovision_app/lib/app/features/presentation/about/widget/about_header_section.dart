@@ -55,16 +55,25 @@ class AboutHeaderSection extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width - 48),
-                    child: Text(
-                      AppStrings.aboutTitle2,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.white,
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 48,
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(8), 
                       ),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      softWrap: true,
+                      child: Text(
+                        AppStrings.aboutTitle2,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: AppColors.white,
+                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
+                      ),
                     ),
                   ),
                 ],
