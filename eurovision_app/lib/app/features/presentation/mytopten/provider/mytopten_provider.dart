@@ -59,6 +59,22 @@ class MyTop10Provider extends ChangeNotifier {
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
+  bool _hasSeenOnboarding = false;
+  bool get hasSeenOnboarding => _hasSeenOnboarding;
+
+  void setOnboardingSeen(bool value) {
+    _hasSeenOnboarding = value;
+    notifyListeners();
+  }
+
+  bool _pendingOnboarding = false;
+  bool get pendingOnboarding => _pendingOnboarding;
+
+  void setPendingOnboarding(bool value) {
+    _pendingOnboarding = value;
+    notifyListeners();
+  }
+
 
   // Functions
   Future<void> fetchAvailableYears() async {

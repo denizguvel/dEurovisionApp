@@ -36,7 +36,6 @@ class ServiceLocator {
           ),
         ),
         ChangeNotifierProvider(create: (_) => MyTop10Provider()),
-        //ChangeNotifierProvider(create: (_) => VideoProvider()),
         ChangeNotifierProvider(
           create: (_) => VideoProvider()..init(),
           child: const VideoView(),

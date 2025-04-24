@@ -60,6 +60,10 @@ class AppStrings {
   static const String noFavorites = "No favorite videos yet.";
   static const String favorites = "Favorites";
   static const String searchArtist = "Search artist...";
+  static const String showCaseYear = " You can select the year from here.";
+  static const String showCaseCounter = " Track how many contestants you've selected here.";
+  static const String showCaseNext = "Continue from here when you're done with your selection!";
+
 
   //Titles
   static const String titleTopTen = "Top 10 Contestants";

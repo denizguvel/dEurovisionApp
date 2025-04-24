@@ -69,26 +69,6 @@ class _ContestantDetailViewState extends State<ContestantDetailView> {
             const SizedBox(height: 16),
             LyricsCardWidget(data: data),
             const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                final videoUrl = data.videoUrls.isNotEmpty ? data.videoUrls.first : null;
-                if (videoUrl != null && videoUrl.isNotEmpty) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => ContestantVideoFullScreenView(videoUrl: videoUrl),
-                    ),
-                  );
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.redAccent,
-              ),
-              child: Icon(
-                Icons.play_arrow,
-                color: Colors.white,
-              ),
-            ),
           ],
         ),
       ),

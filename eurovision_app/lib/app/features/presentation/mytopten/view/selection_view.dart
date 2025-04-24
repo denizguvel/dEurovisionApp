@@ -1,12 +1,5 @@
-import 'package:eurovision_app/app/common/constants/app_colors.dart';
-import 'package:eurovision_app/app/common/constants/app_strings.dart';
-import 'package:eurovision_app/app/features/data/models/contestant_model.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/provider/mytopten_provider.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_grid.dart';
+import 'package:eurovision_app/app/features/presentation/mytopten/view/my_top_ten_imports.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/selection_status_row_widget.dart';
-import 'package:eurovision_app/app/features/presentation/mytopten/widget/year_select_button_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 /// A widget that represents the selection view of the app.
 /// It displays a grid of contestants and allows the user to select a year.
@@ -16,6 +9,9 @@ class SelectionView extends StatelessWidget {
   final void Function(BuildContext context, ContestantModel contestant, LongPressStartDetails details) onLongPressStart;
   final VoidCallback onLongPressEnd;
   final VoidCallback onNext;
+  final GlobalKey yearButtonKey;
+  final GlobalKey counterKey;
+  final GlobalKey nextButtonKey;
 
   const SelectionView({
     super.key,
@@ -24,6 +20,9 @@ class SelectionView extends StatelessWidget {
     required this.onLongPressStart,
     required this.onLongPressEnd,
     required this.onNext,
+    required this.yearButtonKey,
+    required this.counterKey,
+    required this.nextButtonKey,
   });
 
   @override
@@ -70,19 +69,27 @@ class SelectionView extends StatelessWidget {
                   children: [ Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      YearSelectButton(
-                        years: years,
-                        selectedYear: selectedYear,
-                        onYearChanged: onYearChanged,
+                      Showcase(
+                        key: yearButtonKey,
+                        description: AppStrings.showCaseYear,
+                        child: YearSelectButton(
+                          years: years,
+                          selectedYear: selectedYear,
+                          onYearChanged: onYearChanged,
+                        ),
                       ),
                      Expanded(
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
-                            child: SelectionStatusRow(
-                              selectedYear: selectedYear,
-                              selectedCount: selectedTop10.length,
+                            child: Showcase(
+                              key: counterKey,
+                              description: AppStrings.showCaseCounter,
+                              child: SelectionStatusRow(
+                                selectedYear: selectedYear,
+                                selectedCount: selectedTop10.length,
+                              ),
                             ),
                           ),
                         ),
@@ -106,12 +113,16 @@ class SelectionView extends StatelessWidget {
           Positioned(
             bottom: 16,
             right: 16,
-            child: FloatingActionButton(
-              focusElevation: 10,
-              hoverColor: AppColors.white,
-              backgroundColor: AppColors.pinkyPink,
-              onPressed: onNext,
-              child: const Icon(Icons.arrow_forward, color: AppColors.white),
+            child: Showcase(
+              key: nextButtonKey,
+              description: AppStrings.showCaseNext,
+              child: FloatingActionButton(
+                focusElevation: 10,
+                hoverColor: AppColors.white,
+                backgroundColor: AppColors.pinkyPink,
+                onPressed: onNext,
+                child: const Icon(Icons.arrow_forward, color: AppColors.white),
+              ),
             ),
           ),
       ],

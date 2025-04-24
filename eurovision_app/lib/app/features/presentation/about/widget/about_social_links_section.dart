@@ -1,6 +1,5 @@
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/common/constants/app_url.dart';
-import 'package:eurovision_app/app/features/presentation/feature/view/M.DART';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,7 +20,7 @@ Future<void> _launchUrl(String url) async {
     return SliverToBoxAdapter(
       child: Container(
         color: Colors.grey.shade100,
-        padding: PaddingHelper.medium.all,
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

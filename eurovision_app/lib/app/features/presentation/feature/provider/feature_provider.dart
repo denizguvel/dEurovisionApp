@@ -232,7 +232,7 @@ Future<void> getCountryWins() async {
   // ----------------------------- Network -----------------------------
   final INetworkControl networkControl;
 
-  FeatureProvider({required this.networkControl}) : assert(networkControl != null) {
+  FeatureProvider({required this.networkControl}) {
     _initNetwork();
   }
 

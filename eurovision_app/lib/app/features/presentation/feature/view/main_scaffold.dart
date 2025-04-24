@@ -18,14 +18,9 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 /// Main scaffold widget managing app layout and navigation.
 /// Handles AppBar, page routing, and bottom navigation bar.
-class MainScaffold extends StatefulWidget {
+class MainScaffold extends StatelessWidget {
   const MainScaffold({super.key});
 
-  @override
-  State<MainScaffold> createState() => _MainScaffoldState();
-}
-
-class _MainScaffoldState extends State<MainScaffold> {
   @override
   Widget build(BuildContext context) {
     final featureProvider = Provider.of<FeatureProvider>(context);
@@ -33,73 +28,77 @@ class _MainScaffoldState extends State<MainScaffold> {
 
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar:(featureProvider.pageType == PageType.main &&
-         featureProvider.currentIndex == 1 &&
-         context.watch<MyTop10Provider>().showSecondPage)
-        ? null
-        : switch (featureProvider.pageType) {
-            PageType.main => CustomLogoAppBar(
-              backgroundGradient: LinearGradient(
-                  begin: gradient.begin,
-                  end: gradient.end,
-                  colors: gradient.colors,
+      appBar: (featureProvider.pageType == PageType.main &&
+              featureProvider.currentIndex == 1 &&
+              context.watch<MyTop10Provider>().showSecondPage)
+          ? null
+          : switch (featureProvider.pageType) {
+              PageType.main => CustomLogoAppBar(
+                  backgroundGradient: LinearGradient(
+                    begin: gradient.begin,
+                    end: gradient.end,
+                    colors: gradient.colors,
+                  ),
                 ),
-            ),
-        _ => CommonAppBar(pageType: featureProvider.pageType),
-      },
+              _ => CommonAppBar(pageType: featureProvider.pageType),
+            },
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-            color: AppColors.black),
+            decoration: const BoxDecoration(color: AppColors.black),
           ),
-        switch (featureProvider.pageType) {
-          PageType.main => IndexedStack(
-            index: featureProvider.currentIndex,
-            children: [
-              const HomeView(),
-              MyTop10View(),
-              
-              VideoView(),
-              const AboutView(),
-            ],
-          ),
-          PageType.winner => const WinnerView(),
-          PageType.contestantDetail => ContestantDetailView(
-            id: featureProvider.selectedContestantId!,
-            year: featureProvider.selectedYear!,
-          ), 
-        },
+          switch (featureProvider.pageType) {
+            PageType.main => IndexedStack(
+                index: featureProvider.currentIndex,
+                children: const [
+                  HomeView(),
+                  MyTop10View(),
+                  VideoView(),
+                  AboutView(),
+                ],
+              ),
+            PageType.winner => const WinnerView(),
+            PageType.contestantDetail => ContestantDetailView(
+                id: featureProvider.selectedContestantId!,
+                year: featureProvider.selectedYear!,
+              ),
+          },
         ],
       ),
       bottomNavigationBar: SalomonBottomBar(
-         currentIndex: featureProvider.currentIndex,
+        currentIndex: featureProvider.currentIndex,
         onTap: (index) {
           featureProvider.changeIndex(index);
+          if (index == 1) {
+            context.read<MyTop10Provider>().setPendingOnboarding(true);
+          }
         },
         selectedItemColor: AppColors.crimson,
         unselectedItemColor: AppColors.white70,
         items: [
           SalomonBottomBarItem(
-            icon: Icon(MyFlutterApp.home_outline),
-            title: Text(AppStrings.homePage),
+            icon: const Icon(MyFlutterApp.home_outline),
+            title: const Text(AppStrings.homePage),
             selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(MyFlutterApp.star),
-            title: Text(AppStrings.mytop10),
+            icon: const Icon(MyFlutterApp.star),
+            title: const Text(AppStrings.mytop10),
             selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(MyFlutterApp.video_1),
-            title: Text(AppStrings.channel),
+            icon: const Icon(MyFlutterApp.video_1),
+            title: const Text(AppStrings.channel),
             selectedColor: AppColors.pinkyPink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(MyFlutterApp.eurovision_heart_icon, color: featureProvider.currentIndex == 3
-                ? AppColors.pinkyPink
-                : AppColors.white70), 
-            title: Text(AppStrings.about),
+            icon: Icon(
+              MyFlutterApp.eurovision_heart_icon,
+              color: featureProvider.currentIndex == 3
+                  ? AppColors.pinkyPink
+                  : AppColors.white70,
+            ),
+            title: const Text(AppStrings.about),
             selectedColor: AppColors.pinkyPink,
           ),
         ],

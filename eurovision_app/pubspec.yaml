@@ -37,6 +37,7 @@ dependencies:
   url_launcher: ^6.3.1              # Open URLs, dial numbers, etc.
   salomon_bottom_bar:               # Custom bottom navigation bar
     path: packages/salomon_bottom_bar
+  showcaseview: ^4.0.1              #Onboarding and showcase view
 
 
 dev_dependencies:

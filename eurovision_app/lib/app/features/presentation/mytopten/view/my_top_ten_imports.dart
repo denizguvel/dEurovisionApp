@@ -14,3 +14,4 @@ export 'package:eurovision_app/app/features/presentation/mytopten/widget/contest
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/year_select_button_widget.dart';
 export 'package:eurovision_app/app/features/data/models/contestant_model.dart';
 export 'package:eurovision_app/app/features/presentation/mytopten/widget/floating_column_widget.dart';
+export 'package:showcaseview/showcaseview.dart';
