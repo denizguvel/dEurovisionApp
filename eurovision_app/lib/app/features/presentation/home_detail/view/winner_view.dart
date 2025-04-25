@@ -21,7 +21,7 @@ class WinnerView extends StatelessWidget {
         final countryScores = featureProvider.items;
 
         return Container(
-          color: AppColors.white,
+          color: AppColors.black,
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
@@ -34,8 +34,8 @@ class WinnerView extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: DataTable(
                     columns: const [
-                      DataColumn(label: Text(AppStrings.dataRowCountry)),
-                      DataColumn(label: Text(AppStrings.dataRowWins)),
+                      DataColumn(label: Text(AppStrings.dataRowCountry, style: TextStyle(color: AppColors.white),)),
+                      DataColumn(label: Text(AppStrings.dataRowWins ,style: TextStyle(color: AppColors.white))),
                     ],
                     rows: countryScores
                         .map((score) => DataRow(
@@ -50,12 +50,12 @@ class WinnerView extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 8),
                                       Flexible(
-                                        child: Text(score.countryName),
+                                        child: Text(score.countryName, style: TextStyle(color: AppColors.white)),
                                       ),
                                     ],
                                   ),
                                 ),
-                                DataCell(Text(score.wins.toString())),
+                                DataCell(Text(score.wins.toString(), style: TextStyle(color: AppColors.white))),
                               ],
                             ))
                         .toList(),
