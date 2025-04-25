@@ -15,9 +15,9 @@ class CustomLogoAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         height: kToolbarHeight,
         width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: backgroundGradient,
-        ),
+        // decoration: BoxDecoration(
+        //   gradient: backgroundGradient,
+        // ),
         child: Image.asset(AppIcons.euBanner,
           width: double.infinity,
           height: kToolbarHeight,
