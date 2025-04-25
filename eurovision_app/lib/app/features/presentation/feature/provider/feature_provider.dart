@@ -217,7 +217,7 @@ Future<void> getCountryWins() async {
   // ----------------------------- Gradient -----------------------------
   final GetGradientUseCase _getGradientUseCase = GetGradientUseCase();
   GradientEntity _gradient = GradientEntity(
-    colors: [AppColors.black, AppColors.pinkyPink, AppColors.black],
+    colors: [AppColors.black, AppColors.black, AppColors.pinkyPink, AppColors.black, AppColors.black],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
