@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
@@ -14,7 +15,7 @@ class SearchBarWidget extends StatelessWidget {
     return Expanded(
       child: TextField(
         controller: provider.searchController,
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white), 
         decoration: InputDecoration(
           hintText: AppStrings.searchArtist,
           hintStyle: const TextStyle(color: Colors.grey),
@@ -30,6 +31,10 @@ class SearchBarWidget extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: Colors.grey),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: AppColors.pinkyPink, width: 2),
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 12),
         ),
