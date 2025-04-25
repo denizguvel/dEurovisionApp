@@ -28,21 +28,23 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Lottie.asset(
-              AppAnimations.splash_ani,
-              width: 200,
-              height: 200,
-              fit: BoxFit.contain,
-            ),
-            SizedBox(height: 20,),
-            Text(AppStrings.appName, style: TextStyle(color: AppColors.crimson5, fontWeight: FontWeight.bold, fontSize: 40),)
-          ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Lottie.asset(
+                AppAnimations.splash_ani,
+                width: 200,
+                height: 200,
+                fit: BoxFit.contain,
+              ),
+              SizedBox(height: 20,),
+              Text(AppStrings.appName, style: TextStyle(color: AppColors.crimson5, fontWeight: FontWeight.bold, fontSize: 40),)
+            ],
+          ),
         ),
       ),
     );
