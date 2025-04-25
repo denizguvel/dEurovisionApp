@@ -82,9 +82,16 @@ class VideoListWidget extends StatelessWidget {
                 Consumer<FeatureProvider>(
                   builder: (context, featureProvider, _) {
                     final countryName = featureProvider.countryCodeNameMap[contestant.country] ?? contestant.country;
-                    return Text("Country: $countryName", style: const TextStyle(color: Colors.white));
+                    return Text('${AppStrings.countryText} $countryName', style: const TextStyle(color: Colors.white));
                   },
                 ),
+                SizedBox(height: 4),
+                Text(
+                "${AppStrings.yearText} ${contestant.year}",
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 12,
+                ),),
                 const SizedBox(height: 12),
                 if (controller != null)
                   YoutubePlayerWidget(controller: controller)

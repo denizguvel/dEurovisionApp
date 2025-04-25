@@ -63,6 +63,8 @@ class AppStrings {
   static const String showCaseYear = " You can select the year from here.";
   static const String showCaseCounter = " Track how many contestants you've selected here.";
   static const String showCaseNext = "Continue from here when you're done with your selection!";
+  static const String countryText = "Country:";
+  static const String yearText = "Year:";
 
 
   //Titles
