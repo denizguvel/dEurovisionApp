@@ -47,6 +47,10 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
   final List<ContestantDetailModel> _favoriteItems = [];
   List<ContestantDetailModel> get favoriteItems => _favoriteItems;
 
+  List<ContestantDetailModel> _filteredFavoriteItems = [];
+  List<ContestantDetailModel> get filteredFavoriteItems => _filteredFavoriteItems;
+
+
   Future<void> loadFavoriteVideos() async {
     final box = Hive.box('settings');
     _favoriteKeys = List<String>.from(box.get('favorites', defaultValue: []));
@@ -78,7 +82,7 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
         }
       }
     }
-
+    _filteredFavoriteItems = List.from(_favoriteItems);
     notifyListeners();
   }
 
@@ -153,11 +157,18 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
   void onSearchChanged(String value) {
     debounce?.cancel();
     debounce = Timer(const Duration(milliseconds: 500), () {
-      if (value.isEmpty) {
+      _artistFilter = value.toLowerCase();
+
+      if (_artistFilter.isEmpty) {
         updateYear(selectedYear);
+        _filteredFavoriteItems = List.from(_favoriteItems);
       } else {
-        setArtistFilterGlobal(value);
+        setArtistFilterGlobal(_artistFilter);
+        _filteredFavoriteItems = _favoriteItems
+            .where((e) => e.artist.toLowerCase().contains(_artistFilter))
+            .toList();
       }
+      notifyListeners();
     });
   }
 
@@ -165,6 +176,8 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
     searchController.clear();
     _artistFilter = ''; 
     updateYear(selectedYear);
+    _filteredFavoriteItems = List.from(_favoriteItems);
+    notifyListeners();
   }
 
   Future<void> loadAvailableYears() async {

@@ -13,7 +13,7 @@ class VideoListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<VideoProvider>();
-    final list = isFavorites ? provider.favoriteItems : provider.items;
+    final list = isFavorites ? provider.filteredFavoriteItems : provider.items;
 
     if (list.isEmpty && provider.isLoading) {
       return const Center(child: LoadingIndicator());
