@@ -5,6 +5,7 @@ import 'package:eurovision_app/app/features/presentation/feature/provider/featur
 import 'package:eurovision_app/app/features/presentation/home_detail/view/home_detail_imports.dart';
 import 'package:eurovision_app/app/features/presentation/mytopten/widget/contestant_hover_card_widget.dart';
 import 'package:flutter/rendering.dart';
+import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
@@ -64,6 +65,7 @@ class MyTop10Provider extends ChangeNotifier {
 
   void setOnboardingSeen(bool value) {
     _hasSeenOnboarding = value;
+    Hive.box('settings').put('hasSeenTop10Onboarding', value);
     notifyListeners();
   }
 
@@ -214,6 +216,8 @@ void init() {
   if (_initialized) return;
   fetchAvailableYears();
   fetchYearData(_selectedYear);
+  final box = Hive.box('settings');
+  _hasSeenOnboarding = box.get('hasSeenTop10Onboarding', defaultValue: false);
   _initialized = true;
 }
 
