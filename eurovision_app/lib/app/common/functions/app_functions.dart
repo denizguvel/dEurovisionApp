@@ -14,6 +14,12 @@ final class AppFunctions {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.black,
+    systemNavigationBarIconBrightness: Brightness.light,
+  ));
+  
     try {
       await dotenv.load(fileName: ".env");
     } catch (e) {
