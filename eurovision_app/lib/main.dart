@@ -20,15 +20,24 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        navigatorKey: Navigation.navigationKey,
-        scaffoldMessengerKey: AppKeys.scaffoldMessengerKey,
-        theme: AppThemeData.lightTheme,
-        darkTheme: AppThemeData.darkTheme,
-        themeMode: context.watch<FeatureProvider>().themeMode,
-        home: const SplashView(),
-        debugShowCheckedModeBanner: false,
-        builder: (context, child) {
-        return NetworkWrapper(child: child ?? SizedBox.shrink());
+      navigatorKey: Navigation.navigationKey,
+      scaffoldMessengerKey: AppKeys.scaffoldMessengerKey,
+      theme: AppThemeData.lightTheme,
+      darkTheme: AppThemeData.darkTheme,
+      themeMode: context.watch<FeatureProvider>().themeMode,
+      home: const SplashView(),
+      debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        final mediaQuery = MediaQuery.of(context);
+
+        return MediaQuery(
+          data: mediaQuery.copyWith(
+            textScaler: TextScaler.linear(1.0),
+          ),
+          child: NetworkWrapper(
+            child: child ?? const SizedBox.shrink(),
+          ),
+        );
       },
     );
   }
