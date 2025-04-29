@@ -11,7 +11,7 @@ A modern Flutter application to explore, watch, and favorite Eurovision contest 
 
 ## 🎥 Demo
 
-![Demo](assets/screenshots/eu_app_gif.gif)
+![Demo](eurovision_app/assets/screenshots/eu_app_gif.gif)
 
 ---"
 
@@ -19,15 +19,15 @@ A modern Flutter application to explore, watch, and favorite Eurovision contest 
 
 | Home | Search | Favorites |
 |:---:|:---:|:---:|
-| ![Home](assets/screenshots/home.png) | ![Search](assets/screenshots/search.png) | ![Favorites](assets/screenshots/fav.png) |
+| ![Home](eurovision_app/assets/screenshots/home.png) | ![Search](eurovision_app/assets/screenshots/search.png) | ![Favorites](eurovision_app/assets/screenshots/fav.png) |
 
 | My Top 10 | Reorder List | Winner Details |
 |:---:|:---:|:---:|
-| ![MyTop10](assets/screenshots/mytop10.png) | ![Reorder](assets/screenshots/reorder.png) | ![Winner](assets/screenshots/winner.png) |
+| ![MyTop10](eurovision_app/assets/screenshots/mytop10.png) | ![Reorder](eurovision_app/assets/screenshots/reorder.png) | ![Winner](eurovision_app/assets/screenshots/winner.png) |
 
 | About |
 |:---:|
-| ![About](assets/screenshots/about.png) |
+| ![About](eurovision_app/assets/screenshots/about.png) |
 
 ---
 
