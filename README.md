@@ -123,13 +123,14 @@ flutter run
 
 ---
 
-## 🔗 API
+## 🔗 API Documentation
 
-The application fetches data from the following Eurovision API:
+This application uses the public Eurovision API to fetch contest data.
 
-```plaintext
-https://eurovisionapi.runasp.net/api/
-```
+- ✅ Official API: [`https://eurovisionapi.runasp.net/api/{endpoints}`](https://eurovisionapi.runasp.net/api/)
+- 📄 Full API documentation and available endpoints can be found here:  
+  [`https://eurovisionapi.runasp.net/documentation`](https://eurovisionapi.runasp.net/documentation)
+
 
 ---
 
