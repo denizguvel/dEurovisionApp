@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppThemeData {
@@ -13,12 +14,12 @@ class AppThemeData {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColors.white,
     textTheme: textTheme,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.lightGreen,
-        foregroundColor: Colors.white,
+        foregroundColor: AppColors.white,
         textStyle: textTheme.bodyMedium,
       ),
     ),
@@ -27,12 +28,12 @@ class AppThemeData {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.deepPurple,
-    scaffoldBackgroundColor: Colors.black,
-    textTheme: textTheme.apply(bodyColor: Colors.white, displayColor: Colors.white),
+    scaffoldBackgroundColor: AppColors.black,
+    textTheme: textTheme.apply(bodyColor: AppColors.white, displayColor: AppColors.white),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
+        foregroundColor: AppColors.white,
         textStyle: textTheme.bodyMedium,
       ),
     ),

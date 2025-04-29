@@ -48,7 +48,7 @@ class AboutHeaderSection extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
@@ -63,7 +63,7 @@ class AboutHeaderSection extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.7),
+                        color: AppColors.black.withOpacity(0.7),
                         borderRadius: BorderRadius.circular(8), 
                       ),
                       child: Text(

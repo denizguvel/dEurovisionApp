@@ -23,9 +23,9 @@ class ContestantInfoCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final countryNameMap = context.read<FeatureProvider>().countryCodeNameMap;
     return Card(
-      color: Colors.transparent,
+      color: AppColors.transparent,
       elevation: 12,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(color: Colors.grey, width: 1.0,),),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(color: AppColors.gray, width: 1.0,),),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -40,7 +40,7 @@ class ContestantInfoCardWidget extends StatelessWidget {
               ),
             ),
             const Divider(),
-            InfoRow(label: AppStrings.artist, value: artist, labelStyle: const TextStyle(color: Colors.white), valueStyle: const TextStyle(color: Colors.white),),
+            InfoRow(label: AppStrings.artist, value: artist, labelStyle: const TextStyle(color: AppColors.white), valueStyle: const TextStyle(color: AppColors.white),),
             InfoRow(label: AppStrings.song, value: song),
             InfoRow(label: AppStrings.country, value:  countryNameMap[country] ?? country,),
             InfoRow(label: AppStrings.year, value: year.toString()),

@@ -20,12 +20,12 @@ import 'package:eurovision_app/app/features/utils/year_util.dart';
 /// Handles contestant selection, ranking, theming, year data fetching, and screenshot sharing.
 class MyTop10Provider extends ChangeNotifier {
   // Theme
-  Color _backgroundColor = Colors.white;
-  Color _iconColor = Colors.grey;
+  Color _backgroundColor = AppColors.white;
+  Color _iconColor = AppColors.gray;
   Color get iconColor => _iconColor;
-  TextStyle _titleFontStyle = const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold);
-  TextStyle _subTitleFontStyle = const TextStyle(fontSize: 16, color: Colors.black87);
-  TextStyle _trailingFontStyle = const TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w300);
+  TextStyle _titleFontStyle = const TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.bold);
+  TextStyle _subTitleFontStyle = const TextStyle(fontSize: 16, color: AppColors.black);
+  TextStyle _trailingFontStyle = const TextStyle(fontSize: 16, color: AppColors.gray, fontWeight: FontWeight.w300);
 
   // Contest & Contestants
   EurovisionRemoteDatasourceImpl _eurovisionRemoteDatasource = EurovisionRemoteDatasourceImpl();
@@ -130,15 +130,15 @@ class MyTop10Provider extends ChangeNotifier {
 
   void clearSelection() {
     _selectedTop10.clear();
-    _backgroundColor = Colors.white;
-    _titleFontStyle = const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold);
-    _subTitleFontStyle = const TextStyle(fontSize: 16, color: Colors.black87);
-    _trailingFontStyle = const TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w300);
+    _backgroundColor = AppColors.white;
+    _titleFontStyle = const TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.bold);
+    _subTitleFontStyle = const TextStyle(fontSize: 16, color: AppColors.black);
+    _trailingFontStyle = const TextStyle(fontSize: 16, color: AppColors.gray, fontWeight: FontWeight.w300);
     _showSecondPage = false;
     notifyListeners();
   }
 
-  void setTheme({required Color color, required TextStyle title, required TextStyle subtitle, required TextStyle trailing, Color iconColor = Colors.grey}) {
+  void setTheme({required Color color, required TextStyle title, required TextStyle subtitle, required TextStyle trailing, Color iconColor = AppColors.gray}) {
     _backgroundColor = color;
     _titleFontStyle = title;
     _subTitleFontStyle = subtitle;
@@ -197,10 +197,10 @@ class MyTop10Provider extends ChangeNotifier {
 
   void resetSelection() {
   _selectedTop10.clear();
-  _backgroundColor = Colors.white;
-  _titleFontStyle = const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold);
-  _subTitleFontStyle = const TextStyle(fontSize: 16, color: Colors.black87);
-  _trailingFontStyle = const TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w300);
+  _backgroundColor = AppColors.white;
+  _titleFontStyle = const TextStyle(fontSize: 18, color: AppColors.black, fontWeight: FontWeight.bold);
+  _subTitleFontStyle = const TextStyle(fontSize: 16, color: AppColors.black);
+  _trailingFontStyle = const TextStyle(fontSize: 16, color: AppColors.gray, fontWeight: FontWeight.w300);
   _showSecondPage = false;
   notifyListeners();
 }

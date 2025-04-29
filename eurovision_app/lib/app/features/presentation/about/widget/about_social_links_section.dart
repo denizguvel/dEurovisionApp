@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
 import 'package:eurovision_app/app/common/constants/app_url.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ Future<void> _launchUrl(String url) async {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        color: Colors.grey.shade100,
+        color: AppColors.gray300,
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,22 +33,22 @@ Future<void> _launchUrl(String url) async {
             Row(
               children: [
                 IconButton(
-                  icon: const Icon(FontAwesomeIcons.facebook, color: Colors.blue),
+                  icon: const Icon(FontAwesomeIcons.facebook, color: AppColors.blueberry),
                   onPressed: () => _launchUrl(AppUrl.facebook),
                 ),
                 const SizedBox(height: 12),
                 IconButton(
-                  icon: const Icon(FontAwesomeIcons.instagram, color: Colors.redAccent),
+                  icon: const Icon(FontAwesomeIcons.instagram, color: AppColors.crimson),
                   onPressed: () => _launchUrl(AppUrl.instagram),
                 ),
                 const SizedBox(height: 12),
                 IconButton(
-                  icon: const Icon(FontAwesomeIcons.chrome, color: Colors.deepOrange),
+                  icon: const Icon(FontAwesomeIcons.chrome, color: AppColors.burntSienna),
                   onPressed: () => _launchUrl(AppUrl.website),
                 ),
                 const SizedBox(height: 12),
                 IconButton(
-                  icon: const Icon(FontAwesomeIcons.tiktok, color: Colors.greenAccent),
+                  icon: const Icon(FontAwesomeIcons.tiktok, color: AppColors.cloudBlue),
                   onPressed: () => _launchUrl(AppUrl.tiktok),
                 ),
               ],

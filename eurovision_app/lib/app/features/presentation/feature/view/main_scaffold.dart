@@ -27,7 +27,7 @@ class MainScaffold extends StatelessWidget {
     final gradient = featureProvider.gradient;
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.transparent,
       appBar: (featureProvider.pageType == PageType.main &&
               featureProvider.currentIndex == 1 &&
               context.watch<MyTop10Provider>().showSecondPage)

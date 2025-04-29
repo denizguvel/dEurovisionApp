@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../keys/keys.dart';
@@ -16,14 +17,14 @@ class AppSnackBar {
     TextStyle? textStyle,
   }) {
     final snackBar = SnackBar(
-      backgroundColor: backgroundColor ?? Colors.black,
+      backgroundColor: backgroundColor ?? AppColors.black,
       behavior: SnackBarBehavior.floating,
       content: Text(
         message,
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,
-          color: textColor ?? Colors.white,
+          color: textColor ?? AppColors.white,
         ),
       ),
     );

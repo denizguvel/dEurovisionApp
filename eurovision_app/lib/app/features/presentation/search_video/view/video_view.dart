@@ -33,16 +33,16 @@ class VideoView extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(color: AppColors.gray),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Row(
                       children: [
                         Text(
                           provider.selectedYear.toString(),
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: AppColors.white),
                         ),
-                        const Icon(Icons.arrow_drop_down, color: Colors.white),
+                        const Icon(Icons.arrow_drop_down, color: AppColors.white),
                       ],
                     ),
                   ),
@@ -52,7 +52,7 @@ class VideoView extends StatelessWidget {
           ),
           const TabBar(
             labelColor: AppColors.pinkyPink,
-            unselectedLabelColor: Colors.white,
+            unselectedLabelColor: AppColors.white,
             indicatorColor: AppColors.pinkyPink,
             tabs: [
               Tab(text: AppStrings.allVideos),
@@ -75,7 +75,7 @@ class VideoView extends StatelessWidget {
   void _showYearPicker(BuildContext context, VideoProvider provider) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.transparent,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
       builder: (_) => YearBottomSheet(

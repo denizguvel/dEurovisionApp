@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 extension SingleChildScrollViewExtensions on Widget {
@@ -8,7 +9,7 @@ extension SingleChildScrollViewExtensions on Widget {
       );
     }
     return SingleChildScrollView(
-      child: ColoredBox(color: Colors.transparent, child: this),
+      child: ColoredBox(color: AppColors.transparent, child: this),
     );
   }
 }

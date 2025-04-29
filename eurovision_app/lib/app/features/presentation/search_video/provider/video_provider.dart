@@ -155,22 +155,27 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
   }
 
   void onSearchChanged(String value) {
-    debounce?.cancel();
-    debounce = Timer(const Duration(milliseconds: 500), () {
-      _artistFilter = value.toLowerCase();
+  debounce?.cancel();
+  debounce = Timer(const Duration(milliseconds: 500), () {
+    _artistFilter = value.toLowerCase();
 
-      if (_artistFilter.isEmpty) {
-        updateYear(selectedYear);
-        _filteredFavoriteItems = List.from(_favoriteItems);
-      } else {
-        setArtistFilterGlobal(_artistFilter);
-        _filteredFavoriteItems = _favoriteItems
-            .where((e) => e.artist.toLowerCase().contains(_artistFilter))
-            .toList();
-      }
-      notifyListeners();
-    });
-  }
+    if (_artistFilter.isEmpty) {
+      _allContestantIds = _allContestantsGlobal.map((e) => e.id).toList();
+    } else {
+      final filtered = _allContestantsGlobal
+          .where((contestant) => contestant.artist.toLowerCase().contains(_artistFilter))
+          .toList();
+      _allContestantIds = filtered.map((e) => e.id).toList();
+    }
+    _currentPage = 0;
+    _hasMore = true;
+    _disposeControllers();
+    setLoaded([]);
+    fetchNextPageGlobal();
+    notifyListeners();
+  });
+}
+
 
   void clearSearch() {
     searchController.clear();
@@ -248,7 +253,7 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
 
     _allContestantIds = filtered.map((e) => e.id).toList();
     setLoaded([]);
-    await fetchNextPageGlobal(filtered);
+    await fetchNextPageGlobal();
   }
 
   Future<void> fetchNextPage() async {
@@ -293,53 +298,68 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
     _hasMore = end < _allContestantIds.length;
   }
 
-  Future<void> fetchNextPageGlobal(List<ContestantModel> filteredContestants) async {
-    if (!_hasMore || isDisposed || isLoading) return;
-    setLoading();
+  Future<void> fetchNextPageGlobal() async {
+  if (!_hasMore || isDisposed || isLoading) return;
+  setLoading();
 
-    final start = _currentPage * _pageSize;
-    final end = (_currentPage + 1) * _pageSize;
-    final pagedContestants = filteredContestants.sublist(
-      start,
-      end > filteredContestants.length ? filteredContestants.length : end,
+  final start = _currentPage * _pageSize;
+  final end = (_currentPage + 1) * _pageSize;
+
+  final filteredContestants = _allContestantsGlobal
+      .where((contestant) =>
+          _artistFilter.isEmpty ||
+          contestant.artist.toLowerCase().contains(_artistFilter))
+      .toList();
+
+  if (start >= filteredContestants.length) {
+    _hasMore = false;
+    setLoaded(items);
+    return;
+  }
+
+  final pagedContestants = filteredContestants.sublist(
+    start,
+    end > filteredContestants.length ? filteredContestants.length : end,
+  );
+
+  final List<ContestantDetailModel> list = [];
+
+  for (var contestant in pagedContestants) {
+    if (isDisposed) return;
+
+    final result = await _detailDatasource.fetchContestantDetail(
+      year: contestant.year,
+      id: contestant.id,
     );
 
-    final List<ContestantDetailModel> list = [];
-
-    for (var contestant in pagedContestants) {
-      if (isDisposed) return;
-
-      final result = await _detailDatasource.fetchContestantDetail(
-        year: contestant.year,
-        id: contestant.id,
-      );
-
-      if (result is SuccessDataResult<ContestantDetailModel>) {
-        final data = result.data!;
-        if (data.videoUrls.isNotEmpty) {
-          final videoId = YoutubePlayer.convertUrlToId(data.videoUrls.first);
-          if (videoId != null && videoId.isNotEmpty) {
-            final controllerKey = '${data.year}-${data.id}';
-            if (isDisposed) return;
-            _controllers[controllerKey] = YoutubePlayerController(
-              initialVideoId: videoId,
-              flags: const YoutubePlayerFlags(
-                autoPlay: false,
-                mute: false,
-                enableCaption: true,
-              ),
-            );
-            list.add(data);
-          }
+    if (result is SuccessDataResult<ContestantDetailModel>) {
+      final data = result.data!;
+      if (data.videoUrls.isNotEmpty) {
+        final videoId = YoutubePlayer.convertUrlToId(data.videoUrls.first);
+        if (videoId != null && videoId.isNotEmpty) {
+          final controllerKey = '${data.year}-${data.id}';
+          if (isDisposed) return;
+          _controllers[controllerKey] = YoutubePlayerController(
+            initialVideoId: videoId,
+            flags: const YoutubePlayerFlags(
+              autoPlay: false,
+              mute: false,
+              enableCaption: true,
+            ),
+          );
+          list.add(data);
         }
       }
     }
-
-    final updatedList = [...items, ...list];
-    setLoaded(updatedList);
-    _currentPage++;
-    _hasMore = end < filteredContestants.length;
   }
+
+  final updatedList = [...items, ...list];
+  setLoaded(updatedList);
+  _currentPage++;
+  _hasMore = end < filteredContestants.length;
+}
+
+
 
   void _disposeControllers() {
     for (final controller in _controllers.values) {

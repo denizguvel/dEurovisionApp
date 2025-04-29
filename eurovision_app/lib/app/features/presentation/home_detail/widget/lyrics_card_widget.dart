@@ -21,9 +21,9 @@ class LyricsCardWidget extends StatelessWidget {
       return const SizedBox();
     }
     return Card(
-      color: Colors.transparent,
+      color: AppColors.transparent,
       elevation: 12,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(color: Colors.grey, width: 1.0,),),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(color: AppColors.gray, width: 1.0,),),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

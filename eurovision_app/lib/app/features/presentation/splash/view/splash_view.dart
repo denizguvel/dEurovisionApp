@@ -30,7 +30,7 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +42,7 @@ class _SplashViewState extends State<SplashView> {
                 fit: BoxFit.contain,
               ),
               SizedBox(height: 20,),
-              Text(AppStrings.appName, style: TextStyle(color: AppColors.crimson5, fontWeight: FontWeight.bold, fontSize: 40),)
+              Text(AppStrings.appName, style: TextStyle(color: AppColors.pinkyPink, fontWeight: FontWeight.bold, fontSize: 40),)
             ],
           ),
         ),

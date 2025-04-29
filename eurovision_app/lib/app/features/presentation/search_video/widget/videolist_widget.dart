@@ -23,7 +23,7 @@ class VideoListWidget extends StatelessWidget {
       return Center(
         child: Text(
           isFavorites ? AppStrings.noFavorites : AppStrings.noVideos,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: AppColors.white),
         ),
       );
     }
@@ -45,11 +45,11 @@ class VideoListWidget extends StatelessWidget {
         final controller = provider.controllers[key];
 
         return Card(
-          color: Colors.transparent,
+          color: AppColors.transparent,
           elevation: 12,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
-            side: const BorderSide(color: Colors.grey, width: 1.0),
+            side: const BorderSide(color: AppColors.gray, width: 1.0),
           ),
           margin: const EdgeInsets.symmetric(vertical: 8),
           child: Padding(
@@ -82,14 +82,14 @@ class VideoListWidget extends StatelessWidget {
                 Consumer<FeatureProvider>(
                   builder: (context, featureProvider, _) {
                     final countryName = featureProvider.countryCodeNameMap[contestant.country] ?? contestant.country;
-                    return Text('${AppStrings.countryText} $countryName', style: const TextStyle(color: Colors.white));
+                    return Text('${AppStrings.countryText} $countryName', style: const TextStyle(color: AppColors.white));
                   },
                 ),
                 SizedBox(height: 4),
                 Text(
                 "${AppStrings.yearText} ${contestant.year}",
                 style: const TextStyle(
-                  color: Colors.grey,
+                  color: AppColors.gray,
                   fontSize: 12,
                 ),),
                 const SizedBox(height: 12),

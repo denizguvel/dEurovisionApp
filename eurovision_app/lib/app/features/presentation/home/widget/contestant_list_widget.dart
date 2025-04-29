@@ -22,10 +22,10 @@ class ContestantsList extends StatelessWidget {
 
     return Card(
       shadowColor: AppColors.black,
-      color: Colors.transparent,
+      color: AppColors.transparent,
       elevation: 12,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(
-      color: Colors.grey,
+      color: AppColors.gray,
       width: 1.0,         
     ),),
       margin: EdgeInsets.all(screenWidth * 0.04),

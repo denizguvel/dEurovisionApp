@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:eurovision_app/app/common/constants/app_strings.dart';
@@ -31,7 +32,7 @@ class SelectionStatusRow extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         IconButton(
-          icon: const Icon(Icons.delete, color: Colors.white),
+          icon: const Icon(Icons.delete, color: AppColors.white),
           tooltip: 'Reset',
           onPressed: () {
             context.read<MyTop10Provider>().resetSelection();

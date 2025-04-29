@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -16,7 +17,7 @@ final class AppFunctions {
   ]);
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: Colors.black,
+    systemNavigationBarColor: AppColors.black,
     systemNavigationBarIconBrightness: Brightness.light,
   ));
   

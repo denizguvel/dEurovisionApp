@@ -14,12 +14,12 @@ class CounterBox extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Row(
         children: [
-          Icon(icon, color: Colors.white, size: 18),
+          Icon(icon, color: AppColors.white, size: 18),
           const SizedBox(width: 6),
           Text(
             text,
             style: const TextStyle(
-              color: Colors.white,
+              color: AppColors.white,
               fontWeight: FontWeight.bold,
               fontSize: 15,
             ),

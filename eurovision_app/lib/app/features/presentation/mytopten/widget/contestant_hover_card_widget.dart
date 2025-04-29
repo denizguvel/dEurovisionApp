@@ -39,17 +39,17 @@ class ContestantHoverCard extends StatelessWidget {
           children: [
             Text(
               contestant.artist,
-              style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(color: AppColors.white, fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(
               contestant.song,
-              style: const TextStyle(color: Colors.white70, fontSize: 14),
+              style: const TextStyle(color: AppColors.white70, fontSize: 14),
             ),
             const SizedBox(height: 4),
             Text(
               countryName,
-              style: const TextStyle(color: Colors.white60),
+              style: const TextStyle(color: AppColors.white60),
             ),
           ],
         ),

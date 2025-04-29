@@ -79,7 +79,7 @@ class _MyTop10ViewState extends State<MyTop10View> {
             if (viewModel.isLoading)
               Positioned.fill(
                 child: Container(
-                  color: Colors.black.withOpacity(0.3),
+                  color: AppColors.black.withOpacity(0.3),
                   child: const Center(child: LoadingIndicator()),
                 ),
               ),

@@ -11,26 +11,29 @@ class SearchBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<VideoProvider>();
+    final hasText = provider.searchController.text.isNotEmpty;
 
     return Expanded(
       child: TextField(
         controller: provider.searchController,
-        style: const TextStyle(color: Colors.white), 
+        style: const TextStyle(color: AppColors.white), 
         decoration: InputDecoration(
           hintText: AppStrings.searchArtist,
-          hintStyle: const TextStyle(color: Colors.grey),
-          prefixIcon: const Icon(Icons.search, color: Colors.grey),
-          suffixIcon: IconButton(
-            icon: const Icon(Icons.clear, color: Colors.grey),
-            onPressed: provider.clearSearch,
-          ),
+          hintStyle: const TextStyle(color: AppColors.gray),
+          prefixIcon: const Icon(Icons.search, color: AppColors.gray),
+          suffixIcon: hasText 
+              ? IconButton(
+                  icon: const Icon(Icons.clear, color: AppColors.gray),
+                  onPressed: provider.clearSearch,
+                )
+              : null,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: AppColors.gray),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: AppColors.gray),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -38,7 +41,9 @@ class SearchBarWidget extends StatelessWidget {
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 12),
         ),
-        onChanged: provider.onSearchChanged,
+        onChanged: (value) {
+          provider.onSearchChanged(value);
+        },
       ),
     );
   }

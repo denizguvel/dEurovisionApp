@@ -25,7 +25,7 @@ class ThemePickerBottomSheet extends StatelessWidget {
                 title: const TextStyle(fontSize: 18, color: AppColors.pinkyPink, fontWeight: FontWeight.bold), // title
                 subtitle: const TextStyle(fontSize: 16, color: AppColors.black), // subtitle
                 trailing: const TextStyle(fontSize: 16, color: AppColors.gray, fontWeight: FontWeight.w300), // trailing
-                iconColor: Colors.grey,
+                iconColor: AppColors.gray,
               );
               Navigator.pop(context);
             },

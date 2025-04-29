@@ -23,10 +23,10 @@ class ScoreCardWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(        
-        color: Colors.transparent,
+        color: AppColors.transparent,
         elevation: 12,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),side: BorderSide(
-        color: Colors.grey,
+        color: AppColors.gray,
         width: 1.0,
       ),),
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),

@@ -19,7 +19,7 @@ class YearBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Colors.black,
+        color: AppColors.black,
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
       child: ListView(
@@ -30,7 +30,7 @@ class YearBottomSheet extends StatelessWidget {
             title: Text(
               year.toString(),
               style: TextStyle(
-                color: isSelected ? AppColors.pinkyPink : Colors.white,
+                color: isSelected ? AppColors.pinkyPink : AppColors.white,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
             ),

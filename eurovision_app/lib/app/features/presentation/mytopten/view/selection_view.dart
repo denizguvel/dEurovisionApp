@@ -53,7 +53,7 @@ class SelectionView extends StatelessWidget {
                     Text(
                       AppStrings.mytop10,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: Colors.white,
+                            color: AppColors.white,
                             fontWeight: FontWeight.bold,
                           ),
                     ),

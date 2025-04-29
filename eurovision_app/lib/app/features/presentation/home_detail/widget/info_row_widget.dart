@@ -1,3 +1,4 @@
+import 'package:eurovision_app/app/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 /// A row widget that displays a label-value pair.
@@ -27,12 +28,12 @@ class InfoRow extends StatelessWidget {
             width: 100,
             child: Text(
               label,
-              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)
+              style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.white)
                   .merge(labelStyle),
             ),
           ),
           Expanded(
-            child: Text(value, style: TextStyle(color: Colors.white),),
+            child: Text(value, style: TextStyle(color: AppColors.white),),
           ),
         ],
       ),
