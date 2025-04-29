@@ -1,5 +1,10 @@
 # Eurovision App 🎶
 
+![Flutter](https://img.shields.io/badge/Flutter-3.19-blue?logo=flutter)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Platform: Android/iOS](https://img.shields.io/badge/Platform-Android/iOS-green)
+![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)
+
 A modern Flutter application to explore, watch, and favorite Eurovision contest videos by year and artist.
 
 ---
@@ -8,7 +13,7 @@ A modern Flutter application to explore, watch, and favorite Eurovision contest 
 
 ![Demo](assets/screenshots/eu_app_gif.gif)
 
----
+---"
 
 ## 📸 Screenshots
 
@@ -86,7 +91,7 @@ lib/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/eurovision-app.git
+git clone https://github.com/denizguvel/eurovision-app.git
 ```
 
 2. Navigate into the project directory:
@@ -108,7 +113,7 @@ flutter run
 
 ## 💪 Technologies Used
 
-- Flutter 3.x
+- Flutter 3.29.0
 - Dart
 - Provider (State Management)
 - Dio (Networking)
