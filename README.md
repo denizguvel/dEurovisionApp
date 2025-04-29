@@ -27,8 +27,7 @@ A modern Flutter application to explore, watch, and favorite Eurovision contest 
 
 | Detail View | About |
 |:---:|:---:|
-| ![Detail](eurovision_app/assets/screenshots/detail.png) |
-| ![About](eurovision_app/assets/screenshots/about.png) |
+| ![Detail](eurovision_app/assets/screenshots/detail.png) | ![About](eurovision_app/assets/screenshots/about.png) |
 
 ---
 
