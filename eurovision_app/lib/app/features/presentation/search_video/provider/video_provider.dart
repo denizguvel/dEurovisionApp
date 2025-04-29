@@ -116,7 +116,7 @@ class VideoProvider extends BaseListProvider<ContestantDetailModel> {
       }
     }
 
-    await box.put('favorites', _favoriteKeys);
+    _filteredFavoriteItems = List.from(_favoriteItems);
     notifyListeners();
   }
 
