@@ -63,7 +63,7 @@ lib/
 │   ├── helpers/                    # Helper logic and abstract classes
 │   ├── keys/                       # Global keys (e.g., navigatorKey)
 │   ├── logger/                     # Logging utilities
-│   ├── network_control/           # Network state management
+│   ├── network_control/            # Network state management
 │   ├── providers/                  # Base provider classes and logic
 │   ├── result/                     # Result pattern (success, error handling)
 │   ├── routes/                     # Navigation routes and page transitions
