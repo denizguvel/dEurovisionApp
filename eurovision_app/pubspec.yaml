@@ -1,0 +1,69 @@
+name: eurovision_app
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+# ---------------------- Core & Utility Packages ----------------------
+  cupertino_icons: ^1.0.8       # iOS-style icons
+  dio: ^5.8.0+1                 # HTTP client
+  connectivity_plus: ^6.1.3     # Internet connectivity checker
+  equatable: ^2.0.7             # Simplifies value equality
+  path_provider: ^2.1.5         # Accessing device directories
+  provider: ^6.1.4              # State management
+
+ # ---------------------- Service & Local Storage Tools ----------------------
+  get_it: ^8.0.3                   # Dependency injection (Service Locator)
+  hive_flutter: ^1.1.0             # Hive support for Flutter
+  hive: ^2.2.3                     # Lightweight & fast key-value database
+  flutter_dotenv: ^5.2.1           # Load environment variables from .env files
+
+  # ---------------------- UI & Visual Enhancements ----------------------
+  flutter_svg: ^2.0.17              # SVG image rendering
+  font_awesome_flutter: ^10.8.0     # FontAwesome icon support
+  lottie: ^3.3.1                    # Lottie animations
+  flutter_launcher_icons: ^0.14.3   # App launcher icon configuration
+  youtube_player_flutter: ^9.1.1    # YouTube video player
+  screenshot: ^3.0.0                # Capture widget as image
+  share_plus: ^10.1.4               # Share content (text/images)
+  url_launcher: ^6.3.1              # Open URLs, dial numbers, etc.
+  salomon_bottom_bar:               # Custom bottom navigation bar
+    path: packages/salomon_bottom_bar
+  showcaseview: ^4.0.1              #Onboarding and showcase view
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env
+    - assets/animations/
+    - assets/images/
+    - assets/images/logo/
+    - assets/images/icons/
+    - assets/images/icons/flags/
+
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/fonts/MyFlutterApp.ttf
+
+ # ---------------------- App Icon ----------------------
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo/eu_logo4.jpg"
