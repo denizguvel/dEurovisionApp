@@ -56,7 +56,6 @@ flutter:
     - assets/images/logo/
     - assets/images/icons/
     - assets/images/icons/flags/
-    - assets/screenshots/
 
   fonts:
     - family: MyFlutterApp

@@ -1,1 +1,0 @@
-C:\git\dEurovisionApp\eurovision_app\build\app\intermediates\cxx\Debug\6w6v2223\obj\arm64-v8a
