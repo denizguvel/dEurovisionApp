@@ -3,6 +3,6 @@
 class YearUtil {
   static int getLatestAvailableYear() {
     final now = DateTime.now();
-    return now.month >= 6 ? now.year : now.year - 1;
+    return now.month >= 7 ? now.year : now.year - 1;
   }
 }
